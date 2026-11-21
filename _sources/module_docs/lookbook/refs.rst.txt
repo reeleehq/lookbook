@@ -1,4 +1,0 @@
-lookbook.refs
-=============
-.. automodule:: lookbook.refs
-   :members:

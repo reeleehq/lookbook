@@ -1,4 +1,0 @@
-lookbook.report
-===============
-.. automodule:: lookbook.report
-   :members:

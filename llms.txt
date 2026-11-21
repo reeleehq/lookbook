@@ -1,0 +1,51 @@
+# lookbook
+
+> Distill raw image pools into optimized, high-diversity reference sets for character model training.
+
+
+## Pages
+
+- [lookbook](index.html.md): Distill raw image pools into optimized, high-diversity reference sets for
+- [API reference](api.html.md): | &#96;lookbook&#96;   | lookbook — distill image pools into reference sets for personalized model training....
+- [lookbook](_autosummary/lookbook.html.md): lookbook — distill image pools into reference sets for personalized model training.
+- [lookbook.registry](_autosummary/lookbook.registry.html.md): Plugin registry for scorers, filters, embedders, selectors.
+- [lookbook.base](_autosummary/lookbook.base.html.md): Core protocols and types for lookbook.
+- [lookbook.diagnose](_autosummary/lookbook.diagnose.html.md): Set-level diagnosis: what does the kept set cover, what’s missing.
+- [lookbook.embedders](_autosummary/lookbook.embedders.html.md): Embedders: vector representations per image.
+- [lookbook.embedders.arcface](_autosummary/lookbook.embedders.arcface.html.md): ArcFace identity embedder.
+- [lookbook.embedders.clip](_autosummary/lookbook.embedders.clip.html.md): CLIP embedder via &#96;transformers&#96;.
+- [lookbook.embedders.dinov2](_autosummary/lookbook.embedders.dinov2.html.md): DINOv2 embedder via &#96;transformers&#96;.
+- [lookbook.embedders.mock](_autosummary/lookbook.embedders.mock.html.md): Deterministic mock embedder for tests and end-to-end orchestration.
+- [lookbook.facade](_autosummary/lookbook.facade.html.md): High-level facades — the one-call entry points into the pipeline.
+- [lookbook.filters](_autosummary/lookbook.filters.html.md): Filters: per-image keep/drop decisions. Registered into &#96;registry.filters&#96;.
+- [lookbook.filters.person](_autosummary/lookbook.filters.person.html.md): Person-LoRA filters — Phase 3.
+- [lookbook.filters.technical](_autosummary/lookbook.filters.technical.html.md): Phase 1 filters — cheap funnel.
+- [lookbook.http](_autosummary/lookbook.http.html.md): HTTP surface for lookbook, built with &#96;qh&#96; over FastAPI.
+- [lookbook.interactive](_autosummary/lookbook.interactive.html.md): Interactive curate loop — keep the human in the loop.
+- [lookbook.io](_autosummary/lookbook.io.html.md): IO: ingest sources into ImageRefs, export results to disk.
+- [lookbook.io.ingest](_autosummary/lookbook.io.ingest.html.md): Materialize a source into a list of ImageRefs.
+- [lookbook.manifest](_autosummary/lookbook.manifest.html.md): Helpers for reading and writing the manifest.
+- [lookbook.mcp](_autosummary/lookbook.mcp.html.md): MCP surface for lookbook, built with &#96;fastmcp&#96;.
+- [lookbook.pipeline](_autosummary/lookbook.pipeline.html.md): Pipeline orchestrator.
+- [lookbook.profiles](_autosummary/lookbook.profiles.html.md): Subject profiles — declarative recipes loaded from YAML.
+- [lookbook.refs](_autosummary/lookbook.refs.html.md): Concrete &#96;ImageRef&#96; implementations.
+- [lookbook.report](_autosummary/lookbook.report.html.md): Run report — what happened during a curation pass.
+- [lookbook.scorers](_autosummary/lookbook.scorers.html.md): Scorers: per-image annotation producers.
+- [lookbook.scorers.identity](_autosummary/lookbook.scorers.identity.html.md): Cross-image identity / likeness scorer — compare a candidate to a reference.
+- [lookbook.scorers.person](_autosummary/lookbook.scorers.person.html.md): Person-LoRA scorers — Phase 3.
+- [lookbook.scorers.technical](_autosummary/lookbook.scorers.technical.html.md): Technical scorers — Phase 0/1.
+- [lookbook.selectors](_autosummary/lookbook.selectors.html.md): Selectors: choose K from N given the manifest.
+- [lookbook.selectors.quota](_autosummary/lookbook.selectors.quota.html.md): Quota-aware selection: pick K from N with per-bin budgets.
+- [lookbook.selectors.submodular](_autosummary/lookbook.selectors.submodular.html.md): Submodular selectors over embedding spaces.
+- [lookbook.selectors.topk](_autosummary/lookbook.selectors.topk.html.md): Top-K selector: pick the K highest-scoring images by a single metric.
+- [lookbook.store](_autosummary/lookbook.store.html.md): Repository pattern for lookbook persistence.
+- [For AI agents](ai-agents.html.md): &#96;lookbook&#96; ships artifacts for coding agents alongside its code. This page lists
+- [About this build](about-this-build.html.md): This documentation was built on &#42;&#42;2026-11-21 18:44 UTC&#42;&#42; from commit &lt;a href="https://github.com/ree...
+
+## Optional
+
+- [lookbook.md](lookbook.md): Complete documentation in a single file.
+
+## Build
+
+- [build_info.json](build_info.json): build provenance (commit, version, tool versions, whether the docs match the package)

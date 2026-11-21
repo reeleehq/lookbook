@@ -1,0 +1,15 @@
+lookbook.scorers
+================
+
+.. automodule:: lookbook.scorers
+
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   identity
+   person
+   technical

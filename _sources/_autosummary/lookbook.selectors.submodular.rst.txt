@@ -1,0 +1,12 @@
+lookbook.selectors.submodular
+=============================
+
+.. automodule:: lookbook.selectors.submodular
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      FacilityLocation
+   

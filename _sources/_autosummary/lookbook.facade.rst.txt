@@ -1,0 +1,16 @@
+lookbook.facade
+===============
+
+.. automodule:: lookbook.facade
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      curate
+      curate_for_character
+      curate_for_environment
+      resolve_plugin
+      score
+   

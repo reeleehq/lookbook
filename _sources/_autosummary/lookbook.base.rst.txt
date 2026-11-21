@@ -1,0 +1,17 @@
+lookbook.base
+=============
+
+.. automodule:: lookbook.base
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Annotation
+      Embedder
+      Filter
+      ImageRef
+      Scorer
+      Selector
+   

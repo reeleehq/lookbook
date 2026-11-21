@@ -1,0 +1,16 @@
+lookbook.embedders
+==================
+
+.. automodule:: lookbook.embedders
+
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   arcface
+   clip
+   dinov2
+   mock

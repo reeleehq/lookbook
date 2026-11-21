@@ -1,4 +1,0 @@
-lookbook.selectors.topk
-=======================
-.. automodule:: lookbook.selectors.topk
-   :members:

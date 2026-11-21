@@ -1,4 +1,0 @@
-lookbook.scorers.person
-=======================
-.. automodule:: lookbook.scorers.person
-   :members:

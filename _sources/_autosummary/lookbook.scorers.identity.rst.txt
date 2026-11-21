@@ -1,0 +1,31 @@
+lookbook.scorers.identity
+=========================
+
+.. automodule:: lookbook.scorers.identity
+
+   
+   .. rubric:: Module Attributes
+
+   .. autosummary::
+   
+      DFLT_THRESHOLD
+      DFLT_EMBEDDER
+      DFLT_AGGREGATION
+      DFLT_NORMALIZATION
+      METRIC_ID
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      compare_to_reference
+      cosine_similarity
+      normalize_cosine
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      IdentitySimilarity
+      SimilarityResult
+   

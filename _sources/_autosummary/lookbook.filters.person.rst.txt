@@ -1,0 +1,15 @@
+lookbook.filters.person
+=======================
+
+.. automodule:: lookbook.filters.person
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      HasFace
+      MinFaceArea
+      MinFaceConfidence
+      SingleFaceOnly
+   

@@ -1,0 +1,12 @@
+lookbook.diagnose
+=================
+
+.. automodule:: lookbook.diagnose
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      cluster_coverage
+   

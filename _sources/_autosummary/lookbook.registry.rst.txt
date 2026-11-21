@@ -1,0 +1,15 @@
+lookbook.registry
+=================
+
+.. automodule:: lookbook.registry
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      register_embedder
+      register_filter
+      register_scorer
+      register_selector
+   

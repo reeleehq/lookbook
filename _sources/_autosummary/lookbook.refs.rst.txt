@@ -1,0 +1,20 @@
+lookbook.refs
+=============
+
+.. automodule:: lookbook.refs
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      to_local_path
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      BytesImageRef
+      PathImageRef
+      UrlImageRef
+   

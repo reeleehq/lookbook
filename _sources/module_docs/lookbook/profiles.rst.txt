@@ -1,4 +1,0 @@
-lookbook.profiles
-=================
-.. automodule:: lookbook.profiles
-   :members:

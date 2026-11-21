@@ -1,0 +1,12 @@
+lookbook.selectors.quota
+========================
+
+.. automodule:: lookbook.selectors.quota
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      QuotaSelector
+   

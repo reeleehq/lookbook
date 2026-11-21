@@ -1,0 +1,65 @@
+﻿lookbook
+========
+
+.. automodule:: lookbook
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      compare_to_reference
+      curate
+      curate_for_character
+      curate_for_environment
+      curate_interactive
+      get_stores
+      ingest
+      to_local_path
+      score
+      value_of
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Annotation
+      BytesImageRef
+      Embedder
+      Filter
+      IdentitySimilarity
+      ImageRef
+      PathImageRef
+      Pipeline
+      RunResult
+      Scorer
+      Selector
+      SimilarityResult
+      Stores
+      UrlImageRef
+      InteractiveDecision
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   registry
+   base
+   diagnose
+   embedders
+   facade
+   filters
+   http
+   interactive
+   io
+   manifest
+   mcp
+   pipeline
+   profiles
+   refs
+   report
+   scorers
+   selectors
+   store

@@ -1,0 +1,12 @@
+lookbook.embedders.dinov2
+=========================
+
+.. automodule:: lookbook.embedders.dinov2
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      DINOv2Embedder
+   

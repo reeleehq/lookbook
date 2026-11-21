@@ -1,0 +1,12 @@
+lookbook.embedders.mock
+=======================
+
+.. automodule:: lookbook.embedders.mock
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      MockEmbedder
+   

@@ -1,0 +1,22 @@
+lookbook.filters.technical
+==========================
+
+.. automodule:: lookbook.filters.technical
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      fresh_filter
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      ExposureRange
+      MinBlur
+      MinResolution
+      NoExactDuplicate
+      NoNearDuplicate
+   

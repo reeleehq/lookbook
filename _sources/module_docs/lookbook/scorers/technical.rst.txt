@@ -1,4 +1,0 @@
-lookbook.scorers.technical
-==========================
-.. automodule:: lookbook.scorers.technical
-   :members:

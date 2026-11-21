@@ -1,0 +1,13 @@
+lookbook.embedders.arcface
+==========================
+
+.. automodule:: lookbook.embedders.arcface
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      InsightFaceArcFace
+      MockArcFaceEmbedder
+   

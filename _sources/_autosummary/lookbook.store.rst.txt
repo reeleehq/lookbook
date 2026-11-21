@@ -1,0 +1,19 @@
+lookbook.store
+==============
+
+.. automodule:: lookbook.store
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      get_stores
+      manifest_codec
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Stores
+   

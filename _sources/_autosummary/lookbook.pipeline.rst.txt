@@ -1,0 +1,13 @@
+lookbook.pipeline
+=================
+
+.. automodule:: lookbook.pipeline
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Pipeline
+      RunResult
+   

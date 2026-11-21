@@ -1,4 +1,0 @@
-lookbook.__main__
-=================
-.. automodule:: lookbook.__main__
-   :members:

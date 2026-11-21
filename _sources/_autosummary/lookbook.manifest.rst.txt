@@ -1,0 +1,17 @@
+lookbook.manifest
+=================
+
+.. automodule:: lookbook.manifest
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      get_annotation
+      has_annotation
+      image_ids
+      iter_annotations_for
+      put_annotation
+      value_of
+   

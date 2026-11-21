@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "built_at": "2026-11-21T18:44:23Z",
+  "package": {
+    "name": "lookbook",
+    "version": "0.0.12",
+    "display_name": "lookbook",
+    "source": "pyproject.toml"
+  },
+  "git": {
+    "available": true,
+    "commit": "9e641ad87d4ffed6d7ad8cbf6724807537b15cd8",
+    "short_commit": "9e641ad",
+    "branch": "main",
+    "tags": [],
+    "dirty": false,
+    "remote_url": "https://github.com/reeleehq/lookbook",
+    "commit_url": "https://github.com/reeleehq/lookbook/commit/9e641ad87d4ffed6d7ad8cbf6724807537b15cd8",
+    "error": null
+  },
+  "ci": {
+    "provider": "github",
+    "repository": "reeleehq/lookbook",
+    "sha": "9e641ad87d4ffed6d7ad8cbf6724807537b15cd8",
+    "sha_in_history": true,
+    "ref": "refs/heads/main",
+    "ref_name": "main",
+    "run_id": "44937026970",
+    "run_url": "https://github.com/reeleehq/lookbook/actions/runs/44937026970",
+    "server_url": "https://github.com"
+  },
+  "tools": {
+    "epythet": "0.2.23",
+    "sphinx": "9.1.1",
+    "docutils": "0.22.4",
+    "python": "3.12.16"
+  },
+  "config": {
+    "theme": "auto",
+    "html_theme": "sphinxawesome_theme",
+    "accent": "#00658b",
+    "mode": "auto",
+    "api_generator": "autosummary",
+    "ignore": [
+      "tests/",
+      "scrap/",
+      "examples/"
+    ],
+    "agent_outputs": true,
+    "aggregates": [
+      "md"
+    ],
+    "ai_artifacts": true,
+    "provenance": true,
+    "docs_dir": "docsrc"
+  },
+  "site": {
+    "modules_documented": 32,
+    "objects_documented": 161
+  },
+  "pypi": {
+    "checked": true,
+    "latest": "0.0.13",
+    "relation": "behind",
+    "error": null
+  },
+  "reproduce": "git clone https://github.com/reeleehq/lookbook && cd lookbook\ngit checkout 9e641ad87d4ffed6d7ad8cbf6724807537b15cd8\npip install \"epythet==0.2.23\"\nepythet quickstart . --ignore tests/ scrap/ examples/",
+  "warnings": [],
+  "alignment": {
+    "aligned": false,
+    "notes": [
+      "The documented version (0.0.12) is behind the latest release on PyPI (0.0.13): `pip install lookbook` gives newer code than these docs describe."
+    ]
+  }
+}

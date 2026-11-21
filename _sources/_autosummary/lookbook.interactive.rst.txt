@@ -1,0 +1,18 @@
+lookbook.interactive
+====================
+
+.. automodule:: lookbook.interactive
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      curate_interactive
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      InteractiveDecision
+   

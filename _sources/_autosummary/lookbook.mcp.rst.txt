@@ -1,0 +1,23 @@
+lookbook.mcp
+============
+
+.. automodule:: lookbook.mcp
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      mcp_compare_to_reference
+      mcp_curate_source
+      mcp_get_annotations
+      mcp_get_image
+      mcp_get_run
+      mcp_ingest_source
+      mcp_list_plugins
+      mcp_list_recipes
+      mcp_list_runs
+      mcp_score_image
+      mk_lookbook_mcp
+      serve
+   

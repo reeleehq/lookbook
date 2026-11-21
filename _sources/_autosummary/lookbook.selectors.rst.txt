@@ -1,0 +1,15 @@
+lookbook.selectors
+==================
+
+.. automodule:: lookbook.selectors
+
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   quota
+   submodular
+   topk

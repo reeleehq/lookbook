@@ -1,4 +1,0 @@
-lookbook.http
-=============
-.. automodule:: lookbook.http
-   :members:

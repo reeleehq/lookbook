@@ -1,4 +1,0 @@
-lookbook.facade
-===============
-.. automodule:: lookbook.facade
-   :members:

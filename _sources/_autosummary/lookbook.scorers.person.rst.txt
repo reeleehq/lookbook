@@ -1,0 +1,17 @@
+lookbook.scorers.person
+=======================
+
+.. automodule:: lookbook.scorers.person
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      FaceArea
+      FaceQualityProxy
+      InsightFaceDetect
+      MockFaceDetect
+      MockHeadPose
+      SixDRepNetHeadPose
+   

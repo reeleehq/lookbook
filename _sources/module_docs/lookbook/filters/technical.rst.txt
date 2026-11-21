@@ -1,4 +1,0 @@
-lookbook.filters.technical
-==========================
-.. automodule:: lookbook.filters.technical
-   :members:

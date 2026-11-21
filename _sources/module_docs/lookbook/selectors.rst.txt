@@ -1,4 +1,0 @@
-lookbook.selectors
-==================
-.. automodule:: lookbook.selectors
-   :members:

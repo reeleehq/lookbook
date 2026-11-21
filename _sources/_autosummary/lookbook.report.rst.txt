@@ -1,0 +1,18 @@
+lookbook.report
+===============
+
+.. automodule:: lookbook.report
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      attribute_drops
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Report
+   

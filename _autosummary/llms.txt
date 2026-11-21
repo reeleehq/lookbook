@@ -1,0 +1,43 @@
+# lookbook
+
+> Distill raw image pools into optimized, high-diversity reference sets for character model training.
+
+
+## Pages in this subsection
+
+- [lookbook](lookbook.html.md): lookbook — distill image pools into reference sets for personalized model training.
+- [lookbook.registry](lookbook.registry.html.md): Plugin registry for scorers, filters, embedders, selectors.
+- [lookbook.base](lookbook.base.html.md): Core protocols and types for lookbook.
+- [lookbook.diagnose](lookbook.diagnose.html.md): Set-level diagnosis: what does the kept set cover, what’s missing.
+- [lookbook.embedders](lookbook.embedders.html.md): Embedders: vector representations per image.
+- [lookbook.embedders.arcface](lookbook.embedders.arcface.html.md): ArcFace identity embedder.
+- [lookbook.embedders.clip](lookbook.embedders.clip.html.md): CLIP embedder via &#96;transformers&#96;.
+- [lookbook.embedders.dinov2](lookbook.embedders.dinov2.html.md): DINOv2 embedder via &#96;transformers&#96;.
+- [lookbook.embedders.mock](lookbook.embedders.mock.html.md): Deterministic mock embedder for tests and end-to-end orchestration.
+- [lookbook.facade](lookbook.facade.html.md): High-level facades — the one-call entry points into the pipeline.
+- [lookbook.filters](lookbook.filters.html.md): Filters: per-image keep/drop decisions. Registered into &#96;registry.filters&#96;.
+- [lookbook.filters.person](lookbook.filters.person.html.md): Person-LoRA filters — Phase 3.
+- [lookbook.filters.technical](lookbook.filters.technical.html.md): Phase 1 filters — cheap funnel.
+- [lookbook.http](lookbook.http.html.md): HTTP surface for lookbook, built with &#96;qh&#96; over FastAPI.
+- [lookbook.interactive](lookbook.interactive.html.md): Interactive curate loop — keep the human in the loop.
+- [lookbook.io](lookbook.io.html.md): IO: ingest sources into ImageRefs, export results to disk.
+- [lookbook.io.ingest](lookbook.io.ingest.html.md): Materialize a source into a list of ImageRefs.
+- [lookbook.manifest](lookbook.manifest.html.md): Helpers for reading and writing the manifest.
+- [lookbook.mcp](lookbook.mcp.html.md): MCP surface for lookbook, built with &#96;fastmcp&#96;.
+- [lookbook.pipeline](lookbook.pipeline.html.md): Pipeline orchestrator.
+- [lookbook.profiles](lookbook.profiles.html.md): Subject profiles — declarative recipes loaded from YAML.
+- [lookbook.refs](lookbook.refs.html.md): Concrete &#96;ImageRef&#96; implementations.
+- [lookbook.report](lookbook.report.html.md): Run report — what happened during a curation pass.
+- [lookbook.scorers](lookbook.scorers.html.md): Scorers: per-image annotation producers.
+- [lookbook.scorers.identity](lookbook.scorers.identity.html.md): Cross-image identity / likeness scorer — compare a candidate to a reference.
+- [lookbook.scorers.person](lookbook.scorers.person.html.md): Person-LoRA scorers — Phase 3.
+- [lookbook.scorers.technical](lookbook.scorers.technical.html.md): Technical scorers — Phase 0/1.
+- [lookbook.selectors](lookbook.selectors.html.md): Selectors: choose K from N given the manifest.
+- [lookbook.selectors.quota](lookbook.selectors.quota.html.md): Quota-aware selection: pick K from N with per-bin budgets.
+- [lookbook.selectors.submodular](lookbook.selectors.submodular.html.md): Submodular selectors over embedding spaces.
+- [lookbook.selectors.topk](lookbook.selectors.topk.html.md): Top-K selector: pick the K highest-scoring images by a single metric.
+- [lookbook.store](lookbook.store.html.md): Repository pattern for lookbook persistence.
+
+## Optional
+
+- [Top-level llms.txt](../llms.txt): Complete documentation index.

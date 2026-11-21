@@ -1,4 +1,0 @@
-lookbook.filters.person
-=======================
-.. automodule:: lookbook.filters.person
-   :members:

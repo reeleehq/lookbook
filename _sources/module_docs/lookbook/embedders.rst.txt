@@ -1,4 +1,0 @@
-lookbook.embedders
-==================
-.. automodule:: lookbook.embedders
-   :members:

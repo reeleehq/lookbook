@@ -1,4 +1,0 @@
-lookbook
-========
-.. automodule:: lookbook
-   :members:

@@ -1,0 +1,24 @@
+lookbook.http
+=============
+
+.. automodule:: lookbook.http
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      compare_to_reference
+      curate_source
+      get_annotations
+      get_image
+      get_run
+      ingest_source
+      list_plugins
+      list_recipes
+      list_runs
+      mk_lookbook_app
+      reset_stores
+      score_image
+      serve
+   

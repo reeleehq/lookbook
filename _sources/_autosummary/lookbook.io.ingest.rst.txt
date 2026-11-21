@@ -1,0 +1,6 @@
+lookbook.io.ingest
+==================
+
+.. currentmodule:: lookbook.io
+
+.. autofunction:: ingest
