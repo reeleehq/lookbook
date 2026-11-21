@@ -75,10 +75,10 @@ def manifest_codec(store: MutableMapping) -> MutableMapping:
     """
     return wrap_kvs(
         store,
-        key_of_id=_str_to_key,
-        id_of_key=_key_to_str,
-        obj_of_data=_dict_to_annotation,
-        data_of_obj=_annotation_to_dict,
+        key_decoder=_str_to_key,
+        key_encoder=_key_to_str,
+        value_decoder=_dict_to_annotation,
+        value_encoder=_annotation_to_dict,
     )
 
 
