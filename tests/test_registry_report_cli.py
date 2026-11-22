@@ -150,7 +150,7 @@ def test_curate_in_memory_prints_json_record(tmp_path, capsys):
 
     for i in range(4):
         Image.new("RGB", (64 + i, 64), (10 * i, 20, 30)).save(tmp_path / f"{i}.png")
-    cli.curate(str(tmp_path), k=2, recipe="diverse_mock", in_memory=True)
+    cli.curate(str(tmp_path), k=2, recipe="random", in_memory=True)
     record = json.loads(capsys.readouterr().out)
     assert isinstance(record, dict) and record
 
