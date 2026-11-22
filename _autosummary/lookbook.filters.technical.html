@@ -176,6 +176,16 @@ can attribute drops back to the rule that fired.</p>
 <p>Defaults: drop if more than 50% of pixels are below 16 or above 240.</p>
 <dl class="field-list simple">
 </dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="lookbook.filters.technical.ExposureRange.keep">
+<span class="sig-name descname"><span class="pre">keep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifest</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/filters/technical.html#ExposureRange.keep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.filters.technical.ExposureRange.keep" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.filters.technical.ExposureRange.keep'">¶</a></dt>
+<dd><p>Return whether <code class="docutils literal notranslate"><span class="pre">ref</span></code> passes this filter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" rel="nofollow noopener" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></span></p>
+</dd>
+</dl>
+</dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="lookbook.filters.technical.MinBlur">
@@ -184,6 +194,16 @@ can attribute drops back to the rule that fired.</p>
 <p>Drop images whose Laplacian variance is below <code class="code docutils literal notranslate"><span class="pre">threshold</span></code> (blurry).</p>
 <dl class="field-list simple">
 </dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="lookbook.filters.technical.MinBlur.keep">
+<span class="sig-name descname"><span class="pre">keep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifest</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/filters/technical.html#MinBlur.keep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.filters.technical.MinBlur.keep" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.filters.technical.MinBlur.keep'">¶</a></dt>
+<dd><p>Return whether <code class="docutils literal notranslate"><span class="pre">ref</span></code> passes this filter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" rel="nofollow noopener" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></span></p>
+</dd>
+</dl>
+</dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="lookbook.filters.technical.MinResolution">
@@ -194,6 +214,16 @@ can attribute drops back to the rule that fired.</p>
 (under the principle that filters never drop on missing evidence).</p>
 <dl class="field-list simple">
 </dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="lookbook.filters.technical.MinResolution.keep">
+<span class="sig-name descname"><span class="pre">keep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifest</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/filters/technical.html#MinResolution.keep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.filters.technical.MinResolution.keep" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.filters.technical.MinResolution.keep'">¶</a></dt>
+<dd><p>Return whether <code class="docutils literal notranslate"><span class="pre">ref</span></code> passes this filter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" rel="nofollow noopener" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></span></p>
+</dd>
+</dl>
+</dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="lookbook.filters.technical.NoExactDuplicate">
@@ -204,6 +234,16 @@ can attribute drops back to the rule that fired.</p>
 with the same hash are dropped.</p>
 <dl class="field-list simple">
 </dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="lookbook.filters.technical.NoExactDuplicate.keep">
+<span class="sig-name descname"><span class="pre">keep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifest</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/filters/technical.html#NoExactDuplicate.keep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.filters.technical.NoExactDuplicate.keep" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.filters.technical.NoExactDuplicate.keep'">¶</a></dt>
+<dd><p>Return whether <code class="docutils literal notranslate"><span class="pre">ref</span></code> passes this filter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" rel="nofollow noopener" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></span></p>
+</dd>
+</dl>
+</dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="lookbook.filters.technical.NoNearDuplicate">
@@ -215,6 +255,16 @@ cluster representative, and any later image whose <code class="code docutils lit
 <code class="code docutils literal notranslate"><span class="pre">max_distance</span></code> Hamming bits is dropped.</p>
 <dl class="field-list simple">
 </dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="lookbook.filters.technical.NoNearDuplicate.keep">
+<span class="sig-name descname"><span class="pre">keep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifest</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/filters/technical.html#NoNearDuplicate.keep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.filters.technical.NoNearDuplicate.keep" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.filters.technical.NoNearDuplicate.keep'">¶</a></dt>
+<dd><p>Return whether <code class="docutils literal notranslate"><span class="pre">ref</span></code> passes this filter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" rel="nofollow noopener" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></span></p>
+</dd>
+</dl>
+</dd></dl>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="lookbook.filters.technical.fresh_filter">
@@ -229,11 +279,26 @@ registry holds a singleton, so call this when building a fresh pipeline.</p>
 </div></div><aside class="hidden text-sm xl:block" id="right-sidebar">
 <div class="sticky top-16 -mt-10 max-h-[calc(100vh-5rem)] h-full overflow-y-auto pt-6 space-y-2"><p class="font-medium">On this page</p>
 <ul>
-<li><a :data-current="activeSection === '#lookbook.filters.technical.ExposureRange'" class="reference internal" href="#lookbook.filters.technical.ExposureRange"><code class="docutils literal notranslate"><span class="pre">ExposureRange</span></code></a></li>
-<li><a :data-current="activeSection === '#lookbook.filters.technical.MinBlur'" class="reference internal" href="#lookbook.filters.technical.MinBlur"><code class="docutils literal notranslate"><span class="pre">MinBlur</span></code></a></li>
-<li><a :data-current="activeSection === '#lookbook.filters.technical.MinResolution'" class="reference internal" href="#lookbook.filters.technical.MinResolution"><code class="docutils literal notranslate"><span class="pre">MinResolution</span></code></a></li>
-<li><a :data-current="activeSection === '#lookbook.filters.technical.NoExactDuplicate'" class="reference internal" href="#lookbook.filters.technical.NoExactDuplicate"><code class="docutils literal notranslate"><span class="pre">NoExactDuplicate</span></code></a></li>
-<li><a :data-current="activeSection === '#lookbook.filters.technical.NoNearDuplicate'" class="reference internal" href="#lookbook.filters.technical.NoNearDuplicate"><code class="docutils literal notranslate"><span class="pre">NoNearDuplicate</span></code></a></li>
+<li><a :data-current="activeSection === '#lookbook.filters.technical.ExposureRange'" class="reference internal" href="#lookbook.filters.technical.ExposureRange"><code class="docutils literal notranslate"><span class="pre">ExposureRange</span></code></a><ul>
+<li><a :data-current="activeSection === '#lookbook.filters.technical.ExposureRange.keep'" class="reference internal" href="#lookbook.filters.technical.ExposureRange.keep"><code class="docutils literal notranslate"><span class="pre">ExposureRange.keep()</span></code></a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#lookbook.filters.technical.MinBlur'" class="reference internal" href="#lookbook.filters.technical.MinBlur"><code class="docutils literal notranslate"><span class="pre">MinBlur</span></code></a><ul>
+<li><a :data-current="activeSection === '#lookbook.filters.technical.MinBlur.keep'" class="reference internal" href="#lookbook.filters.technical.MinBlur.keep"><code class="docutils literal notranslate"><span class="pre">MinBlur.keep()</span></code></a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#lookbook.filters.technical.MinResolution'" class="reference internal" href="#lookbook.filters.technical.MinResolution"><code class="docutils literal notranslate"><span class="pre">MinResolution</span></code></a><ul>
+<li><a :data-current="activeSection === '#lookbook.filters.technical.MinResolution.keep'" class="reference internal" href="#lookbook.filters.technical.MinResolution.keep"><code class="docutils literal notranslate"><span class="pre">MinResolution.keep()</span></code></a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#lookbook.filters.technical.NoExactDuplicate'" class="reference internal" href="#lookbook.filters.technical.NoExactDuplicate"><code class="docutils literal notranslate"><span class="pre">NoExactDuplicate</span></code></a><ul>
+<li><a :data-current="activeSection === '#lookbook.filters.technical.NoExactDuplicate.keep'" class="reference internal" href="#lookbook.filters.technical.NoExactDuplicate.keep"><code class="docutils literal notranslate"><span class="pre">NoExactDuplicate.keep()</span></code></a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#lookbook.filters.technical.NoNearDuplicate'" class="reference internal" href="#lookbook.filters.technical.NoNearDuplicate"><code class="docutils literal notranslate"><span class="pre">NoNearDuplicate</span></code></a><ul>
+<li><a :data-current="activeSection === '#lookbook.filters.technical.NoNearDuplicate.keep'" class="reference internal" href="#lookbook.filters.technical.NoNearDuplicate.keep"><code class="docutils literal notranslate"><span class="pre">NoNearDuplicate.keep()</span></code></a></li>
+</ul>
+</li>
 <li><a :data-current="activeSection === '#lookbook.filters.technical.fresh_filter'" class="reference internal" href="#lookbook.filters.technical.fresh_filter"><code class="docutils literal notranslate"><span class="pre">fresh_filter()</span></code></a></li>
 </ul>
 </div>
@@ -248,7 +313,7 @@ registry holds a singleton, so call this when building a fresh pipeline.</p>
 </div>
 </footer>
 </div>
-<script src="../_static/documentation_options.js?v=3bbcec59"></script>
+<script src="../_static/documentation_options.js?v=9fc46840"></script>
 <script src="../_static/doctools.js?v=fd6eb6e6"></script>
 <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
 <script src="../_static/clipboard.min.js?v=a7894cd8"></script>

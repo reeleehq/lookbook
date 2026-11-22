@@ -30,6 +30,20 @@ L2-normalized; we just pick the largest face’s embedding.
 The “right” face is the one whose `bbox` overlaps the manifest’s
 `face_box` if available; otherwise the largest by area.
 
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
+
+#### embed(ref)
+
+Embed `ref` into this embedder’s vector space.
+
+* **Return type:**
+  `ndarray`
+
 ### *class* lookbook.embedders.arcface.MockArcFaceEmbedder(space_id='arcface_mock', cost_tier=1, dim=512, seed=0, backend='lookbook:mock_arcface')
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
@@ -42,3 +56,17 @@ The vector is keyed by `image_id`, so:
 - Different images yield different vectors.
 - There is no “same person” signal — different images of one person
   get unrelated vectors. Useful only for orchestration tests.
+
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
+
+#### embed(ref)
+
+Embed `ref` into this embedder’s vector space.
+
+* **Return type:**
+  `ndarray`

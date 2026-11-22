@@ -9,15 +9,36 @@ never *subclassed*.
 
 ### Functions
 
-| `register_embedder`(name, \*\*kwargs)                                              |                                             |
-|------------------------------------------------------------------------------------|---------------------------------------------|
-| `register_filter`(name, \*\*kwargs)                                                |                                             |
-| [`register_scorer`](#lookbook.registry.register_scorer)(name, \*\*kwargs) | Decorator form: `@register_scorer("blur")`. |
-| `register_selector`(name, \*\*kwargs)                                              |                                             |
+| [`register_embedder`](#lookbook.registry.register_embedder)(name, \*\*kwargs)   | Decorator: register an embedder under `name`.   |
+|----------------------------------------------------------------------------------------|-------------------------------------------------|
+| [`register_filter`](#lookbook.registry.register_filter)(name, \*\*kwargs)     | Decorator: register a filter under `name`.      |
+| [`register_scorer`](#lookbook.registry.register_scorer)(name, \*\*kwargs)     | Decorator form: `@register_scorer("blur")`.     |
+| [`register_selector`](#lookbook.registry.register_selector)(name, \*\*kwargs)   | Decorator: register a selector under `name`.    |
+
+### lookbook.registry.register_embedder(name, \*\*kwargs)
+
+Decorator: register an embedder under `name`.
+
+* **Return type:**
+  [`Callable`](https://docs.python.org/3/library/typing.html#typing.Callable)
+
+### lookbook.registry.register_filter(name, \*\*kwargs)
+
+Decorator: register a filter under `name`.
+
+* **Return type:**
+  [`Callable`](https://docs.python.org/3/library/typing.html#typing.Callable)
 
 ### lookbook.registry.register_scorer(name, \*\*kwargs)
 
 Decorator form: `@register_scorer("blur")`.
+
+* **Return type:**
+  [`Callable`](https://docs.python.org/3/library/typing.html#typing.Callable)
+
+### lookbook.registry.register_selector(name, \*\*kwargs)
+
+Decorator: register a selector under `name`.
 
 * **Return type:**
   [`Callable`](https://docs.python.org/3/library/typing.html#typing.Callable)

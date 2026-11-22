@@ -21,17 +21,38 @@ Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
 Drop images with no detected face.
 
+#### keep(ref, manifest)
+
+Return whether `ref` passes this filter.
+
+* **Return type:**
+  [`bool`](https://docs.python.org/3/builtins/functions.html#bool)
+
 ### *class* lookbook.filters.person.MinFaceArea(min_fraction=0.05, name='min_face_area')
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
 Drop images whose face occupies less than `min_fraction` of the frame.
 
+#### keep(ref, manifest)
+
+Return whether `ref` passes this filter.
+
+* **Return type:**
+  [`bool`](https://docs.python.org/3/builtins/functions.html#bool)
+
 ### *class* lookbook.filters.person.MinFaceConfidence(threshold=0.5, name='min_face_confidence')
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
 Drop images whose face-detection confidence is below `threshold`.
+
+#### keep(ref, manifest)
+
+Return whether `ref` passes this filter.
+
+* **Return type:**
+  [`bool`](https://docs.python.org/3/builtins/functions.html#bool)
 
 ### *class* lookbook.filters.person.SingleFaceOnly(name='single_face_only')
 
@@ -41,3 +62,10 @@ Drop images with more than one detected face.
 
 Reads `face_box.n_faces`. Useful for character LoRAs where you want
 isolated subject images.
+
+#### keep(ref, manifest)
+
+Return whether `ref` passes this filter.
+
+* **Return type:**
+  [`bool`](https://docs.python.org/3/builtins/functions.html#bool)

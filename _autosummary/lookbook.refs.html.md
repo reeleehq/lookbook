@@ -32,6 +32,13 @@ Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
 An image stored as raw bytes in memory.
 
+#### bytes()
+
+Return the raw image bytes.
+
+* **Return type:**
+  [`bytes`](#lookbook.refs.BytesImageRef.bytes)
+
 #### local_path(, cache_dir=None)
 
 Materialize the bytes into a file (cached by image_id).
@@ -39,11 +46,22 @@ Materialize the bytes into a file (cached by image_id).
 * **Return type:**
   [`str`](https://docs.python.org/3/builtins/stdtypes.html#str)
 
+#### open()
+
+Open the image (a PIL image).
+
 ### *class* lookbook.refs.PathImageRef(path, image_id='', metadata=dict())
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
 An image referenced by filesystem path.
+
+#### bytes()
+
+Return the raw image bytes.
+
+* **Return type:**
+  [`bytes`](#lookbook.refs.PathImageRef.bytes)
 
 #### local_path(, cache_dir=None)
 
@@ -51,6 +69,10 @@ Return the existing on-disk path. `cache_dir` is ignored.
 
 * **Return type:**
   [`str`](https://docs.python.org/3/builtins/stdtypes.html#str)
+
+#### open()
+
+Open the image (a PIL image).
 
 ### *class* lookbook.refs.UrlImageRef(url, image_id='', metadata=dict(), \_cached=None)
 
@@ -60,12 +82,23 @@ An image referenced by URL.
 
 The bytes are fetched on first access and cached on the instance.
 
+#### bytes()
+
+Return the raw image bytes.
+
+* **Return type:**
+  [`bytes`](#lookbook.refs.UrlImageRef.bytes)
+
 #### local_path(, cache_dir=None)
 
 Download (once) and return the local path.
 
 * **Return type:**
   [`str`](https://docs.python.org/3/builtins/stdtypes.html#str)
+
+#### open()
+
+Open the image (a PIL image).
 
 ### lookbook.refs.to_local_path(ref, , cache_dir=None)
 

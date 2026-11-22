@@ -12,3 +12,10 @@ Top-K selector: pick the K highest-scoring images by a single metric.
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
 Sort candidates by `metric_id` (descending) and take the first K.
+
+#### select(candidates, manifest, k, constraints=None)
+
+Choose the images to keep from the scored candidates.
+
+* **Return type:**
+  [`list`](https://docs.python.org/3/builtins/stdtypes.html#list)[[`ImageRef`](lookbook.base.html.md#lookbook.base.ImageRef)]

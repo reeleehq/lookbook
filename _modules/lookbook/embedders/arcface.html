@@ -225,81 +225,91 @@
 </span><span id="line-42">
 </span><span id="line-43">    <span class="nd">@property</span>
 </span><span id="line-44">    <span class="k">def</span><span class="w"> </span><span class="nf">config_hash</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="line-45">        <span class="k">return</span> <span class="sa">f</span><span class="s2">"mock_arcface:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="si">}</span><span class="s2">"</span>
-</span><span id="line-46">
-</span><span id="line-47">    <span class="k">def</span><span class="w"> </span><span class="nf">embed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ref</span><span class="p">:</span> <span class="n">ImageRef</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-</span><span id="line-48">        <span class="n">h</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha1</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">ref</span><span class="o">.</span><span class="n">image_id</span><span class="si">}</span><span class="s2">"</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">))</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
-</span><span id="line-49">        <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="nb">int</span><span class="o">.</span><span class="n">from_bytes</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="s2">"big"</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">63</span><span class="p">))</span>
-</span><span id="line-50">        <span class="n">v</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-</span><span id="line-51">        <span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
-</span><span id="line-52">        <span class="k">return</span> <span class="p">(</span><span class="n">v</span> <span class="o">/</span> <span class="n">n</span><span class="p">)</span> <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">v</span></div>
+</span><span id="line-45"><span class="w">        </span><span class="sd">"""Cache key for this component: changes whenever a setting that affects its output changes."""</span>
+</span><span id="line-46">        <span class="k">return</span> <span class="sa">f</span><span class="s2">"mock_arcface:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="si">}</span><span class="s2">"</span>
+</span><span id="line-47">
+<div class="viewcode-block" id="MockArcFaceEmbedder.embed">
+<a class="viewcode-back" href="../../../_autosummary/lookbook.embedders.arcface.html#lookbook.embedders.arcface.MockArcFaceEmbedder.embed">[docs]</a>
+</span><span id="line-48">    <span class="k">def</span><span class="w"> </span><span class="nf">embed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ref</span><span class="p">:</span> <span class="n">ImageRef</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+</span><span id="line-49"><span class="w">        </span><span class="sd">"""Embed ``ref`` into this embedder's vector space."""</span>
+</span><span id="line-50">        <span class="n">h</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha1</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">ref</span><span class="o">.</span><span class="n">image_id</span><span class="si">}</span><span class="s2">"</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">))</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
+</span><span id="line-51">        <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="nb">int</span><span class="o">.</span><span class="n">from_bytes</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="s2">"big"</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">63</span><span class="p">))</span>
+</span><span id="line-52">        <span class="n">v</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+</span><span id="line-53">        <span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+</span><span id="line-54">        <span class="k">return</span> <span class="p">(</span><span class="n">v</span> <span class="o">/</span> <span class="n">n</span><span class="p">)</span> <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">v</span></div>
+</div>
 
-</span><span id="line-53">
-</span><span id="line-54">
-</span><span id="line-55"><span class="n">embedders</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">"arcface_mock"</span><span class="p">,</span> <span class="n">MockArcFaceEmbedder</span><span class="p">())</span>
+</span><span id="line-55">
 </span><span id="line-56">
-</span><span id="line-57">
+</span><span id="line-57"><span class="n">embedders</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">"arcface_mock"</span><span class="p">,</span> <span class="n">MockArcFaceEmbedder</span><span class="p">())</span>
+</span><span id="line-58">
+</span><span id="line-59">
 <div class="viewcode-block" id="InsightFaceArcFace">
 <a class="viewcode-back" href="../../../_autosummary/lookbook.embedders.arcface.html#lookbook.embedders.arcface.InsightFaceArcFace">[docs]</a>
-</span><span id="line-58"><span class="nd">@dataclass</span>
-</span><span id="line-59"><span class="k">class</span><span class="w"> </span><span class="nc">InsightFaceArcFace</span><span class="p">:</span>
-</span><span id="line-60"><span class="w">    </span><span class="sd">"""Real ArcFace embeddings via insightface.</span>
-</span><span id="line-61">
-</span><span id="line-62"><span class="sd">    The implementation is intentionally a thin wrapper. `insightface`'s</span>
-</span><span id="line-63"><span class="sd">    `FaceAnalysis.get(img)` returns Face objects with `.embedding` already</span>
-</span><span id="line-64"><span class="sd">    L2-normalized; we just pick the largest face's embedding.</span>
-</span><span id="line-65">
-</span><span id="line-66"><span class="sd">    The "right" face is the one whose `bbox` overlaps the manifest's</span>
-</span><span id="line-67"><span class="sd">    `face_box` if available; otherwise the largest by area.</span>
-</span><span id="line-68"><span class="sd">    """</span>
-</span><span id="line-69">
-</span><span id="line-70">    <span class="n">space_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"arcface"</span>
-</span><span id="line-71">    <span class="n">cost_tier</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
-</span><span id="line-72">    <span class="n">model_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"buffalo_l"</span>
-</span><span id="line-73">    <span class="n">det_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">640</span>
-</span><span id="line-74">    <span class="n">backend</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"insightface:arcface"</span>
-</span><span id="line-75">
-</span><span id="line-76">    <span class="nd">@property</span>
-</span><span id="line-77">    <span class="k">def</span><span class="w"> </span><span class="nf">config_hash</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="line-78">        <span class="k">return</span> <span class="sa">f</span><span class="s2">"arcface:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">det_size</span><span class="si">}</span><span class="s2">"</span>
-</span><span id="line-79">
-</span><span id="line-80">    <span class="k">def</span><span class="w"> </span><span class="nf">embed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ref</span><span class="p">:</span> <span class="n">ImageRef</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-</span><span id="line-81">        <span class="k">try</span><span class="p">:</span>
-</span><span id="line-82">            <span class="kn">from</span><span class="w"> </span><span class="nn">insightface.app</span><span class="w"> </span><span class="kn">import</span> <span class="n">FaceAnalysis</span>  <span class="c1"># type: ignore</span>
-</span><span id="line-83">        <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-</span><span id="line-84">            <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
-</span><span id="line-85">                <span class="s2">"InsightFaceArcFace requires `insightface`. "</span>
-</span><span id="line-86">                <span class="s2">"`pip install lookbook[person]`."</span>
-</span><span id="line-87">            <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
-</span><span id="line-88">
-</span><span id="line-89">        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">"_app"</span><span class="p">):</span>
-</span><span id="line-90">            <span class="n">app</span> <span class="o">=</span> <span class="n">FaceAnalysis</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="p">)</span>
-</span><span id="line-91">            <span class="n">app</span><span class="o">.</span><span class="n">prepare</span><span class="p">(</span><span class="n">ctx_id</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">det_size</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">det_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">det_size</span><span class="p">))</span>
-</span><span id="line-92">            <span class="bp">self</span><span class="o">.</span><span class="n">_app</span> <span class="o">=</span> <span class="n">app</span>
-</span><span id="line-93">
-</span><span id="line-94">        <span class="k">with</span> <span class="n">ref</span><span class="o">.</span><span class="n">open</span><span class="p">()</span> <span class="k">as</span> <span class="n">img</span><span class="p">:</span>
-</span><span id="line-95">            <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s2">"RGB"</span><span class="p">))</span>
-</span><span id="line-96">        <span class="n">arr_bgr</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-</span><span id="line-97">        <span class="n">faces</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">arr_bgr</span><span class="p">)</span>
-</span><span id="line-98">        <span class="k">if</span> <span class="ow">not</span> <span class="n">faces</span><span class="p">:</span>
-</span><span id="line-99">            <span class="c1"># No face — return a zero vector. Downstream callers that care</span>
-</span><span id="line-100">            <span class="c1"># should filter on `face_box is None` upstream so this branch</span>
-</span><span id="line-101">            <span class="c1"># is never reached for kept images.</span>
-</span><span id="line-102">            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-</span><span id="line-103">
-</span><span id="line-104">        <span class="n">biggest</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span>
-</span><span id="line-105">            <span class="n">faces</span><span class="p">,</span>
-</span><span id="line-106">            <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="p">(</span>
-</span><span id="line-107">                <span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">bbox</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">f</span><span class="o">.</span><span class="n">bbox</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">bbox</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">f</span><span class="o">.</span><span class="n">bbox</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-</span><span id="line-108">            <span class="p">),</span>
-</span><span id="line-109">        <span class="p">)</span>
-</span><span id="line-110">        <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">biggest</span><span class="o">.</span><span class="n">embedding</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-</span><span id="line-111">        <span class="n">n</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
-</span><span id="line-112">        <span class="k">return</span> <span class="n">v</span> <span class="o">/</span> <span class="n">n</span> <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">v</span></div>
+</span><span id="line-60"><span class="nd">@dataclass</span>
+</span><span id="line-61"><span class="k">class</span><span class="w"> </span><span class="nc">InsightFaceArcFace</span><span class="p">:</span>
+</span><span id="line-62"><span class="w">    </span><span class="sd">"""Real ArcFace embeddings via insightface.</span>
+</span><span id="line-63">
+</span><span id="line-64"><span class="sd">    The implementation is intentionally a thin wrapper. `insightface`'s</span>
+</span><span id="line-65"><span class="sd">    `FaceAnalysis.get(img)` returns Face objects with `.embedding` already</span>
+</span><span id="line-66"><span class="sd">    L2-normalized; we just pick the largest face's embedding.</span>
+</span><span id="line-67">
+</span><span id="line-68"><span class="sd">    The "right" face is the one whose `bbox` overlaps the manifest's</span>
+</span><span id="line-69"><span class="sd">    `face_box` if available; otherwise the largest by area.</span>
+</span><span id="line-70"><span class="sd">    """</span>
+</span><span id="line-71">
+</span><span id="line-72">    <span class="n">space_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"arcface"</span>
+</span><span id="line-73">    <span class="n">cost_tier</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span id="line-74">    <span class="n">model_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"buffalo_l"</span>
+</span><span id="line-75">    <span class="n">det_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">640</span>
+</span><span id="line-76">    <span class="n">backend</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"insightface:arcface"</span>
+</span><span id="line-77">
+</span><span id="line-78">    <span class="nd">@property</span>
+</span><span id="line-79">    <span class="k">def</span><span class="w"> </span><span class="nf">config_hash</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="line-80"><span class="w">        </span><span class="sd">"""Cache key for this component: changes whenever a setting that affects its output changes."""</span>
+</span><span id="line-81">        <span class="k">return</span> <span class="sa">f</span><span class="s2">"arcface:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">det_size</span><span class="si">}</span><span class="s2">"</span>
+</span><span id="line-82">
+<div class="viewcode-block" id="InsightFaceArcFace.embed">
+<a class="viewcode-back" href="../../../_autosummary/lookbook.embedders.arcface.html#lookbook.embedders.arcface.InsightFaceArcFace.embed">[docs]</a>
+</span><span id="line-83">    <span class="k">def</span><span class="w"> </span><span class="nf">embed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ref</span><span class="p">:</span> <span class="n">ImageRef</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+</span><span id="line-84"><span class="w">        </span><span class="sd">"""Embed ``ref`` into this embedder's vector space."""</span>
+</span><span id="line-85">        <span class="k">try</span><span class="p">:</span>
+</span><span id="line-86">            <span class="kn">from</span><span class="w"> </span><span class="nn">insightface.app</span><span class="w"> </span><span class="kn">import</span> <span class="n">FaceAnalysis</span>  <span class="c1"># type: ignore</span>
+</span><span id="line-87">        <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span id="line-88">            <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
+</span><span id="line-89">                <span class="s2">"InsightFaceArcFace requires `insightface`. "</span>
+</span><span id="line-90">                <span class="s2">"`pip install lookbook[person]`."</span>
+</span><span id="line-91">            <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+</span><span id="line-92">
+</span><span id="line-93">        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">"_app"</span><span class="p">):</span>
+</span><span id="line-94">            <span class="n">app</span> <span class="o">=</span> <span class="n">FaceAnalysis</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="p">)</span>
+</span><span id="line-95">            <span class="n">app</span><span class="o">.</span><span class="n">prepare</span><span class="p">(</span><span class="n">ctx_id</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">det_size</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">det_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">det_size</span><span class="p">))</span>
+</span><span id="line-96">            <span class="bp">self</span><span class="o">.</span><span class="n">_app</span> <span class="o">=</span> <span class="n">app</span>
+</span><span id="line-97">
+</span><span id="line-98">        <span class="k">with</span> <span class="n">ref</span><span class="o">.</span><span class="n">open</span><span class="p">()</span> <span class="k">as</span> <span class="n">img</span><span class="p">:</span>
+</span><span id="line-99">            <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s2">"RGB"</span><span class="p">))</span>
+</span><span id="line-100">        <span class="n">arr_bgr</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</span><span id="line-101">        <span class="n">faces</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">arr_bgr</span><span class="p">)</span>
+</span><span id="line-102">        <span class="k">if</span> <span class="ow">not</span> <span class="n">faces</span><span class="p">:</span>
+</span><span id="line-103">            <span class="c1"># No face — return a zero vector. Downstream callers that care</span>
+</span><span id="line-104">            <span class="c1"># should filter on `face_box is None` upstream so this branch</span>
+</span><span id="line-105">            <span class="c1"># is never reached for kept images.</span>
+</span><span id="line-106">            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+</span><span id="line-107">
+</span><span id="line-108">        <span class="n">biggest</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span>
+</span><span id="line-109">            <span class="n">faces</span><span class="p">,</span>
+</span><span id="line-110">            <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="p">(</span>
+</span><span id="line-111">                <span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">bbox</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">f</span><span class="o">.</span><span class="n">bbox</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">bbox</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">f</span><span class="o">.</span><span class="n">bbox</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</span><span id="line-112">            <span class="p">),</span>
+</span><span id="line-113">        <span class="p">)</span>
+</span><span id="line-114">        <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">biggest</span><span class="o">.</span><span class="n">embedding</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+</span><span id="line-115">        <span class="n">n</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+</span><span id="line-116">        <span class="k">return</span> <span class="n">v</span> <span class="o">/</span> <span class="n">n</span> <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">v</span></div>
+</div>
 
-</span><span id="line-113">
-</span><span id="line-114">
-</span><span id="line-115"><span class="n">embedders</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">"arcface"</span><span class="p">,</span> <span class="n">InsightFaceArcFace</span><span class="p">())</span>
+</span><span id="line-117">
+</span><span id="line-118">
+</span><span id="line-119"><span class="n">embedders</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">"arcface"</span><span class="p">,</span> <span class="n">InsightFaceArcFace</span><span class="p">())</span>
 </span></code></pre></div>
     </div></div>
           </main>
@@ -313,7 +323,7 @@
 </footer>
     </div>
     
-    <script src="../../../_static/documentation_options.js?v=3bbcec59"></script>
+    <script src="../../../_static/documentation_options.js?v=9fc46840"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>

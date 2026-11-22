@@ -20,3 +20,17 @@ OpenAI CLIP image embeddings via HuggingFace transformers.
 Defaults to ViT-B/32 (~150 MB, fast enough for CPU). Use ViT-L/14 by
 setting `model_name="openai/clip-vit-large-patch14"` for higher-quality
 semantic embeddings (slower, ~600 MB).
+
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
+
+#### embed(ref)
+
+Embed `ref` into this embedder’s vector space.
+
+* **Return type:**
+  `ndarray`

@@ -66,11 +66,22 @@ The (image_id, metric_id) pair is the manifest key. `config_hash` is the
 cache key — re-running with the same config yields a cache hit; changing
 a threshold or model invalidates.
 
+#### *property* key *: [Tuple](https://docs.python.org/3/library/typing.html#typing.Tuple)[[str](https://docs.python.org/3/builtins/stdtypes.html#str), [str](https://docs.python.org/3/builtins/stdtypes.html#str)]*
+
+The image’s manifest key.
+
 ### *class* lookbook.BytesImageRef(payload, image_id='', metadata=dict())
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
 An image stored as raw bytes in memory.
+
+#### bytes()
+
+Return the raw image bytes.
+
+* **Return type:**
+  [`bytes`](#lookbook.BytesImageRef.bytes)
 
 #### local_path(, cache_dir=None)
 
@@ -79,17 +90,35 @@ Materialize the bytes into a file (cached by image_id).
 * **Return type:**
   [`str`](https://docs.python.org/3/builtins/stdtypes.html#str)
 
+#### open()
+
+Open the image (a PIL image).
+
 ### *class* lookbook.Embedder(\*args, \*\*kwargs)
 
 Bases: [`Protocol`](https://docs.python.org/3/library/typing.html#typing.Protocol)
 
 Computes a vector representation in some named embedding space.
 
+#### embed(ref)
+
+Embed `ref` into this embedder’s vector space.
+
+* **Return type:**
+  [`Any`](https://docs.python.org/3/library/typing.html#typing.Any)
+
 ### *class* lookbook.Filter(\*args, \*\*kwargs)
 
 Bases: [`Protocol`](https://docs.python.org/3/library/typing.html#typing.Protocol)
 
 Predicate over annotations that decides whether to keep an image.
+
+#### keep(ref, manifest)
+
+Return whether `ref` passes this filter.
+
+* **Return type:**
+  [`bool`](https://docs.python.org/3/builtins/functions.html#bool)
 
 ### *class* lookbook.IdentitySimilarity(metric_id='identity_similarity', cost_tier=2, requires=(), backend='lookbook:identity_similarity', reference_embedding=None, reference_image=None, reference_images=None, embedder='arcface', threshold=0.85, aggregation='max', normalization='rescale')
 
@@ -133,6 +162,13 @@ Compare one candidate ref against the reference; typed result.
 * **Return type:**
   [`SimilarityResult`](lookbook.scorers.identity.html.md#lookbook.scorers.identity.SimilarityResult)
 
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
+
 #### score(ref, manifest)
 
 Scorer-protocol entry point — returns the JSON-able result dict.
@@ -145,6 +181,20 @@ Scorer-protocol entry point — returns the JSON-able result dict.
 Bases: [`Protocol`](https://docs.python.org/3/library/typing.html#typing.Protocol)
 
 Anything that knows its identity and how to be opened lazily.
+
+#### bytes()
+
+Return the raw image bytes.
+
+* **Return type:**
+  [`bytes`](#lookbook.ImageRef.bytes)
+
+#### open()
+
+Open the image (a PIL image).
+
+* **Return type:**
+  [`Any`](https://docs.python.org/3/library/typing.html#typing.Any)
 
 ### *class* lookbook.InteractiveDecision(, keep=(), reject=(), stop=False)
 
@@ -192,12 +242,23 @@ Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
 An image referenced by filesystem path.
 
+#### bytes()
+
+Return the raw image bytes.
+
+* **Return type:**
+  [`bytes`](#lookbook.PathImageRef.bytes)
+
 #### local_path(, cache_dir=None)
 
 Return the existing on-disk path. `cache_dir` is ignored.
 
 * **Return type:**
   [`str`](https://docs.python.org/3/builtins/stdtypes.html#str)
+
+#### open()
+
+Open the image (a PIL image).
 
 ### *class* lookbook.Pipeline(scorers=list(), embedders=list(), filters=list(), selector=None, diagnose_clusters=0)
 
@@ -221,17 +282,38 @@ Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
 The result of running a pipeline.
 
+#### to_record()
+
+Return the run as a JSON-serialisable dict.
+
+* **Return type:**
+  [`dict`](https://docs.python.org/3/builtins/stdtypes.html#dict)
+
 ### *class* lookbook.Scorer(\*args, \*\*kwargs)
 
 Bases: [`Protocol`](https://docs.python.org/3/library/typing.html#typing.Protocol)
 
 Computes one annotation per image. Idempotent w.r.t. config_hash.
 
+#### score(ref, manifest)
+
+Score `ref`; the result is stored in the manifest under this scorer’s id.
+
+* **Return type:**
+  [`Any`](https://docs.python.org/3/library/typing.html#typing.Any)
+
 ### *class* lookbook.Selector(\*args, \*\*kwargs)
 
 Bases: [`Protocol`](https://docs.python.org/3/library/typing.html#typing.Protocol)
 
 Chooses a subset of size up-to-K from candidates given the manifest.
+
+#### select(candidates, manifest, k, constraints=None)
+
+Choose the images to keep from the scored candidates.
+
+* **Return type:**
+  [`list`](https://docs.python.org/3/builtins/stdtypes.html#list)[[`ImageRef`](lookbook.base.html.md#lookbook.base.ImageRef)]
 
 ### *class* lookbook.SimilarityResult(identity_cosine, score, passed, threshold, per_reference=tuple(), aggregation='max', n_references=0)
 
@@ -316,12 +398,23 @@ An image referenced by URL.
 
 The bytes are fetched on first access and cached on the instance.
 
+#### bytes()
+
+Return the raw image bytes.
+
+* **Return type:**
+  [`bytes`](#lookbook.UrlImageRef.bytes)
+
 #### local_path(, cache_dir=None)
 
 Download (once) and return the local path.
 
 * **Return type:**
   [`str`](https://docs.python.org/3/builtins/stdtypes.html#str)
+
+#### open()
+
+Open the image (a PIL image).
 
 ### lookbook.compare_to_reference(reference_image, candidate_image, , embedder='arcface', threshold=0.85, aggregation='max', normalization='rescale')
 

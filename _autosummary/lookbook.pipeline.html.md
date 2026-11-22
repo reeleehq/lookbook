@@ -42,3 +42,10 @@ app data folder defaults.
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
 The result of running a pipeline.
+
+#### to_record()
+
+Return the run as a JSON-serialisable dict.
+
+* **Return type:**
+  [`dict`](https://docs.python.org/3/builtins/stdtypes.html#dict)

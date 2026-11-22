@@ -54,6 +54,20 @@ Uses cv2 when available (the canonical implementation); otherwise falls
 back to a small numpy 3x3 kernel convolution. Numbers are comparable to
 the cv2 path within a few percent on natural images.
 
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
+
+#### score(ref, manifest)
+
+Score `ref`; the result is stored in the manifest under this scorer’s id.
+
+* **Return type:**
+  [`float`](https://docs.python.org/3/builtins/functions.html#float)
+
 ### *class* lookbook.scorers.technical.Exposure(metric_id='exposure', cost_tier=1, requires=(), backend='numpy', max_side=512)
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
@@ -63,11 +77,39 @@ Exposure characterization from the grayscale histogram. T1.
 Returns mean, std, and key percentiles. Together they let a downstream
 filter say “drop images that are mostly black or mostly white.”
 
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
+
+#### score(ref, manifest)
+
+Score `ref`; the result is stored in the manifest under this scorer’s id.
+
+* **Return type:**
+  [`dict`](https://docs.python.org/3/builtins/stdtypes.html#dict)
+
 ### *class* lookbook.scorers.technical.FileHash(metric_id='file_hash', cost_tier=0, requires=(), backend='stdlib:sha1')
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
 SHA1 of the raw image bytes — exact-duplicate detection. T0.
+
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
+
+#### score(ref, manifest)
+
+Score `ref`; the result is stored in the manifest under this scorer’s id.
+
+* **Return type:**
+  [`str`](https://docs.python.org/3/builtins/stdtypes.html#str)
 
 ### *class* lookbook.scorers.technical.PerceptualHash(metric_id='phash', cost_tier=1, requires=(), backend='imagehash', algorithm='phash')
 
@@ -80,17 +122,56 @@ hash. The default algorithm is `phash` (DCT-based). Hamming distance
 between hex strings (over hash bits) is the standard near-dup metric;
 `lookbook.scorers.technical.phash_distance` provides it.
 
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
+
+#### score(ref, manifest)
+
+Score `ref`; the result is stored in the manifest under this scorer’s id.
+
 ### *class* lookbook.scorers.technical.RandomScore(metric_id='random_score', cost_tier=0, requires=(), seed=0, backend='lookbook:random')
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
 Deterministic pseudo-random score in [0, 1) keyed by image_id.
 
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
+
+#### score(ref, manifest)
+
+Score `ref`; the result is stored in the manifest under this scorer’s id.
+
+* **Return type:**
+  [`float`](https://docs.python.org/3/builtins/functions.html#float)
+
 ### *class* lookbook.scorers.technical.Resolution(metric_id='resolution', cost_tier=0, requires=(), backend='Pillow')
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
 Image dimensions and long-side. T0 — header read, no decode.
+
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
+
+#### score(ref, manifest)
+
+Score `ref`; the result is stored in the manifest under this scorer’s id.
+
+* **Return type:**
+  [`dict`](https://docs.python.org/3/builtins/stdtypes.html#dict)
 
 ### *class* lookbook.scorers.technical.TechnicalQuality(metric_id='technical_quality', cost_tier=1, requires=('blur', 'exposure', 'resolution'), backend='derived', blur_normalization=500.0, target_long_side=1024, clipping_penalty=2.0)
 
@@ -109,6 +190,20 @@ The blend is sharpness-dominant (a soft or blown reference is the
 worst failure mode), with exposure clipping and resolution as
 secondary terms. `blur` missing yields a neutral 0.5 sharpness so a
 pool scored without the blur scorer still ranks by exposure + size.
+
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
+
+#### score(ref, manifest)
+
+Score `ref`; the result is stored in the manifest under this scorer’s id.
+
+* **Return type:**
+  [`float`](https://docs.python.org/3/builtins/functions.html#float)
 
 ### lookbook.scorers.technical.phash_distance(a, b)
 

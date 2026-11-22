@@ -32,3 +32,10 @@ size still hits K when possible. Set `strict=True` to disable that fallback.
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
 Per-bin quota selection wrapping an inner Selector.
+
+#### select(candidates, manifest, k, constraints=None)
+
+Choose the images to keep from the scored candidates.
+
+* **Return type:**
+  [`list`](https://docs.python.org/3/builtins/stdtypes.html#list)[[`ImageRef`](lookbook.base.html.md#lookbook.base.ImageRef)]

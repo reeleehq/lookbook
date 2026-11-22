@@ -192,6 +192,26 @@ back to a small numpy 3x3 kernel convolution. Numbers are comparable to
 the cv2 path within a few percent on natural images.</p>
 <dl class="field-list simple">
 </dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="lookbook.scorers.technical.Blur.config_hash">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">config_hash</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" rel="nofollow noopener" title="(in Python v3.15)"><span class="pre">str</span><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></span><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.scorers.technical.Blur.config_hash" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.scorers.technical.Blur.config_hash'">¶</a></dt>
+<dd><p>changes whenever a setting that affects its output changes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Cache key for this component</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="lookbook.scorers.technical.Blur.score">
+<span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifest</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/scorers/technical.html#Blur.score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.scorers.technical.Blur.score" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.scorers.technical.Blur.score'">¶</a></dt>
+<dd><p>Score <code class="docutils literal notranslate"><span class="pre">ref</span></code>; the result is stored in the manifest under this scorer’s id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" rel="nofollow noopener" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></span></p>
+</dd>
+</dl>
+</dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="lookbook.scorers.technical.Exposure">
@@ -202,6 +222,26 @@ the cv2 path within a few percent on natural images.</p>
 filter say “drop images that are mostly black or mostly white.”</p>
 <dl class="field-list simple">
 </dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="lookbook.scorers.technical.Exposure.config_hash">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">config_hash</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" rel="nofollow noopener" title="(in Python v3.15)"><span class="pre">str</span><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></span><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.scorers.technical.Exposure.config_hash" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.scorers.technical.Exposure.config_hash'">¶</a></dt>
+<dd><p>changes whenever a setting that affects its output changes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Cache key for this component</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="lookbook.scorers.technical.Exposure.score">
+<span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifest</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/scorers/technical.html#Exposure.score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.scorers.technical.Exposure.score" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.scorers.technical.Exposure.score'">¶</a></dt>
+<dd><p>Score <code class="docutils literal notranslate"><span class="pre">ref</span></code>; the result is stored in the manifest under this scorer’s id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#dict" rel="nofollow noopener" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></span></p>
+</dd>
+</dl>
+</dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="lookbook.scorers.technical.FileHash">
@@ -210,6 +250,26 @@ filter say “drop images that are mostly black or mostly white.”</p>
 <p>SHA1 of the raw image bytes — exact-duplicate detection. T0.</p>
 <dl class="field-list simple">
 </dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="lookbook.scorers.technical.FileHash.config_hash">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">config_hash</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" rel="nofollow noopener" title="(in Python v3.15)"><span class="pre">str</span><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></span><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.scorers.technical.FileHash.config_hash" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.scorers.technical.FileHash.config_hash'">¶</a></dt>
+<dd><p>changes whenever a setting that affects its output changes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Cache key for this component</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="lookbook.scorers.technical.FileHash.score">
+<span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifest</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/scorers/technical.html#FileHash.score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.scorers.technical.FileHash.score" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.scorers.technical.FileHash.score'">¶</a></dt>
+<dd><p>Score <code class="docutils literal notranslate"><span class="pre">ref</span></code>; the result is stored in the manifest under this scorer’s id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" rel="nofollow noopener" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></span></p>
+</dd>
+</dl>
+</dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="lookbook.scorers.technical.PerceptualHash">
@@ -222,6 +282,23 @@ between hex strings (over hash bits) is the standard near-dup metric;
 <code class="code docutils literal notranslate"><span class="pre">lookbook.scorers.technical.phash_distance</span></code> provides it.</p>
 <dl class="field-list simple">
 </dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="lookbook.scorers.technical.PerceptualHash.config_hash">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">config_hash</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" rel="nofollow noopener" title="(in Python v3.15)"><span class="pre">str</span><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></span><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.scorers.technical.PerceptualHash.config_hash" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.scorers.technical.PerceptualHash.config_hash'">¶</a></dt>
+<dd><p>changes whenever a setting that affects its output changes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Cache key for this component</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="lookbook.scorers.technical.PerceptualHash.score">
+<span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifest</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/scorers/technical.html#PerceptualHash.score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.scorers.technical.PerceptualHash.score" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.scorers.technical.PerceptualHash.score'">¶</a></dt>
+<dd><p>Score <code class="docutils literal notranslate"><span class="pre">ref</span></code>; the result is stored in the manifest under this scorer’s id.</p>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="lookbook.scorers.technical.RandomScore">
@@ -230,6 +307,26 @@ between hex strings (over hash bits) is the standard near-dup metric;
 <p>Deterministic pseudo-random score in [0, 1) keyed by image_id.</p>
 <dl class="field-list simple">
 </dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="lookbook.scorers.technical.RandomScore.config_hash">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">config_hash</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" rel="nofollow noopener" title="(in Python v3.15)"><span class="pre">str</span><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></span><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.scorers.technical.RandomScore.config_hash" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.scorers.technical.RandomScore.config_hash'">¶</a></dt>
+<dd><p>changes whenever a setting that affects its output changes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Cache key for this component</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="lookbook.scorers.technical.RandomScore.score">
+<span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifest</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/scorers/technical.html#RandomScore.score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.scorers.technical.RandomScore.score" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.scorers.technical.RandomScore.score'">¶</a></dt>
+<dd><p>Score <code class="docutils literal notranslate"><span class="pre">ref</span></code>; the result is stored in the manifest under this scorer’s id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" rel="nofollow noopener" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></span></p>
+</dd>
+</dl>
+</dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="lookbook.scorers.technical.Resolution">
@@ -238,6 +335,26 @@ between hex strings (over hash bits) is the standard near-dup metric;
 <p>Image dimensions and long-side. T0 — header read, no decode.</p>
 <dl class="field-list simple">
 </dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="lookbook.scorers.technical.Resolution.config_hash">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">config_hash</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" rel="nofollow noopener" title="(in Python v3.15)"><span class="pre">str</span><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></span><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.scorers.technical.Resolution.config_hash" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.scorers.technical.Resolution.config_hash'">¶</a></dt>
+<dd><p>changes whenever a setting that affects its output changes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Cache key for this component</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="lookbook.scorers.technical.Resolution.score">
+<span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifest</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/scorers/technical.html#Resolution.score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.scorers.technical.Resolution.score" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.scorers.technical.Resolution.score'">¶</a></dt>
+<dd><p>Score <code class="docutils literal notranslate"><span class="pre">ref</span></code>; the result is stored in the manifest under this scorer’s id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#dict" rel="nofollow noopener" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></span></p>
+</dd>
+</dl>
+</dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="lookbook.scorers.technical.TechnicalQuality">
@@ -256,6 +373,26 @@ secondary terms. <code class="code docutils literal notranslate"><span class="pr
 pool scored without the blur scorer still ranks by exposure + size.</p>
 <dl class="field-list simple">
 </dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="lookbook.scorers.technical.TechnicalQuality.config_hash">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">config_hash</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" rel="nofollow noopener" title="(in Python v3.15)"><span class="pre">str</span><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></span><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.scorers.technical.TechnicalQuality.config_hash" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.scorers.technical.TechnicalQuality.config_hash'">¶</a></dt>
+<dd><p>changes whenever a setting that affects its output changes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Cache key for this component</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="lookbook.scorers.technical.TechnicalQuality.score">
+<span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifest</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/scorers/technical.html#TechnicalQuality.score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.scorers.technical.TechnicalQuality.score" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.scorers.technical.TechnicalQuality.score'">¶</a></dt>
+<dd><p>Score <code class="docutils literal notranslate"><span class="pre">ref</span></code>; the result is stored in the manifest under this scorer’s id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" rel="nofollow noopener" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></span></p>
+</dd>
+</dl>
+</dd></dl>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="lookbook.scorers.technical.phash_distance">
@@ -271,13 +408,41 @@ pool scored without the blur scorer still ranks by exposure + size.</p>
 </div></div><aside class="hidden text-sm xl:block" id="right-sidebar">
 <div class="sticky top-16 -mt-10 max-h-[calc(100vh-5rem)] h-full overflow-y-auto pt-6 space-y-2"><p class="font-medium">On this page</p>
 <ul>
-<li><a :data-current="activeSection === '#lookbook.scorers.technical.Blur'" class="reference internal" href="#lookbook.scorers.technical.Blur"><code class="docutils literal notranslate"><span class="pre">Blur</span></code></a></li>
-<li><a :data-current="activeSection === '#lookbook.scorers.technical.Exposure'" class="reference internal" href="#lookbook.scorers.technical.Exposure"><code class="docutils literal notranslate"><span class="pre">Exposure</span></code></a></li>
-<li><a :data-current="activeSection === '#lookbook.scorers.technical.FileHash'" class="reference internal" href="#lookbook.scorers.technical.FileHash"><code class="docutils literal notranslate"><span class="pre">FileHash</span></code></a></li>
-<li><a :data-current="activeSection === '#lookbook.scorers.technical.PerceptualHash'" class="reference internal" href="#lookbook.scorers.technical.PerceptualHash"><code class="docutils literal notranslate"><span class="pre">PerceptualHash</span></code></a></li>
-<li><a :data-current="activeSection === '#lookbook.scorers.technical.RandomScore'" class="reference internal" href="#lookbook.scorers.technical.RandomScore"><code class="docutils literal notranslate"><span class="pre">RandomScore</span></code></a></li>
-<li><a :data-current="activeSection === '#lookbook.scorers.technical.Resolution'" class="reference internal" href="#lookbook.scorers.technical.Resolution"><code class="docutils literal notranslate"><span class="pre">Resolution</span></code></a></li>
-<li><a :data-current="activeSection === '#lookbook.scorers.technical.TechnicalQuality'" class="reference internal" href="#lookbook.scorers.technical.TechnicalQuality"><code class="docutils literal notranslate"><span class="pre">TechnicalQuality</span></code></a></li>
+<li><a :data-current="activeSection === '#lookbook.scorers.technical.Blur'" class="reference internal" href="#lookbook.scorers.technical.Blur"><code class="docutils literal notranslate"><span class="pre">Blur</span></code></a><ul>
+<li><a :data-current="activeSection === '#lookbook.scorers.technical.Blur.config_hash'" class="reference internal" href="#lookbook.scorers.technical.Blur.config_hash"><code class="docutils literal notranslate"><span class="pre">Blur.config_hash</span></code></a></li>
+<li><a :data-current="activeSection === '#lookbook.scorers.technical.Blur.score'" class="reference internal" href="#lookbook.scorers.technical.Blur.score"><code class="docutils literal notranslate"><span class="pre">Blur.score()</span></code></a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#lookbook.scorers.technical.Exposure'" class="reference internal" href="#lookbook.scorers.technical.Exposure"><code class="docutils literal notranslate"><span class="pre">Exposure</span></code></a><ul>
+<li><a :data-current="activeSection === '#lookbook.scorers.technical.Exposure.config_hash'" class="reference internal" href="#lookbook.scorers.technical.Exposure.config_hash"><code class="docutils literal notranslate"><span class="pre">Exposure.config_hash</span></code></a></li>
+<li><a :data-current="activeSection === '#lookbook.scorers.technical.Exposure.score'" class="reference internal" href="#lookbook.scorers.technical.Exposure.score"><code class="docutils literal notranslate"><span class="pre">Exposure.score()</span></code></a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#lookbook.scorers.technical.FileHash'" class="reference internal" href="#lookbook.scorers.technical.FileHash"><code class="docutils literal notranslate"><span class="pre">FileHash</span></code></a><ul>
+<li><a :data-current="activeSection === '#lookbook.scorers.technical.FileHash.config_hash'" class="reference internal" href="#lookbook.scorers.technical.FileHash.config_hash"><code class="docutils literal notranslate"><span class="pre">FileHash.config_hash</span></code></a></li>
+<li><a :data-current="activeSection === '#lookbook.scorers.technical.FileHash.score'" class="reference internal" href="#lookbook.scorers.technical.FileHash.score"><code class="docutils literal notranslate"><span class="pre">FileHash.score()</span></code></a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#lookbook.scorers.technical.PerceptualHash'" class="reference internal" href="#lookbook.scorers.technical.PerceptualHash"><code class="docutils literal notranslate"><span class="pre">PerceptualHash</span></code></a><ul>
+<li><a :data-current="activeSection === '#lookbook.scorers.technical.PerceptualHash.config_hash'" class="reference internal" href="#lookbook.scorers.technical.PerceptualHash.config_hash"><code class="docutils literal notranslate"><span class="pre">PerceptualHash.config_hash</span></code></a></li>
+<li><a :data-current="activeSection === '#lookbook.scorers.technical.PerceptualHash.score'" class="reference internal" href="#lookbook.scorers.technical.PerceptualHash.score"><code class="docutils literal notranslate"><span class="pre">PerceptualHash.score()</span></code></a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#lookbook.scorers.technical.RandomScore'" class="reference internal" href="#lookbook.scorers.technical.RandomScore"><code class="docutils literal notranslate"><span class="pre">RandomScore</span></code></a><ul>
+<li><a :data-current="activeSection === '#lookbook.scorers.technical.RandomScore.config_hash'" class="reference internal" href="#lookbook.scorers.technical.RandomScore.config_hash"><code class="docutils literal notranslate"><span class="pre">RandomScore.config_hash</span></code></a></li>
+<li><a :data-current="activeSection === '#lookbook.scorers.technical.RandomScore.score'" class="reference internal" href="#lookbook.scorers.technical.RandomScore.score"><code class="docutils literal notranslate"><span class="pre">RandomScore.score()</span></code></a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#lookbook.scorers.technical.Resolution'" class="reference internal" href="#lookbook.scorers.technical.Resolution"><code class="docutils literal notranslate"><span class="pre">Resolution</span></code></a><ul>
+<li><a :data-current="activeSection === '#lookbook.scorers.technical.Resolution.config_hash'" class="reference internal" href="#lookbook.scorers.technical.Resolution.config_hash"><code class="docutils literal notranslate"><span class="pre">Resolution.config_hash</span></code></a></li>
+<li><a :data-current="activeSection === '#lookbook.scorers.technical.Resolution.score'" class="reference internal" href="#lookbook.scorers.technical.Resolution.score"><code class="docutils literal notranslate"><span class="pre">Resolution.score()</span></code></a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#lookbook.scorers.technical.TechnicalQuality'" class="reference internal" href="#lookbook.scorers.technical.TechnicalQuality"><code class="docutils literal notranslate"><span class="pre">TechnicalQuality</span></code></a><ul>
+<li><a :data-current="activeSection === '#lookbook.scorers.technical.TechnicalQuality.config_hash'" class="reference internal" href="#lookbook.scorers.technical.TechnicalQuality.config_hash"><code class="docutils literal notranslate"><span class="pre">TechnicalQuality.config_hash</span></code></a></li>
+<li><a :data-current="activeSection === '#lookbook.scorers.technical.TechnicalQuality.score'" class="reference internal" href="#lookbook.scorers.technical.TechnicalQuality.score"><code class="docutils literal notranslate"><span class="pre">TechnicalQuality.score()</span></code></a></li>
+</ul>
+</li>
 <li><a :data-current="activeSection === '#lookbook.scorers.technical.phash_distance'" class="reference internal" href="#lookbook.scorers.technical.phash_distance"><code class="docutils literal notranslate"><span class="pre">phash_distance()</span></code></a></li>
 </ul>
 </div>
@@ -292,7 +457,7 @@ pool scored without the blur scorer still ranks by exposure + size.</p>
 </div>
 </footer>
 </div>
-<script src="../_static/documentation_options.js?v=3bbcec59"></script>
+<script src="../_static/documentation_options.js?v=9fc46840"></script>
 <script src="../_static/doctools.js?v=fd6eb6e6"></script>
 <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
 <script src="../_static/clipboard.min.js?v=a7894cd8"></script>

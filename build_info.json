@@ -1,32 +1,32 @@
 {
   "schema_version": 1,
-  "built_at": "2026-11-21T18:44:23Z",
+  "built_at": "2026-11-22T22:32:41Z",
   "package": {
     "name": "lookbook",
-    "version": "0.0.12",
+    "version": "0.0.13",
     "display_name": "lookbook",
     "source": "pyproject.toml"
   },
   "git": {
     "available": true,
-    "commit": "9e641ad87d4ffed6d7ad8cbf6724807537b15cd8",
-    "short_commit": "9e641ad",
+    "commit": "478c6e43c73ee31273556b1673c7cd31283bcfc5",
+    "short_commit": "478c6e4",
     "branch": "main",
     "tags": [],
     "dirty": false,
     "remote_url": "https://github.com/reeleehq/lookbook",
-    "commit_url": "https://github.com/reeleehq/lookbook/commit/9e641ad87d4ffed6d7ad8cbf6724807537b15cd8",
+    "commit_url": "https://github.com/reeleehq/lookbook/commit/478c6e43c73ee31273556b1673c7cd31283bcfc5",
     "error": null
   },
   "ci": {
     "provider": "github",
     "repository": "reeleehq/lookbook",
-    "sha": "9e641ad87d4ffed6d7ad8cbf6724807537b15cd8",
+    "sha": "478c6e43c73ee31273556b1673c7cd31283bcfc5",
     "sha_in_history": true,
     "ref": "refs/heads/main",
     "ref_name": "main",
-    "run_id": "44937026970",
-    "run_url": "https://github.com/reeleehq/lookbook/actions/runs/44937026970",
+    "run_id": "45078149587",
+    "run_url": "https://github.com/reeleehq/lookbook/actions/runs/45078149587",
     "server_url": "https://github.com"
   },
   "tools": {
@@ -56,20 +56,18 @@
   },
   "site": {
     "modules_documented": 32,
-    "objects_documented": 161
+    "objects_documented": 244
   },
   "pypi": {
     "checked": true,
     "latest": "0.0.13",
-    "relation": "behind",
+    "relation": "same",
     "error": null
   },
-  "reproduce": "git clone https://github.com/reeleehq/lookbook && cd lookbook\ngit checkout 9e641ad87d4ffed6d7ad8cbf6724807537b15cd8\npip install \"epythet==0.2.23\"\nepythet quickstart . --ignore tests/ scrap/ examples/",
+  "reproduce": "git clone https://github.com/reeleehq/lookbook && cd lookbook\ngit checkout 478c6e43c73ee31273556b1673c7cd31283bcfc5\npip install \"epythet==0.2.23\"\nepythet quickstart . --ignore tests/ scrap/ examples/",
   "warnings": [],
   "alignment": {
-    "aligned": false,
-    "notes": [
-      "The documented version (0.0.12) is behind the latest release on PyPI (0.0.13): `pip install lookbook` gives newer code than these docs describe."
-    ]
+    "aligned": true,
+    "notes": []
   }
 }

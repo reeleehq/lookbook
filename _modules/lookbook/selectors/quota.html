@@ -251,6 +251,8 @@
 </span><span id="line-68">    <span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 </span><span id="line-69">    <span class="n">embedding_space</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># forwarded if the inner needs it</span>
 </span><span id="line-70">
+<div class="viewcode-block" id="QuotaSelector.select">
+<a class="viewcode-back" href="../../../_autosummary/lookbook.selectors.quota.html#lookbook.selectors.quota.QuotaSelector.select">[docs]</a>
 </span><span id="line-71">    <span class="k">def</span><span class="w"> </span><span class="nf">select</span><span class="p">(</span>
 </span><span id="line-72">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-73">        <span class="n">candidates</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">ImageRef</span><span class="p">],</span>
@@ -258,57 +260,59 @@
 </span><span id="line-75">        <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
 </span><span id="line-76">        <span class="n">constraints</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>  <span class="c1"># type: ignore[assignment]</span>
 </span><span id="line-77">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ImageRef</span><span class="p">]:</span>
-</span><span id="line-78">        <span class="n">candidates</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">candidates</span><span class="p">)</span>
-</span><span id="line-79">        <span class="k">if</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">candidates</span><span class="p">:</span>
-</span><span id="line-80">            <span class="k">return</span> <span class="p">[]</span>
-</span><span id="line-81">        <span class="n">constraints</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">constraints</span> <span class="ow">or</span> <span class="p">{})</span>
-</span><span id="line-82">        <span class="n">quotas</span> <span class="o">=</span> <span class="n">constraints</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"quotas"</span><span class="p">)</span> <span class="ow">or</span> <span class="p">{}</span>
-</span><span id="line-83">
-</span><span id="line-84">        <span class="c1"># Bin candidates.</span>
-</span><span id="line-85">        <span class="n">by_bin</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">ImageRef</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
-</span><span id="line-86">        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">candidates</span><span class="p">:</span>
-</span><span id="line-87">            <span class="n">b</span> <span class="o">=</span> <span class="n">_bin_for</span><span class="p">(</span><span class="n">manifest</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">image_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bin_metric_id</span><span class="p">)</span>
-</span><span id="line-88">            <span class="n">by_bin</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="p">[])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
-</span><span id="line-89">
-</span><span id="line-90">        <span class="c1"># Resolve the inner selector fresh so any internal state is clean.</span>
-</span><span id="line-91">        <span class="n">inner_inst</span> <span class="o">=</span> <span class="n">selectors</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inner_selector_id</span><span class="p">)</span>
-</span><span id="line-92">        <span class="n">inner_cls</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">inner_inst</span><span class="p">)</span>
-</span><span id="line-93">        <span class="n">inner</span> <span class="o">=</span> <span class="p">(</span>
-</span><span id="line-94">            <span class="n">inner_cls</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">inner_overrides</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">inner_overrides</span> <span class="k">else</span> <span class="n">inner_cls</span><span class="p">()</span>
-</span><span id="line-95">        <span class="p">)</span>
-</span><span id="line-96">
-</span><span id="line-97">        <span class="n">kept</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ImageRef</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="line-98">        <span class="n">kept_ids</span><span class="p">:</span> <span class="nb">set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-</span><span id="line-99">
-</span><span id="line-100">        <span class="c1"># Iterate quotas in declaration order (Python 3.7+ dicts preserve order).</span>
-</span><span id="line-101">        <span class="k">for</span> <span class="n">bin_label</span><span class="p">,</span> <span class="n">quota</span> <span class="ow">in</span> <span class="n">quotas</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-</span><span id="line-102">            <span class="k">if</span> <span class="n">quota</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-</span><span id="line-103">                <span class="k">continue</span>
-</span><span id="line-104">            <span class="n">pool</span> <span class="o">=</span> <span class="n">by_bin</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">bin_label</span><span class="p">,</span> <span class="p">[])</span>
-</span><span id="line-105">            <span class="k">if</span> <span class="ow">not</span> <span class="n">pool</span><span class="p">:</span>
-</span><span id="line-106">                <span class="k">continue</span>
-</span><span id="line-107">            <span class="n">chosen</span> <span class="o">=</span> <span class="n">inner</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">pool</span><span class="p">,</span> <span class="n">manifest</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">quota</span><span class="p">,</span> <span class="n">constraints</span><span class="o">=</span><span class="n">constraints</span><span class="p">)</span>
-</span><span id="line-108">            <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">chosen</span><span class="p">:</span>
-</span><span id="line-109">                <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">image_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kept_ids</span><span class="p">:</span>
-</span><span id="line-110">                    <span class="n">kept</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
-</span><span id="line-111">                    <span class="n">kept_ids</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">image_id</span><span class="p">)</span>
-</span><span id="line-112">
-</span><span id="line-113">        <span class="c1"># Backfill if quotas under-filled K (and not strict).</span>
-</span><span id="line-114">        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">strict</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">kept</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">:</span>
-</span><span id="line-115">            <span class="n">remaining</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">candidates</span> <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">image_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kept_ids</span><span class="p">]</span>
-</span><span id="line-116">            <span class="n">backfill</span> <span class="o">=</span> <span class="n">inner</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
-</span><span id="line-117">                <span class="n">remaining</span><span class="p">,</span> <span class="n">manifest</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="p">(</span><span class="n">k</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">kept</span><span class="p">)),</span> <span class="n">constraints</span><span class="o">=</span><span class="n">constraints</span>
-</span><span id="line-118">            <span class="p">)</span>
-</span><span id="line-119">            <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">backfill</span><span class="p">:</span>
-</span><span id="line-120">                <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">image_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kept_ids</span><span class="p">:</span>
-</span><span id="line-121">                    <span class="n">kept</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
-</span><span id="line-122">                    <span class="n">kept_ids</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">image_id</span><span class="p">)</span>
-</span><span id="line-123">
-</span><span id="line-124">        <span class="k">return</span> <span class="n">kept</span><span class="p">[:</span><span class="n">k</span><span class="p">]</span></div>
+</span><span id="line-78"><span class="w">        </span><span class="sd">"""Choose the images to keep from the scored candidates."""</span>
+</span><span id="line-79">        <span class="n">candidates</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">candidates</span><span class="p">)</span>
+</span><span id="line-80">        <span class="k">if</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">candidates</span><span class="p">:</span>
+</span><span id="line-81">            <span class="k">return</span> <span class="p">[]</span>
+</span><span id="line-82">        <span class="n">constraints</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">constraints</span> <span class="ow">or</span> <span class="p">{})</span>
+</span><span id="line-83">        <span class="n">quotas</span> <span class="o">=</span> <span class="n">constraints</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"quotas"</span><span class="p">)</span> <span class="ow">or</span> <span class="p">{}</span>
+</span><span id="line-84">
+</span><span id="line-85">        <span class="c1"># Bin candidates.</span>
+</span><span id="line-86">        <span class="n">by_bin</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">ImageRef</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span id="line-87">        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">candidates</span><span class="p">:</span>
+</span><span id="line-88">            <span class="n">b</span> <span class="o">=</span> <span class="n">_bin_for</span><span class="p">(</span><span class="n">manifest</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">image_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bin_metric_id</span><span class="p">)</span>
+</span><span id="line-89">            <span class="n">by_bin</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="p">[])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</span><span id="line-90">
+</span><span id="line-91">        <span class="c1"># Resolve the inner selector fresh so any internal state is clean.</span>
+</span><span id="line-92">        <span class="n">inner_inst</span> <span class="o">=</span> <span class="n">selectors</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inner_selector_id</span><span class="p">)</span>
+</span><span id="line-93">        <span class="n">inner_cls</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">inner_inst</span><span class="p">)</span>
+</span><span id="line-94">        <span class="n">inner</span> <span class="o">=</span> <span class="p">(</span>
+</span><span id="line-95">            <span class="n">inner_cls</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">inner_overrides</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">inner_overrides</span> <span class="k">else</span> <span class="n">inner_cls</span><span class="p">()</span>
+</span><span id="line-96">        <span class="p">)</span>
+</span><span id="line-97">
+</span><span id="line-98">        <span class="n">kept</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ImageRef</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="line-99">        <span class="n">kept_ids</span><span class="p">:</span> <span class="nb">set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+</span><span id="line-100">
+</span><span id="line-101">        <span class="c1"># Iterate quotas in declaration order (Python 3.7+ dicts preserve order).</span>
+</span><span id="line-102">        <span class="k">for</span> <span class="n">bin_label</span><span class="p">,</span> <span class="n">quota</span> <span class="ow">in</span> <span class="n">quotas</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span><span id="line-103">            <span class="k">if</span> <span class="n">quota</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="line-104">                <span class="k">continue</span>
+</span><span id="line-105">            <span class="n">pool</span> <span class="o">=</span> <span class="n">by_bin</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">bin_label</span><span class="p">,</span> <span class="p">[])</span>
+</span><span id="line-106">            <span class="k">if</span> <span class="ow">not</span> <span class="n">pool</span><span class="p">:</span>
+</span><span id="line-107">                <span class="k">continue</span>
+</span><span id="line-108">            <span class="n">chosen</span> <span class="o">=</span> <span class="n">inner</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">pool</span><span class="p">,</span> <span class="n">manifest</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">quota</span><span class="p">,</span> <span class="n">constraints</span><span class="o">=</span><span class="n">constraints</span><span class="p">)</span>
+</span><span id="line-109">            <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">chosen</span><span class="p">:</span>
+</span><span id="line-110">                <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">image_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kept_ids</span><span class="p">:</span>
+</span><span id="line-111">                    <span class="n">kept</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</span><span id="line-112">                    <span class="n">kept_ids</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">image_id</span><span class="p">)</span>
+</span><span id="line-113">
+</span><span id="line-114">        <span class="c1"># Backfill if quotas under-filled K (and not strict).</span>
+</span><span id="line-115">        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">strict</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">kept</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">:</span>
+</span><span id="line-116">            <span class="n">remaining</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">candidates</span> <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">image_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kept_ids</span><span class="p">]</span>
+</span><span id="line-117">            <span class="n">backfill</span> <span class="o">=</span> <span class="n">inner</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+</span><span id="line-118">                <span class="n">remaining</span><span class="p">,</span> <span class="n">manifest</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="p">(</span><span class="n">k</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">kept</span><span class="p">)),</span> <span class="n">constraints</span><span class="o">=</span><span class="n">constraints</span>
+</span><span id="line-119">            <span class="p">)</span>
+</span><span id="line-120">            <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">backfill</span><span class="p">:</span>
+</span><span id="line-121">                <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">image_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kept_ids</span><span class="p">:</span>
+</span><span id="line-122">                    <span class="n">kept</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</span><span id="line-123">                    <span class="n">kept_ids</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">image_id</span><span class="p">)</span>
+</span><span id="line-124">
+</span><span id="line-125">        <span class="k">return</span> <span class="n">kept</span><span class="p">[:</span><span class="n">k</span><span class="p">]</span></div>
+</div>
 
-</span><span id="line-125">
 </span><span id="line-126">
-</span><span id="line-127"><span class="n">selectors</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">"quota"</span><span class="p">,</span> <span class="n">QuotaSelector</span><span class="p">())</span>
+</span><span id="line-127">
+</span><span id="line-128"><span class="n">selectors</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">"quota"</span><span class="p">,</span> <span class="n">QuotaSelector</span><span class="p">())</span>
 </span></code></pre></div>
     </div></div>
           </main>
@@ -322,7 +326,7 @@
 </footer>
     </div>
     
-    <script src="../../../_static/documentation_options.js?v=3bbcec59"></script>
+    <script src="../../../_static/documentation_options.js?v=9fc46840"></script>
     <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>

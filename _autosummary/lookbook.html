@@ -247,6 +247,11 @@ cache key — re-running with the same config yields a cache hit; changing
 a threshold or model invalidates.</p>
 <dl class="field-list simple">
 </dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="lookbook.Annotation.key">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">key</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" rel="nofollow noopener" title="(in Python v3.15)"><span class="pre">Tuple</span><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" rel="nofollow noopener" title="(in Python v3.15)"><span class="pre">str</span><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" rel="nofollow noopener" title="(in Python v3.15)"><span class="pre">str</span><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a><span class="p"><span class="pre">]</span></span></span><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.Annotation.key" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.Annotation.key'">¶</a></dt>
+<dd><p>The image’s manifest key.</p>
+</dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="lookbook.BytesImageRef">
@@ -255,6 +260,16 @@ a threshold or model invalidates.</p>
 <p>An image stored as raw bytes in memory.</p>
 <dl class="field-list simple">
 </dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="lookbook.BytesImageRef.bytes">
+<span class="sig-name descname"><span class="pre">bytes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/refs.html#BytesImageRef.bytes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.BytesImageRef.bytes" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.BytesImageRef.bytes'">¶</a></dt>
+<dd><p>Return the raw image bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#lookbook.BytesImageRef.bytes" title="lookbook.BytesImageRef.bytes"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="lookbook.BytesImageRef.local_path">
 <span class="sig-name descname"><span class="pre">local_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/refs.html#BytesImageRef.local_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.BytesImageRef.local_path" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.BytesImageRef.local_path'">¶</a></dt>
@@ -265,18 +280,43 @@ a threshold or model invalidates.</p>
 </dd>
 </dl>
 </dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="lookbook.BytesImageRef.open">
+<span class="sig-name descname"><span class="pre">open</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/refs.html#BytesImageRef.open"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.BytesImageRef.open" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.BytesImageRef.open'">¶</a></dt>
+<dd><p>Open the image (a PIL image).</p>
+</dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="lookbook.Embedder">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">lookbook.</span></span><span class="sig-name descname"><span class="pre">Embedder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/base.html#Embedder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.Embedder" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.Embedder'">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Protocol" rel="nofollow noopener" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Protocol</span></code><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></p>
 <p>Computes a vector representation in some named embedding space.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lookbook.Embedder.embed">
+<span class="sig-name descname"><span class="pre">embed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/base.html#Embedder.embed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.Embedder.embed" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.Embedder.embed'">¶</a></dt>
+<dd><p>Embed <code class="docutils literal notranslate"><span class="pre">ref</span></code> into this embedder’s vector space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" rel="nofollow noopener" title="(in Python v3.15)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></span></p>
+</dd>
+</dl>
+</dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="lookbook.Filter">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">lookbook.</span></span><span class="sig-name descname"><span class="pre">Filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/base.html#Filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.Filter" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.Filter'">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Protocol" rel="nofollow noopener" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Protocol</span></code><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></p>
 <p>Predicate over annotations that decides whether to keep an image.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lookbook.Filter.keep">
+<span class="sig-name descname"><span class="pre">keep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifest</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/base.html#Filter.keep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.Filter.keep" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.Filter.keep'">¶</a></dt>
+<dd><p>Return whether <code class="docutils literal notranslate"><span class="pre">ref</span></code> passes this filter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" rel="nofollow noopener" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></span></p>
+</dd>
+</dl>
+</dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="lookbook.IdentitySimilarity">
@@ -322,6 +362,16 @@ returns the typed <a class="reference internal" href="#lookbook.SimilarityResult
 </dd>
 </dl>
 </dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="lookbook.IdentitySimilarity.config_hash">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">config_hash</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" rel="nofollow noopener" title="(in Python v3.15)"><span class="pre">str</span><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></span><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.IdentitySimilarity.config_hash" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.IdentitySimilarity.config_hash'">¶</a></dt>
+<dd><p>changes whenever a setting that affects its output changes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Cache key for this component</p>
+</dd>
+</dl>
+</dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="lookbook.IdentitySimilarity.score">
 <span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifest</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/scorers/identity.html#IdentitySimilarity.score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.IdentitySimilarity.score" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.IdentitySimilarity.score'">¶</a></dt>
@@ -338,6 +388,26 @@ returns the typed <a class="reference internal" href="#lookbook.SimilarityResult
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">lookbook.</span></span><span class="sig-name descname"><span class="pre">ImageRef</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/base.html#ImageRef"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.ImageRef" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.ImageRef'">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Protocol" rel="nofollow noopener" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Protocol</span></code><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></p>
 <p>Anything that knows its identity and how to be opened lazily.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lookbook.ImageRef.bytes">
+<span class="sig-name descname"><span class="pre">bytes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/base.html#ImageRef.bytes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.ImageRef.bytes" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.ImageRef.bytes'">¶</a></dt>
+<dd><p>Return the raw image bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#lookbook.ImageRef.bytes" title="lookbook.ImageRef.bytes"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="lookbook.ImageRef.open">
+<span class="sig-name descname"><span class="pre">open</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/base.html#ImageRef.open"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.ImageRef.open" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.ImageRef.open'">¶</a></dt>
+<dd><p>Open the image (a PIL image).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" rel="nofollow noopener" title="(in Python v3.15)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></span></p>
+</dd>
+</dl>
+</dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="lookbook.InteractiveDecision">
@@ -390,6 +460,16 @@ confirmed-kept set so far (clipped to <code class="docutils literal notranslate"
 <dl class="field-list simple">
 </dl>
 <dl class="py method">
+<dt class="sig sig-object py" id="lookbook.PathImageRef.bytes">
+<span class="sig-name descname"><span class="pre">bytes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/refs.html#PathImageRef.bytes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.PathImageRef.bytes" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.PathImageRef.bytes'">¶</a></dt>
+<dd><p>Return the raw image bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#lookbook.PathImageRef.bytes" title="lookbook.PathImageRef.bytes"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
 <dt class="sig sig-object py" id="lookbook.PathImageRef.local_path">
 <span class="sig-name descname"><span class="pre">local_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/refs.html#PathImageRef.local_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.PathImageRef.local_path" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.PathImageRef.local_path'">¶</a></dt>
 <dd><p>Return the existing on-disk path. <code class="docutils literal notranslate"><span class="pre">cache_dir</span></code> is ignored.</p>
@@ -398,6 +478,11 @@ confirmed-kept set so far (clipped to <code class="docutils literal notranslate"
 <dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" rel="nofollow noopener" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></span></p>
 </dd>
 </dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="lookbook.PathImageRef.open">
+<span class="sig-name descname"><span class="pre">open</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/refs.html#PathImageRef.open"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.PathImageRef.open" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.PathImageRef.open'">¶</a></dt>
+<dd><p>Open the image (a PIL image).</p>
 </dd></dl>
 </dd></dl>
 <dl class="py class">
@@ -427,18 +512,48 @@ app data folder defaults.</p>
 <p>The result of running a pipeline.</p>
 <dl class="field-list simple">
 </dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="lookbook.RunResult.to_record">
+<span class="sig-name descname"><span class="pre">to_record</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/pipeline.html#RunResult.to_record"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.RunResult.to_record" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.RunResult.to_record'">¶</a></dt>
+<dd><p>Return the run as a JSON-serialisable dict.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#dict" rel="nofollow noopener" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></span></p>
+</dd>
+</dl>
+</dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="lookbook.Scorer">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">lookbook.</span></span><span class="sig-name descname"><span class="pre">Scorer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/base.html#Scorer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.Scorer" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.Scorer'">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Protocol" rel="nofollow noopener" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Protocol</span></code><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></p>
 <p>Computes one annotation per image. Idempotent w.r.t. config_hash.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lookbook.Scorer.score">
+<span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifest</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/base.html#Scorer.score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.Scorer.score" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.Scorer.score'">¶</a></dt>
+<dd><p>Score <code class="docutils literal notranslate"><span class="pre">ref</span></code>; the result is stored in the manifest under this scorer’s id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" rel="nofollow noopener" title="(in Python v3.15)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></span></p>
+</dd>
+</dl>
+</dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="lookbook.Selector">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">lookbook.</span></span><span class="sig-name descname"><span class="pre">Selector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/base.html#Selector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.Selector" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.Selector'">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Protocol" rel="nofollow noopener" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Protocol</span></code><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></p>
 <p>Chooses a subset of size up-to-K from candidates given the manifest.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lookbook.Selector.select">
+<span class="sig-name descname"><span class="pre">select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">candidates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/base.html#Selector.select"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.Selector.select" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.Selector.select'">¶</a></dt>
+<dd><p>Choose the images to keep from the scored candidates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#list" rel="nofollow noopener" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a>[<a class="reference internal" href="lookbook.base.html#lookbook.base.ImageRef" title="lookbook.base.ImageRef"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImageRef</span></code></a>]</span></p>
+</dd>
+</dl>
+</dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="lookbook.SimilarityResult">
@@ -552,6 +667,16 @@ matched (e.g. <code class="docutils literal notranslate"><span class="pre">argma
 <dl class="field-list simple">
 </dl>
 <dl class="py method">
+<dt class="sig sig-object py" id="lookbook.UrlImageRef.bytes">
+<span class="sig-name descname"><span class="pre">bytes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/refs.html#UrlImageRef.bytes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.UrlImageRef.bytes" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.UrlImageRef.bytes'">¶</a></dt>
+<dd><p>Return the raw image bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#lookbook.UrlImageRef.bytes" title="lookbook.UrlImageRef.bytes"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
 <dt class="sig sig-object py" id="lookbook.UrlImageRef.local_path">
 <span class="sig-name descname"><span class="pre">local_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/refs.html#UrlImageRef.local_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.UrlImageRef.local_path" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.UrlImageRef.local_path'">¶</a></dt>
 <dd><p>Download (once) and return the local path.</p>
@@ -560,6 +685,11 @@ matched (e.g. <code class="docutils literal notranslate"><span class="pre">argma
 <dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" rel="nofollow noopener" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></span></p>
 </dd>
 </dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="lookbook.UrlImageRef.open">
+<span class="sig-name descname"><span class="pre">open</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/refs.html#UrlImageRef.open"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.UrlImageRef.open" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.UrlImageRef.open'">¶</a></dt>
+<dd><p>Open the image (a PIL image).</p>
 </dd></dl>
 </dd></dl>
 <dl class="py function">
@@ -818,19 +948,35 @@ it has.</p>
 </div></div><aside class="hidden text-sm xl:block" id="right-sidebar">
 <div class="sticky top-16 -mt-10 max-h-[calc(100vh-5rem)] h-full overflow-y-auto pt-6 space-y-2"><p class="font-medium">On this page</p>
 <ul>
-<li><a :data-current="activeSection === '#lookbook.Annotation'" class="reference internal" href="#lookbook.Annotation"><code class="docutils literal notranslate"><span class="pre">Annotation</span></code></a></li>
-<li><a :data-current="activeSection === '#lookbook.BytesImageRef'" class="reference internal" href="#lookbook.BytesImageRef"><code class="docutils literal notranslate"><span class="pre">BytesImageRef</span></code></a><ul>
-<li><a :data-current="activeSection === '#lookbook.BytesImageRef.local_path'" class="reference internal" href="#lookbook.BytesImageRef.local_path"><code class="docutils literal notranslate"><span class="pre">BytesImageRef.local_path()</span></code></a></li>
+<li><a :data-current="activeSection === '#lookbook.Annotation'" class="reference internal" href="#lookbook.Annotation"><code class="docutils literal notranslate"><span class="pre">Annotation</span></code></a><ul>
+<li><a :data-current="activeSection === '#lookbook.Annotation.key'" class="reference internal" href="#lookbook.Annotation.key"><code class="docutils literal notranslate"><span class="pre">Annotation.key</span></code></a></li>
 </ul>
 </li>
-<li><a :data-current="activeSection === '#lookbook.Embedder'" class="reference internal" href="#lookbook.Embedder"><code class="docutils literal notranslate"><span class="pre">Embedder</span></code></a></li>
-<li><a :data-current="activeSection === '#lookbook.Filter'" class="reference internal" href="#lookbook.Filter"><code class="docutils literal notranslate"><span class="pre">Filter</span></code></a></li>
+<li><a :data-current="activeSection === '#lookbook.BytesImageRef'" class="reference internal" href="#lookbook.BytesImageRef"><code class="docutils literal notranslate"><span class="pre">BytesImageRef</span></code></a><ul>
+<li><a :data-current="activeSection === '#lookbook.BytesImageRef.bytes'" class="reference internal" href="#lookbook.BytesImageRef.bytes"><code class="docutils literal notranslate"><span class="pre">BytesImageRef.bytes()</span></code></a></li>
+<li><a :data-current="activeSection === '#lookbook.BytesImageRef.local_path'" class="reference internal" href="#lookbook.BytesImageRef.local_path"><code class="docutils literal notranslate"><span class="pre">BytesImageRef.local_path()</span></code></a></li>
+<li><a :data-current="activeSection === '#lookbook.BytesImageRef.open'" class="reference internal" href="#lookbook.BytesImageRef.open"><code class="docutils literal notranslate"><span class="pre">BytesImageRef.open()</span></code></a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#lookbook.Embedder'" class="reference internal" href="#lookbook.Embedder"><code class="docutils literal notranslate"><span class="pre">Embedder</span></code></a><ul>
+<li><a :data-current="activeSection === '#lookbook.Embedder.embed'" class="reference internal" href="#lookbook.Embedder.embed"><code class="docutils literal notranslate"><span class="pre">Embedder.embed()</span></code></a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#lookbook.Filter'" class="reference internal" href="#lookbook.Filter"><code class="docutils literal notranslate"><span class="pre">Filter</span></code></a><ul>
+<li><a :data-current="activeSection === '#lookbook.Filter.keep'" class="reference internal" href="#lookbook.Filter.keep"><code class="docutils literal notranslate"><span class="pre">Filter.keep()</span></code></a></li>
+</ul>
+</li>
 <li><a :data-current="activeSection === '#lookbook.IdentitySimilarity'" class="reference internal" href="#lookbook.IdentitySimilarity"><code class="docutils literal notranslate"><span class="pre">IdentitySimilarity</span></code></a><ul>
 <li><a :data-current="activeSection === '#lookbook.IdentitySimilarity.compare'" class="reference internal" href="#lookbook.IdentitySimilarity.compare"><code class="docutils literal notranslate"><span class="pre">IdentitySimilarity.compare()</span></code></a></li>
+<li><a :data-current="activeSection === '#lookbook.IdentitySimilarity.config_hash'" class="reference internal" href="#lookbook.IdentitySimilarity.config_hash"><code class="docutils literal notranslate"><span class="pre">IdentitySimilarity.config_hash</span></code></a></li>
 <li><a :data-current="activeSection === '#lookbook.IdentitySimilarity.score'" class="reference internal" href="#lookbook.IdentitySimilarity.score"><code class="docutils literal notranslate"><span class="pre">IdentitySimilarity.score()</span></code></a></li>
 </ul>
 </li>
-<li><a :data-current="activeSection === '#lookbook.ImageRef'" class="reference internal" href="#lookbook.ImageRef"><code class="docutils literal notranslate"><span class="pre">ImageRef</span></code></a></li>
+<li><a :data-current="activeSection === '#lookbook.ImageRef'" class="reference internal" href="#lookbook.ImageRef"><code class="docutils literal notranslate"><span class="pre">ImageRef</span></code></a><ul>
+<li><a :data-current="activeSection === '#lookbook.ImageRef.bytes'" class="reference internal" href="#lookbook.ImageRef.bytes"><code class="docutils literal notranslate"><span class="pre">ImageRef.bytes()</span></code></a></li>
+<li><a :data-current="activeSection === '#lookbook.ImageRef.open'" class="reference internal" href="#lookbook.ImageRef.open"><code class="docutils literal notranslate"><span class="pre">ImageRef.open()</span></code></a></li>
+</ul>
+</li>
 <li><a :data-current="activeSection === '#lookbook.InteractiveDecision'" class="reference internal" href="#lookbook.InteractiveDecision"><code class="docutils literal notranslate"><span class="pre">InteractiveDecision</span></code></a><ul>
 <li><a :data-current="activeSection === '#lookbook.InteractiveDecision.keep'" class="reference internal" href="#lookbook.InteractiveDecision.keep"><code class="docutils literal notranslate"><span class="pre">InteractiveDecision.keep</span></code></a></li>
 <li><a :data-current="activeSection === '#lookbook.InteractiveDecision.reject'" class="reference internal" href="#lookbook.InteractiveDecision.reject"><code class="docutils literal notranslate"><span class="pre">InteractiveDecision.reject</span></code></a></li>
@@ -838,16 +984,27 @@ it has.</p>
 </ul>
 </li>
 <li><a :data-current="activeSection === '#lookbook.PathImageRef'" class="reference internal" href="#lookbook.PathImageRef"><code class="docutils literal notranslate"><span class="pre">PathImageRef</span></code></a><ul>
+<li><a :data-current="activeSection === '#lookbook.PathImageRef.bytes'" class="reference internal" href="#lookbook.PathImageRef.bytes"><code class="docutils literal notranslate"><span class="pre">PathImageRef.bytes()</span></code></a></li>
 <li><a :data-current="activeSection === '#lookbook.PathImageRef.local_path'" class="reference internal" href="#lookbook.PathImageRef.local_path"><code class="docutils literal notranslate"><span class="pre">PathImageRef.local_path()</span></code></a></li>
+<li><a :data-current="activeSection === '#lookbook.PathImageRef.open'" class="reference internal" href="#lookbook.PathImageRef.open"><code class="docutils literal notranslate"><span class="pre">PathImageRef.open()</span></code></a></li>
 </ul>
 </li>
 <li><a :data-current="activeSection === '#lookbook.Pipeline'" class="reference internal" href="#lookbook.Pipeline"><code class="docutils literal notranslate"><span class="pre">Pipeline</span></code></a><ul>
 <li><a :data-current="activeSection === '#lookbook.Pipeline.run'" class="reference internal" href="#lookbook.Pipeline.run"><code class="docutils literal notranslate"><span class="pre">Pipeline.run()</span></code></a></li>
 </ul>
 </li>
-<li><a :data-current="activeSection === '#lookbook.RunResult'" class="reference internal" href="#lookbook.RunResult"><code class="docutils literal notranslate"><span class="pre">RunResult</span></code></a></li>
-<li><a :data-current="activeSection === '#lookbook.Scorer'" class="reference internal" href="#lookbook.Scorer"><code class="docutils literal notranslate"><span class="pre">Scorer</span></code></a></li>
-<li><a :data-current="activeSection === '#lookbook.Selector'" class="reference internal" href="#lookbook.Selector"><code class="docutils literal notranslate"><span class="pre">Selector</span></code></a></li>
+<li><a :data-current="activeSection === '#lookbook.RunResult'" class="reference internal" href="#lookbook.RunResult"><code class="docutils literal notranslate"><span class="pre">RunResult</span></code></a><ul>
+<li><a :data-current="activeSection === '#lookbook.RunResult.to_record'" class="reference internal" href="#lookbook.RunResult.to_record"><code class="docutils literal notranslate"><span class="pre">RunResult.to_record()</span></code></a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#lookbook.Scorer'" class="reference internal" href="#lookbook.Scorer"><code class="docutils literal notranslate"><span class="pre">Scorer</span></code></a><ul>
+<li><a :data-current="activeSection === '#lookbook.Scorer.score'" class="reference internal" href="#lookbook.Scorer.score"><code class="docutils literal notranslate"><span class="pre">Scorer.score()</span></code></a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#lookbook.Selector'" class="reference internal" href="#lookbook.Selector"><code class="docutils literal notranslate"><span class="pre">Selector</span></code></a><ul>
+<li><a :data-current="activeSection === '#lookbook.Selector.select'" class="reference internal" href="#lookbook.Selector.select"><code class="docutils literal notranslate"><span class="pre">Selector.select()</span></code></a></li>
+</ul>
+</li>
 <li><a :data-current="activeSection === '#lookbook.SimilarityResult'" class="reference internal" href="#lookbook.SimilarityResult"><code class="docutils literal notranslate"><span class="pre">SimilarityResult</span></code></a><ul>
 <li><a :data-current="activeSection === '#lookbook.SimilarityResult.identity_cosine'" class="reference internal" href="#lookbook.SimilarityResult.identity_cosine"><code class="docutils literal notranslate"><span class="pre">SimilarityResult.identity_cosine</span></code></a></li>
 <li><a :data-current="activeSection === '#lookbook.SimilarityResult.score'" class="reference internal" href="#lookbook.SimilarityResult.score"><code class="docutils literal notranslate"><span class="pre">SimilarityResult.score</span></code></a></li>
@@ -861,7 +1018,9 @@ it has.</p>
 </li>
 <li><a :data-current="activeSection === '#lookbook.Stores'" class="reference internal" href="#lookbook.Stores"><code class="docutils literal notranslate"><span class="pre">Stores</span></code></a></li>
 <li><a :data-current="activeSection === '#lookbook.UrlImageRef'" class="reference internal" href="#lookbook.UrlImageRef"><code class="docutils literal notranslate"><span class="pre">UrlImageRef</span></code></a><ul>
+<li><a :data-current="activeSection === '#lookbook.UrlImageRef.bytes'" class="reference internal" href="#lookbook.UrlImageRef.bytes"><code class="docutils literal notranslate"><span class="pre">UrlImageRef.bytes()</span></code></a></li>
 <li><a :data-current="activeSection === '#lookbook.UrlImageRef.local_path'" class="reference internal" href="#lookbook.UrlImageRef.local_path"><code class="docutils literal notranslate"><span class="pre">UrlImageRef.local_path()</span></code></a></li>
+<li><a :data-current="activeSection === '#lookbook.UrlImageRef.open'" class="reference internal" href="#lookbook.UrlImageRef.open"><code class="docutils literal notranslate"><span class="pre">UrlImageRef.open()</span></code></a></li>
 </ul>
 </li>
 <li><a :data-current="activeSection === '#lookbook.compare_to_reference'" class="reference internal" href="#lookbook.compare_to_reference"><code class="docutils literal notranslate"><span class="pre">compare_to_reference()</span></code></a></li>
@@ -887,7 +1046,7 @@ it has.</p>
 </div>
 </footer>
 </div>
-<script src="../_static/documentation_options.js?v=3bbcec59"></script>
+<script src="../_static/documentation_options.js?v=9fc46840"></script>
 <script src="../_static/doctools.js?v=fd6eb6e6"></script>
 <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
 <script src="../_static/clipboard.min.js?v=a7894cd8"></script>

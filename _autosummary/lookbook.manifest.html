@@ -143,8 +143,8 @@ to the abstraction; it exists so callers don’t have to spell out tuple keys.</
 <tr class="row-odd"><td><p><a class="reference internal" href="#lookbook.manifest.get_annotation" title="lookbook.manifest.get_annotation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_annotation</span></code></a>(manifest, image_id, metric_id)</p></td>
 <td><p>Return the annotation if present, else None.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_annotation</span></code>(manifest, image_id, metric_id)</p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#lookbook.manifest.has_annotation" title="lookbook.manifest.has_annotation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_annotation</span></code></a>(manifest, image_id, metric_id)</p></td>
+<td><p>Return whether the manifest holds an annotation for <code class="docutils literal notranslate"><span class="pre">(image_id,</span> <span class="pre">metric_id)</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#lookbook.manifest.image_ids" title="lookbook.manifest.image_ids"><code class="xref py py-obj docutils literal notranslate"><span class="pre">image_ids</span></code></a>(manifest)</p></td>
 <td><p>The set of distinct image_ids that appear in the manifest.</p></td>
@@ -167,6 +167,16 @@ to the abstraction; it exists so callers don’t have to spell out tuple keys.</
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" rel="nofollow noopener" title="(in Python v3.15)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a>[<a class="reference internal" href="lookbook.base.html#lookbook.base.Annotation" title="lookbook.base.Annotation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Annotation</span></code></a>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="lookbook.manifest.has_annotation">
+<span class="sig-prename descclassname"><span class="pre">lookbook.manifest.</span></span><span class="sig-name descname"><span class="pre">has_annotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">manifest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/manifest.html#has_annotation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.manifest.has_annotation" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.manifest.has_annotation'">¶</a></dt>
+<dd><p>Return whether the manifest holds an annotation for <code class="docutils literal notranslate"><span class="pre">(image_id,</span> <span class="pre">metric_id)</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" rel="nofollow noopener" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></span></p>
 </dd>
 </dl>
 </dd></dl>
@@ -215,6 +225,7 @@ to the abstraction; it exists so callers don’t have to spell out tuple keys.</
 <div class="sticky top-16 -mt-10 max-h-[calc(100vh-5rem)] h-full overflow-y-auto pt-6 space-y-2"><p class="font-medium">On this page</p>
 <ul>
 <li><a :data-current="activeSection === '#lookbook.manifest.get_annotation'" class="reference internal" href="#lookbook.manifest.get_annotation"><code class="docutils literal notranslate"><span class="pre">get_annotation()</span></code></a></li>
+<li><a :data-current="activeSection === '#lookbook.manifest.has_annotation'" class="reference internal" href="#lookbook.manifest.has_annotation"><code class="docutils literal notranslate"><span class="pre">has_annotation()</span></code></a></li>
 <li><a :data-current="activeSection === '#lookbook.manifest.image_ids'" class="reference internal" href="#lookbook.manifest.image_ids"><code class="docutils literal notranslate"><span class="pre">image_ids()</span></code></a></li>
 <li><a :data-current="activeSection === '#lookbook.manifest.iter_annotations_for'" class="reference internal" href="#lookbook.manifest.iter_annotations_for"><code class="docutils literal notranslate"><span class="pre">iter_annotations_for()</span></code></a></li>
 <li><a :data-current="activeSection === '#lookbook.manifest.put_annotation'" class="reference internal" href="#lookbook.manifest.put_annotation"><code class="docutils literal notranslate"><span class="pre">put_annotation()</span></code></a></li>
@@ -232,7 +243,7 @@ to the abstraction; it exists so callers don’t have to spell out tuple keys.</
 </div>
 </footer>
 </div>
-<script src="../_static/documentation_options.js?v=3bbcec59"></script>
+<script src="../_static/documentation_options.js?v=9fc46840"></script>
 <script src="../_static/doctools.js?v=fd6eb6e6"></script>
 <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
 <script src="../_static/clipboard.min.js?v=a7894cd8"></script>

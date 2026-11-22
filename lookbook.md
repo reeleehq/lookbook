@@ -1,4 +1,4 @@
-> built 2026-11-21 18:44 UTC from 9e641ad (main) · lookbook 0.0.12. Details: build_info.json
+> built 2026-11-22 22:32 UTC from 478c6e4 (main) · lookbook 0.0.13. Details: build_info.json
 
 # index.html.md
 
@@ -295,11 +295,22 @@ The (image_id, metric_id) pair is the manifest key. `config_hash` is the
 cache key — re-running with the same config yields a cache hit; changing
 a threshold or model invalidates.
 
+#### *property* key *: [Tuple](https://docs.python.org/3/library/typing.html#typing.Tuple)[[str](https://docs.python.org/3/builtins/stdtypes.html#str), [str](https://docs.python.org/3/builtins/stdtypes.html#str)]*
+
+The image’s manifest key.
+
 ### *class* lookbook.base.Embedder(\*args, \*\*kwargs)
 
 Bases: [`Protocol`](https://docs.python.org/3/library/typing.html#typing.Protocol)
 
 Computes a vector representation in some named embedding space.
+
+#### embed(ref)
+
+Embed `ref` into this embedder’s vector space.
+
+* **Return type:**
+  [`Any`](https://docs.python.org/3/library/typing.html#typing.Any)
 
 ### *class* lookbook.base.Filter(\*args, \*\*kwargs)
 
@@ -307,11 +318,32 @@ Bases: [`Protocol`](https://docs.python.org/3/library/typing.html#typing.Protoco
 
 Predicate over annotations that decides whether to keep an image.
 
+#### keep(ref, manifest)
+
+Return whether `ref` passes this filter.
+
+* **Return type:**
+  [`bool`](https://docs.python.org/3/builtins/functions.html#bool)
+
 ### *class* lookbook.base.ImageRef(\*args, \*\*kwargs)
 
 Bases: [`Protocol`](https://docs.python.org/3/library/typing.html#typing.Protocol)
 
 Anything that knows its identity and how to be opened lazily.
+
+#### bytes()
+
+Return the raw image bytes.
+
+* **Return type:**
+  [`bytes`](_autosummary/lookbook.base.html.md#lookbook.base.ImageRef.bytes)
+
+#### open()
+
+Open the image (a PIL image).
+
+* **Return type:**
+  [`Any`](https://docs.python.org/3/library/typing.html#typing.Any)
 
 ### *class* lookbook.base.Scorer(\*args, \*\*kwargs)
 
@@ -319,11 +351,25 @@ Bases: [`Protocol`](https://docs.python.org/3/library/typing.html#typing.Protoco
 
 Computes one annotation per image. Idempotent w.r.t. config_hash.
 
+#### score(ref, manifest)
+
+Score `ref`; the result is stored in the manifest under this scorer’s id.
+
+* **Return type:**
+  [`Any`](https://docs.python.org/3/library/typing.html#typing.Any)
+
 ### *class* lookbook.base.Selector(\*args, \*\*kwargs)
 
 Bases: [`Protocol`](https://docs.python.org/3/library/typing.html#typing.Protocol)
 
 Chooses a subset of size up-to-K from candidates given the manifest.
+
+#### select(candidates, manifest, k, constraints=None)
+
+Choose the images to keep from the scored candidates.
+
+* **Return type:**
+  [`list`](https://docs.python.org/3/builtins/stdtypes.html#list)[[`ImageRef`](_autosummary/lookbook.base.html.md#lookbook.base.ImageRef)]
 
 
 # _autosummary/lookbook.diagnose.html.md
@@ -396,6 +442,20 @@ L2-normalized; we just pick the largest face’s embedding.
 The “right” face is the one whose `bbox` overlaps the manifest’s
 `face_box` if available; otherwise the largest by area.
 
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
+
+#### embed(ref)
+
+Embed `ref` into this embedder’s vector space.
+
+* **Return type:**
+  `ndarray`
+
 ### *class* lookbook.embedders.arcface.MockArcFaceEmbedder(space_id='arcface_mock', cost_tier=1, dim=512, seed=0, backend='lookbook:mock_arcface')
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
@@ -408,6 +468,20 @@ The vector is keyed by `image_id`, so:
 - Different images yield different vectors.
 - There is no “same person” signal — different images of one person
   get unrelated vectors. Useful only for orchestration tests.
+
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
+
+#### embed(ref)
+
+Embed `ref` into this embedder’s vector space.
+
+* **Return type:**
+  `ndarray`
 
 
 # _autosummary/lookbook.embedders.clip.html.md
@@ -435,6 +509,20 @@ Defaults to ViT-B/32 (~150 MB, fast enough for CPU). Use ViT-L/14 by
 setting `model_name="openai/clip-vit-large-patch14"` for higher-quality
 semantic embeddings (slower, ~600 MB).
 
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
+
+#### embed(ref)
+
+Embed `ref` into this embedder’s vector space.
+
+* **Return type:**
+  `ndarray`
+
 
 # _autosummary/lookbook.embedders.dinov2.html.md
 
@@ -461,6 +549,20 @@ Facebook DINOv2 image embeddings via HuggingFace transformers.
 Defaults to ViT-B/14 (~350 MB). Use `facebook/dinov2-small` for
 smaller-but-weaker (~85 MB), `facebook/dinov2-large` for stronger
 (~1.2 GB).
+
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
+
+#### embed(ref)
+
+Embed `ref` into this embedder’s vector space.
+
+* **Return type:**
+  `ndarray`
 
 
 # _autosummary/lookbook.embedders.html.md
@@ -516,6 +618,20 @@ Deterministic, dependency-free embedder for tests.
 
 The vector is derived from a SHA1 of `image_id` (mixed with `seed`),
 expanded to `dim` dimensions, and L2-normalized.
+
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
+
+#### embed(ref)
+
+Embed `ref` into this embedder’s vector space.
+
+* **Return type:**
+  `ndarray`
 
 
 # _autosummary/lookbook.facade.html.md
@@ -658,17 +774,38 @@ Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
 Drop images with no detected face.
 
+#### keep(ref, manifest)
+
+Return whether `ref` passes this filter.
+
+* **Return type:**
+  [`bool`](https://docs.python.org/3/builtins/functions.html#bool)
+
 ### *class* lookbook.filters.person.MinFaceArea(min_fraction=0.05, name='min_face_area')
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
 Drop images whose face occupies less than `min_fraction` of the frame.
 
+#### keep(ref, manifest)
+
+Return whether `ref` passes this filter.
+
+* **Return type:**
+  [`bool`](https://docs.python.org/3/builtins/functions.html#bool)
+
 ### *class* lookbook.filters.person.MinFaceConfidence(threshold=0.5, name='min_face_confidence')
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
 Drop images whose face-detection confidence is below `threshold`.
+
+#### keep(ref, manifest)
+
+Return whether `ref` passes this filter.
+
+* **Return type:**
+  [`bool`](https://docs.python.org/3/builtins/functions.html#bool)
 
 ### *class* lookbook.filters.person.SingleFaceOnly(name='single_face_only')
 
@@ -678,6 +815,13 @@ Drop images with more than one detected face.
 
 Reads `face_box.n_faces`. Useful for character LoRAs where you want
 isolated subject images.
+
+#### keep(ref, manifest)
+
+Return whether `ref` passes this filter.
+
+* **Return type:**
+  [`bool`](https://docs.python.org/3/builtins/functions.html#bool)
 
 
 # _autosummary/lookbook.filters.technical.html.md
@@ -715,11 +859,25 @@ Drop images that are mostly black or mostly white.
 
 Defaults: drop if more than 50% of pixels are below 16 or above 240.
 
+#### keep(ref, manifest)
+
+Return whether `ref` passes this filter.
+
+* **Return type:**
+  [`bool`](https://docs.python.org/3/builtins/functions.html#bool)
+
 ### *class* lookbook.filters.technical.MinBlur(threshold=100.0, name='min_blur')
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
 Drop images whose Laplacian variance is below `threshold` (blurry).
+
+#### keep(ref, manifest)
+
+Return whether `ref` passes this filter.
+
+* **Return type:**
+  [`bool`](https://docs.python.org/3/builtins/functions.html#bool)
 
 ### *class* lookbook.filters.technical.MinResolution(min_long_side=1024, name='min_resolution')
 
@@ -730,6 +888,13 @@ Drop images whose long side is below `min_long_side` pixels.
 Reads the `resolution` annotation. If absent, the filter keeps the image
 (under the principle that filters never drop on missing evidence).
 
+#### keep(ref, manifest)
+
+Return whether `ref` passes this filter.
+
+* **Return type:**
+  [`bool`](https://docs.python.org/3/builtins/functions.html#bool)
+
 ### *class* lookbook.filters.technical.NoExactDuplicate(name='no_exact_duplicate', \_seen=set())
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
@@ -738,6 +903,13 @@ Keep at most one image per `file_hash`.
 
 The first image in iteration order to claim a hash wins; later images
 with the same hash are dropped.
+
+#### keep(ref, manifest)
+
+Return whether `ref` passes this filter.
+
+* **Return type:**
+  [`bool`](https://docs.python.org/3/builtins/functions.html#bool)
 
 ### *class* lookbook.filters.technical.NoNearDuplicate(max_distance=5, name='no_near_duplicate', \_seen_hashes=list())
 
@@ -748,6 +920,13 @@ Keep at most one image per near-duplicate cluster.
 Clusters are formed greedily: the first image to be visited is the
 cluster representative, and any later image whose `phash` is within
 `max_distance` Hamming bits is dropped.
+
+#### keep(ref, manifest)
+
+Return whether `ref` passes this filter.
+
+* **Return type:**
+  [`bool`](https://docs.python.org/3/builtins/functions.html#bool)
 
 ### lookbook.filters.technical.fresh_filter(filter_id, \*\*overrides)
 
@@ -827,11 +1006,22 @@ The (image_id, metric_id) pair is the manifest key. `config_hash` is the
 cache key — re-running with the same config yields a cache hit; changing
 a threshold or model invalidates.
 
+#### *property* key *: [Tuple](https://docs.python.org/3/library/typing.html#typing.Tuple)[[str](https://docs.python.org/3/builtins/stdtypes.html#str), [str](https://docs.python.org/3/builtins/stdtypes.html#str)]*
+
+The image’s manifest key.
+
 ### *class* lookbook.BytesImageRef(payload, image_id='', metadata=dict())
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
 An image stored as raw bytes in memory.
+
+#### bytes()
+
+Return the raw image bytes.
+
+* **Return type:**
+  [`bytes`](_autosummary/lookbook.html.md#lookbook.BytesImageRef.bytes)
 
 #### local_path(, cache_dir=None)
 
@@ -840,17 +1030,35 @@ Materialize the bytes into a file (cached by image_id).
 * **Return type:**
   [`str`](https://docs.python.org/3/builtins/stdtypes.html#str)
 
+#### open()
+
+Open the image (a PIL image).
+
 ### *class* lookbook.Embedder(\*args, \*\*kwargs)
 
 Bases: [`Protocol`](https://docs.python.org/3/library/typing.html#typing.Protocol)
 
 Computes a vector representation in some named embedding space.
 
+#### embed(ref)
+
+Embed `ref` into this embedder’s vector space.
+
+* **Return type:**
+  [`Any`](https://docs.python.org/3/library/typing.html#typing.Any)
+
 ### *class* lookbook.Filter(\*args, \*\*kwargs)
 
 Bases: [`Protocol`](https://docs.python.org/3/library/typing.html#typing.Protocol)
 
 Predicate over annotations that decides whether to keep an image.
+
+#### keep(ref, manifest)
+
+Return whether `ref` passes this filter.
+
+* **Return type:**
+  [`bool`](https://docs.python.org/3/builtins/functions.html#bool)
 
 ### *class* lookbook.IdentitySimilarity(metric_id='identity_similarity', cost_tier=2, requires=(), backend='lookbook:identity_similarity', reference_embedding=None, reference_image=None, reference_images=None, embedder='arcface', threshold=0.85, aggregation='max', normalization='rescale')
 
@@ -894,6 +1102,13 @@ Compare one candidate ref against the reference; typed result.
 * **Return type:**
   [`SimilarityResult`](_autosummary/lookbook.scorers.identity.html.md#lookbook.scorers.identity.SimilarityResult)
 
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
+
 #### score(ref, manifest)
 
 Scorer-protocol entry point — returns the JSON-able result dict.
@@ -906,6 +1121,20 @@ Scorer-protocol entry point — returns the JSON-able result dict.
 Bases: [`Protocol`](https://docs.python.org/3/library/typing.html#typing.Protocol)
 
 Anything that knows its identity and how to be opened lazily.
+
+#### bytes()
+
+Return the raw image bytes.
+
+* **Return type:**
+  [`bytes`](_autosummary/lookbook.html.md#lookbook.ImageRef.bytes)
+
+#### open()
+
+Open the image (a PIL image).
+
+* **Return type:**
+  [`Any`](https://docs.python.org/3/library/typing.html#typing.Any)
 
 ### *class* lookbook.InteractiveDecision(, keep=(), reject=(), stop=False)
 
@@ -953,12 +1182,23 @@ Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
 An image referenced by filesystem path.
 
+#### bytes()
+
+Return the raw image bytes.
+
+* **Return type:**
+  [`bytes`](_autosummary/lookbook.html.md#lookbook.PathImageRef.bytes)
+
 #### local_path(, cache_dir=None)
 
 Return the existing on-disk path. `cache_dir` is ignored.
 
 * **Return type:**
   [`str`](https://docs.python.org/3/builtins/stdtypes.html#str)
+
+#### open()
+
+Open the image (a PIL image).
 
 ### *class* lookbook.Pipeline(scorers=list(), embedders=list(), filters=list(), selector=None, diagnose_clusters=0)
 
@@ -982,17 +1222,38 @@ Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
 The result of running a pipeline.
 
+#### to_record()
+
+Return the run as a JSON-serialisable dict.
+
+* **Return type:**
+  [`dict`](https://docs.python.org/3/builtins/stdtypes.html#dict)
+
 ### *class* lookbook.Scorer(\*args, \*\*kwargs)
 
 Bases: [`Protocol`](https://docs.python.org/3/library/typing.html#typing.Protocol)
 
 Computes one annotation per image. Idempotent w.r.t. config_hash.
 
+#### score(ref, manifest)
+
+Score `ref`; the result is stored in the manifest under this scorer’s id.
+
+* **Return type:**
+  [`Any`](https://docs.python.org/3/library/typing.html#typing.Any)
+
 ### *class* lookbook.Selector(\*args, \*\*kwargs)
 
 Bases: [`Protocol`](https://docs.python.org/3/library/typing.html#typing.Protocol)
 
 Chooses a subset of size up-to-K from candidates given the manifest.
+
+#### select(candidates, manifest, k, constraints=None)
+
+Choose the images to keep from the scored candidates.
+
+* **Return type:**
+  [`list`](https://docs.python.org/3/builtins/stdtypes.html#list)[[`ImageRef`](_autosummary/lookbook.base.html.md#lookbook.base.ImageRef)]
 
 ### *class* lookbook.SimilarityResult(identity_cosine, score, passed, threshold, per_reference=tuple(), aggregation='max', n_references=0)
 
@@ -1077,12 +1338,23 @@ An image referenced by URL.
 
 The bytes are fetched on first access and cached on the instance.
 
+#### bytes()
+
+Return the raw image bytes.
+
+* **Return type:**
+  [`bytes`](_autosummary/lookbook.html.md#lookbook.UrlImageRef.bytes)
+
 #### local_path(, cache_dir=None)
 
 Download (once) and return the local path.
 
 * **Return type:**
   [`str`](https://docs.python.org/3/builtins/stdtypes.html#str)
+
+#### open()
+
+Open the image (a PIL image).
 
 ### lookbook.compare_to_reference(reference_image, candidate_image, , embedder='arcface', threshold=0.85, aggregation='max', normalization='rescale')
 
@@ -1563,13 +1835,13 @@ to the abstraction; it exists so callers don’t have to spell out tuple keys.
 
 ### Functions
 
-| [`get_annotation`](_autosummary/lookbook.manifest.html.md#lookbook.manifest.get_annotation)(manifest, image_id, metric_id)   | Return the annotation if present, else None.                          |
-|--------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------|
-| `has_annotation`(manifest, image_id, metric_id)                                                  |                                                                       |
-| [`image_ids`](_autosummary/lookbook.manifest.html.md#lookbook.manifest.image_ids)(manifest)                             | The set of distinct image_ids that appear in the manifest.            |
-| [`iter_annotations_for`](_autosummary/lookbook.manifest.html.md#lookbook.manifest.iter_annotations_for)(manifest, image_id)        | Yield every annotation for a given image.                             |
-| [`put_annotation`](_autosummary/lookbook.manifest.html.md#lookbook.manifest.put_annotation)(manifest, annotation)            | Write an annotation to the manifest, keyed by (image_id, metric_id).  |
-| [`value_of`](_autosummary/lookbook.manifest.html.md#lookbook.manifest.value_of)(manifest, image_id, metric_id[, ...])  | Return the bare value of an annotation (not the wrapper), or default. |
+| [`get_annotation`](_autosummary/lookbook.manifest.html.md#lookbook.manifest.get_annotation)(manifest, image_id, metric_id)   | Return the annotation if present, else None.                                 |
+|--------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------|
+| [`has_annotation`](_autosummary/lookbook.manifest.html.md#lookbook.manifest.has_annotation)(manifest, image_id, metric_id)   | Return whether the manifest holds an annotation for `(image_id, metric_id)`. |
+| [`image_ids`](_autosummary/lookbook.manifest.html.md#lookbook.manifest.image_ids)(manifest)                             | The set of distinct image_ids that appear in the manifest.                   |
+| [`iter_annotations_for`](_autosummary/lookbook.manifest.html.md#lookbook.manifest.iter_annotations_for)(manifest, image_id)        | Yield every annotation for a given image.                                    |
+| [`put_annotation`](_autosummary/lookbook.manifest.html.md#lookbook.manifest.put_annotation)(manifest, annotation)            | Write an annotation to the manifest, keyed by (image_id, metric_id).         |
+| [`value_of`](_autosummary/lookbook.manifest.html.md#lookbook.manifest.value_of)(manifest, image_id, metric_id[, ...])  | Return the bare value of an annotation (not the wrapper), or default.        |
 
 ### lookbook.manifest.get_annotation(manifest, image_id, metric_id)
 
@@ -1577,6 +1849,13 @@ Return the annotation if present, else None.
 
 * **Return type:**
   [`Optional`](https://docs.python.org/3/library/typing.html#typing.Optional)[[`Annotation`](_autosummary/lookbook.base.html.md#lookbook.base.Annotation)]
+
+### lookbook.manifest.has_annotation(manifest, image_id, metric_id)
+
+Return whether the manifest holds an annotation for `(image_id, metric_id)`.
+
+* **Return type:**
+  [`bool`](https://docs.python.org/3/builtins/functions.html#bool)
 
 ### lookbook.manifest.image_ids(manifest)
 
@@ -1862,6 +2141,13 @@ Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
 The result of running a pipeline.
 
+#### to_record()
+
+Return the run as a JSON-serialisable dict.
+
+* **Return type:**
+  [`dict`](https://docs.python.org/3/builtins/stdtypes.html#dict)
+
 
 # _autosummary/lookbook.profiles.html.md
 
@@ -1952,6 +2238,13 @@ Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
 An image stored as raw bytes in memory.
 
+#### bytes()
+
+Return the raw image bytes.
+
+* **Return type:**
+  [`bytes`](_autosummary/lookbook.refs.html.md#lookbook.refs.BytesImageRef.bytes)
+
 #### local_path(, cache_dir=None)
 
 Materialize the bytes into a file (cached by image_id).
@@ -1959,11 +2252,22 @@ Materialize the bytes into a file (cached by image_id).
 * **Return type:**
   [`str`](https://docs.python.org/3/builtins/stdtypes.html#str)
 
+#### open()
+
+Open the image (a PIL image).
+
 ### *class* lookbook.refs.PathImageRef(path, image_id='', metadata=dict())
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
 An image referenced by filesystem path.
+
+#### bytes()
+
+Return the raw image bytes.
+
+* **Return type:**
+  [`bytes`](_autosummary/lookbook.refs.html.md#lookbook.refs.PathImageRef.bytes)
 
 #### local_path(, cache_dir=None)
 
@@ -1971,6 +2275,10 @@ Return the existing on-disk path. `cache_dir` is ignored.
 
 * **Return type:**
   [`str`](https://docs.python.org/3/builtins/stdtypes.html#str)
+
+#### open()
+
+Open the image (a PIL image).
 
 ### *class* lookbook.refs.UrlImageRef(url, image_id='', metadata=dict(), \_cached=None)
 
@@ -1980,12 +2288,23 @@ An image referenced by URL.
 
 The bytes are fetched on first access and cached on the instance.
 
+#### bytes()
+
+Return the raw image bytes.
+
+* **Return type:**
+  [`bytes`](_autosummary/lookbook.refs.html.md#lookbook.refs.UrlImageRef.bytes)
+
 #### local_path(, cache_dir=None)
 
 Download (once) and return the local path.
 
 * **Return type:**
   [`str`](https://docs.python.org/3/builtins/stdtypes.html#str)
+
+#### open()
+
+Open the image (a PIL image).
 
 ### lookbook.refs.to_local_path(ref, , cache_dir=None)
 
@@ -2013,15 +2332,36 @@ never *subclassed*.
 
 ### Functions
 
-| `register_embedder`(name, \*\*kwargs)                                              |                                             |
-|------------------------------------------------------------------------------------|---------------------------------------------|
-| `register_filter`(name, \*\*kwargs)                                                |                                             |
-| [`register_scorer`](_autosummary/lookbook.registry.html.md#lookbook.registry.register_scorer)(name, \*\*kwargs) | Decorator form: `@register_scorer("blur")`. |
-| `register_selector`(name, \*\*kwargs)                                              |                                             |
+| [`register_embedder`](_autosummary/lookbook.registry.html.md#lookbook.registry.register_embedder)(name, \*\*kwargs)   | Decorator: register an embedder under `name`.   |
+|----------------------------------------------------------------------------------------|-------------------------------------------------|
+| [`register_filter`](_autosummary/lookbook.registry.html.md#lookbook.registry.register_filter)(name, \*\*kwargs)     | Decorator: register a filter under `name`.      |
+| [`register_scorer`](_autosummary/lookbook.registry.html.md#lookbook.registry.register_scorer)(name, \*\*kwargs)     | Decorator form: `@register_scorer("blur")`.     |
+| [`register_selector`](_autosummary/lookbook.registry.html.md#lookbook.registry.register_selector)(name, \*\*kwargs)   | Decorator: register a selector under `name`.    |
+
+### lookbook.registry.register_embedder(name, \*\*kwargs)
+
+Decorator: register an embedder under `name`.
+
+* **Return type:**
+  [`Callable`](https://docs.python.org/3/library/typing.html#typing.Callable)
+
+### lookbook.registry.register_filter(name, \*\*kwargs)
+
+Decorator: register a filter under `name`.
+
+* **Return type:**
+  [`Callable`](https://docs.python.org/3/library/typing.html#typing.Callable)
 
 ### lookbook.registry.register_scorer(name, \*\*kwargs)
 
 Decorator form: `@register_scorer("blur")`.
+
+* **Return type:**
+  [`Callable`](https://docs.python.org/3/library/typing.html#typing.Callable)
+
+### lookbook.registry.register_selector(name, \*\*kwargs)
+
+Decorator: register a selector under `name`.
 
 * **Return type:**
   [`Callable`](https://docs.python.org/3/library/typing.html#typing.Callable)
@@ -2062,6 +2402,13 @@ Render a short human-readable summary.
 
 * **Return type:**
   [`str`](https://docs.python.org/3/builtins/stdtypes.html#str)
+
+#### to_dict()
+
+Return the report as a plain dict.
+
+* **Return type:**
+  [`dict`](https://docs.python.org/3/builtins/stdtypes.html#dict)
 
 ### lookbook.report.attribute_drops(candidates, filters, manifest)
 
@@ -2219,6 +2566,13 @@ Compare one candidate ref against the reference; typed result.
 
 * **Return type:**
   [`SimilarityResult`](_autosummary/lookbook.scorers.identity.html.md#lookbook.scorers.identity.SimilarityResult)
+
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
 
 #### score(ref, manifest)
 
@@ -2418,6 +2772,20 @@ Face area as a fraction of total image area, plus a size bin.
 Reads `face_box` and `resolution`. Both must be present upstream — the
 orchestrator’s topo-sort handles this via the `requires` field.
 
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
+
+#### score(ref, manifest)
+
+Score `ref`; the result is stored in the manifest under this scorer’s id.
+
+* **Return type:**
+  [`dict`](https://docs.python.org/3/builtins/stdtypes.html#dict)
+
 ### *class* lookbook.scorers.person.FaceQualityProxy(metric_id='face_quality', cost_tier=1, requires=('face_box', 'face_area'), backend='derived', blur_normalization=500.0)
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
@@ -2430,6 +2798,20 @@ SDD-FIQA, CR-FIQA, CLIB-FIQA in the design report). Real FIQA needs a
 purpose-trained model; the proxy here is a reasonable default for
 Phase 3 that uses only signals already in the manifest.
 
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
+
+#### score(ref, manifest)
+
+Score `ref`; the result is stored in the manifest under this scorer’s id.
+
+* **Return type:**
+  [`float`](https://docs.python.org/3/builtins/functions.html#float)
+
 ### *class* lookbook.scorers.person.InsightFaceDetect(metric_id='face_box', cost_tier=1, requires=(), backend='insightface:retinaface', model_name='buffalo_l', det_size=640)
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
@@ -2438,6 +2820,17 @@ RetinaFace face detection via insightface.
 
 Returns the largest face if multiple are present. `n_faces` records the
 pre-filter count so a downstream filter can drop multi-face images.
+
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
+
+#### score(ref, manifest)
+
+Score `ref`; the result is stored in the manifest under this scorer’s id.
 
 ### *class* lookbook.scorers.person.MockFaceDetect(metric_id='face_box', cost_tier=1, requires=(), backend='lookbook:mock_face', simulate_no_face=False)
 
@@ -2449,6 +2842,17 @@ Useful for tests and for end-to-end demos without a real detector. The
 box covers the central 60% of the image (or 0% if `simulate_no_face`
 is set, in which case the face_box value is None).
 
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
+
+#### score(ref, manifest)
+
+Score `ref`; the result is stored in the manifest under this scorer’s id.
+
 ### *class* lookbook.scorers.person.MockHeadPose(metric_id='head_pose', cost_tier=1, requires=('face_box',), backend='lookbook:mock_pose')
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
@@ -2458,6 +2862,17 @@ Synthetic head pose — deterministic from image_id.
 Yaw distributed roughly uniformly in [-90, 90]; pitch/roll narrower.
 Useful for testing the QuotaSelector without a real head-pose model.
 
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
+
+#### score(ref, manifest)
+
+Score `ref`; the result is stored in the manifest under this scorer’s id.
+
 ### *class* lookbook.scorers.person.SixDRepNetHeadPose(metric_id='head_pose', cost_tier=2, requires=('face_box',), backend='sixdrepnet', config_version='v1')
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
@@ -2465,6 +2880,17 @@ Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 Head-pose estimation via 6DRepNet (lazy-imported).
 
 See [https://github.com/thohemp/6DRepNet](https://github.com/thohemp/6DRepNet) for the reference implementation.
+
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
+
+#### score(ref, manifest)
+
+Score `ref`; the result is stored in the manifest under this scorer’s id.
 
 
 # _autosummary/lookbook.scorers.technical.html.md
@@ -2525,6 +2951,20 @@ Uses cv2 when available (the canonical implementation); otherwise falls
 back to a small numpy 3x3 kernel convolution. Numbers are comparable to
 the cv2 path within a few percent on natural images.
 
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
+
+#### score(ref, manifest)
+
+Score `ref`; the result is stored in the manifest under this scorer’s id.
+
+* **Return type:**
+  [`float`](https://docs.python.org/3/builtins/functions.html#float)
+
 ### *class* lookbook.scorers.technical.Exposure(metric_id='exposure', cost_tier=1, requires=(), backend='numpy', max_side=512)
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
@@ -2534,11 +2974,39 @@ Exposure characterization from the grayscale histogram. T1.
 Returns mean, std, and key percentiles. Together they let a downstream
 filter say “drop images that are mostly black or mostly white.”
 
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
+
+#### score(ref, manifest)
+
+Score `ref`; the result is stored in the manifest under this scorer’s id.
+
+* **Return type:**
+  [`dict`](https://docs.python.org/3/builtins/stdtypes.html#dict)
+
 ### *class* lookbook.scorers.technical.FileHash(metric_id='file_hash', cost_tier=0, requires=(), backend='stdlib:sha1')
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
 SHA1 of the raw image bytes — exact-duplicate detection. T0.
+
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
+
+#### score(ref, manifest)
+
+Score `ref`; the result is stored in the manifest under this scorer’s id.
+
+* **Return type:**
+  [`str`](https://docs.python.org/3/builtins/stdtypes.html#str)
 
 ### *class* lookbook.scorers.technical.PerceptualHash(metric_id='phash', cost_tier=1, requires=(), backend='imagehash', algorithm='phash')
 
@@ -2551,17 +3019,56 @@ hash. The default algorithm is `phash` (DCT-based). Hamming distance
 between hex strings (over hash bits) is the standard near-dup metric;
 `lookbook.scorers.technical.phash_distance` provides it.
 
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
+
+#### score(ref, manifest)
+
+Score `ref`; the result is stored in the manifest under this scorer’s id.
+
 ### *class* lookbook.scorers.technical.RandomScore(metric_id='random_score', cost_tier=0, requires=(), seed=0, backend='lookbook:random')
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
 Deterministic pseudo-random score in [0, 1) keyed by image_id.
 
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
+
+#### score(ref, manifest)
+
+Score `ref`; the result is stored in the manifest under this scorer’s id.
+
+* **Return type:**
+  [`float`](https://docs.python.org/3/builtins/functions.html#float)
+
 ### *class* lookbook.scorers.technical.Resolution(metric_id='resolution', cost_tier=0, requires=(), backend='Pillow')
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
 Image dimensions and long-side. T0 — header read, no decode.
+
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
+
+#### score(ref, manifest)
+
+Score `ref`; the result is stored in the manifest under this scorer’s id.
+
+* **Return type:**
+  [`dict`](https://docs.python.org/3/builtins/stdtypes.html#dict)
 
 ### *class* lookbook.scorers.technical.TechnicalQuality(metric_id='technical_quality', cost_tier=1, requires=('blur', 'exposure', 'resolution'), backend='derived', blur_normalization=500.0, target_long_side=1024, clipping_penalty=2.0)
 
@@ -2580,6 +3087,20 @@ The blend is sharpness-dominant (a soft or blown reference is the
 worst failure mode), with exposure clipping and resolution as
 secondary terms. `blur` missing yields a neutral 0.5 sharpness so a
 pool scored without the blur scorer still ranks by exposure + size.
+
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
+
+#### score(ref, manifest)
+
+Score `ref`; the result is stored in the manifest under this scorer’s id.
+
+* **Return type:**
+  [`float`](https://docs.python.org/3/builtins/functions.html#float)
 
 ### lookbook.scorers.technical.phash_distance(a, b)
 
@@ -2642,6 +3163,13 @@ Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
 Per-bin quota selection wrapping an inner Selector.
 
+#### select(candidates, manifest, k, constraints=None)
+
+Choose the images to keep from the scored candidates.
+
+* **Return type:**
+  [`list`](https://docs.python.org/3/builtins/stdtypes.html#list)[[`ImageRef`](_autosummary/lookbook.base.html.md#lookbook.base.ImageRef)]
+
 
 # _autosummary/lookbook.selectors.submodular.html.md
 
@@ -2689,6 +3217,13 @@ annotation `quality_metric_id` for `x`, defaulting to 0 when absent.
 `weight_quality=0` gives a pure-diversity selection. `weight_quality`
 in 0.1–0.5 typically works well for “diverse but high-quality.”
 
+#### select(candidates, manifest, k, constraints=None)
+
+Choose the images to keep from the scored candidates.
+
+* **Return type:**
+  [`list`](https://docs.python.org/3/builtins/stdtypes.html#list)[[`ImageRef`](_autosummary/lookbook.base.html.md#lookbook.base.ImageRef)]
+
 
 # _autosummary/lookbook.selectors.topk.html.md
 
@@ -2706,6 +3241,13 @@ Top-K selector: pick the K highest-scoring images by a single metric.
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
 Sort candidates by `metric_id` (descending) and take the first K.
+
+#### select(candidates, manifest, k, constraints=None)
+
+Choose the images to keep from the scored candidates.
+
+* **Return type:**
+  [`list`](https://docs.python.org/3/builtins/stdtypes.html#list)[[`ImageRef`](_autosummary/lookbook.base.html.md#lookbook.base.ImageRef)]
 
 
 # _autosummary/lookbook.store.html.md
@@ -2777,18 +3319,16 @@ Values flow as `Annotation <-> dict`.
 
 # About this build
 
-This documentation was built on **2026-11-21 18:44 UTC** from commit <a href="https://github.com/reeleehq/lookbook/commit/9e641ad87d4ffed6d7ad8cbf6724807537b15cd8"><code>9e641ad</code></a> on branch <code>main</code>, for **lookbook 0.0.12** (from <code>pyproject.toml</code>).
+This documentation was built on **2026-11-22 22:32 UTC** from commit <a href="https://github.com/reeleehq/lookbook/commit/478c6e43c73ee31273556b1673c7cd31283bcfc5"><code>478c6e4</code></a> on branch <code>main</code>, for **lookbook 0.0.13** (from <code>pyproject.toml</code>).
 
-#### WARNING
-The documentation and the package may be misaligned:
-
-- The documented version (0.0.12) is behind the latest release on PyPI (0.0.13): `pip install lookbook` gives newer code than these docs describe.
+#### NOTE
+Nothing suggests a mismatch: the tree was clean at the commit above, and the documented version is the one on PyPI.
 
 ## Source
 
 |                     |                                                                                                                                                          |
 |---------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Commit              | <a href="https://github.com/reeleehq/lookbook/commit/9e641ad87d4ffed6d7ad8cbf6724807537b15cd8"><code>9e641ad87d4ffed6d7ad8cbf6724807537b15cd8</code></a> |
+| Commit              | <a href="https://github.com/reeleehq/lookbook/commit/478c6e43c73ee31273556b1673c7cd31283bcfc5"><code>478c6e43c73ee31273556b1673c7cd31283bcfc5</code></a> |
 | Branch              | <code>main</code>                                                                                                                                        |
 | Tags at this commit | none                                                                                                                                                     |
 | Working tree        | clean                                                                                                                                                    |
@@ -2799,9 +3339,9 @@ The documentation and the package may be misaligned:
 |              |                                                                                            |
 |--------------|--------------------------------------------------------------------------------------------|
 | Repository   | <code>reeleehq/lookbook</code>                                                             |
-| Run          | <a href="https://github.com/reeleehq/lookbook/actions/runs/44937026970">44937026970</a>    |
+| Run          | <a href="https://github.com/reeleehq/lookbook/actions/runs/45078149587">45078149587</a>    |
 | Ref          | <code>refs/heads/main</code>                                                               |
-| Event commit | <code>9e641ad87d4ffed6d7ad8cbf6724807537b15cd8</code> (in the history of the built commit) |
+| Event commit | <code>478c6e43c73ee31273556b1673c7cd31283bcfc5</code> (in the history of the built commit) |
 
 ## Tools
 
@@ -2826,13 +3366,13 @@ The documentation and the package may be misaligned:
 
 ## Package on PyPI
 
-Latest release: <a href="https://pypi.org/project/lookbook/0.0.13/">0.0.13</a>, newer than the documented version (0.0.12).
+Latest release: <a href="https://pypi.org/project/lookbook/0.0.13/">0.0.13</a>, the same as the documented version.
 
 ## Reproduce
 
 ```bash
 git clone https://github.com/reeleehq/lookbook && cd lookbook
-git checkout 9e641ad87d4ffed6d7ad8cbf6724807537b15cd8
+git checkout 478c6e43c73ee31273556b1673c7cd31283bcfc5
 pip install "epythet==0.2.23"
 epythet quickstart . --ignore tests/ scrap/ examples/
 ```

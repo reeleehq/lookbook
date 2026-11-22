@@ -25,3 +25,17 @@ Deterministic, dependency-free embedder for tests.
 
 The vector is derived from a SHA1 of `image_id` (mixed with `seed`),
 expanded to `dim` dimensions, and L2-normalized.
+
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
+
+#### embed(ref)
+
+Embed `ref` into this embedder’s vector space.
+
+* **Return type:**
+  `ndarray`

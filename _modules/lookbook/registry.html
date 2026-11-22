@@ -251,28 +251,40 @@
 
 </span><span id="line-68">
 </span><span id="line-69">
+<div class="viewcode-block" id="register_filter">
+<a class="viewcode-back" href="../../_autosummary/lookbook.registry.html#lookbook.registry.register_filter">[docs]</a>
 </span><span id="line-70"><span class="k">def</span><span class="w"> </span><span class="nf">register_filter</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
-</span><span id="line-71">    <span class="k">def</span><span class="w"> </span><span class="nf">deco</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
-</span><span id="line-72">        <span class="n">filters</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span><span id="line-73">        <span class="k">return</span> <span class="n">obj</span>
-</span><span id="line-74">
-</span><span id="line-75">    <span class="k">return</span> <span class="n">deco</span>
-</span><span id="line-76">
+</span><span id="line-71"><span class="w">    </span><span class="sd">"""Decorator: register a filter under ``name``."""</span>
+</span><span id="line-72">    <span class="k">def</span><span class="w"> </span><span class="nf">deco</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+</span><span id="line-73">        <span class="n">filters</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="line-74">        <span class="k">return</span> <span class="n">obj</span>
+</span><span id="line-75">
+</span><span id="line-76">    <span class="k">return</span> <span class="n">deco</span></div>
+
 </span><span id="line-77">
-</span><span id="line-78"><span class="k">def</span><span class="w"> </span><span class="nf">register_embedder</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
-</span><span id="line-79">    <span class="k">def</span><span class="w"> </span><span class="nf">deco</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
-</span><span id="line-80">        <span class="n">embedders</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span><span id="line-81">        <span class="k">return</span> <span class="n">obj</span>
-</span><span id="line-82">
-</span><span id="line-83">    <span class="k">return</span> <span class="n">deco</span>
+</span><span id="line-78">
+<div class="viewcode-block" id="register_embedder">
+<a class="viewcode-back" href="../../_autosummary/lookbook.registry.html#lookbook.registry.register_embedder">[docs]</a>
+</span><span id="line-79"><span class="k">def</span><span class="w"> </span><span class="nf">register_embedder</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
+</span><span id="line-80"><span class="w">    </span><span class="sd">"""Decorator: register an embedder under ``name``."""</span>
+</span><span id="line-81">    <span class="k">def</span><span class="w"> </span><span class="nf">deco</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+</span><span id="line-82">        <span class="n">embedders</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="line-83">        <span class="k">return</span> <span class="n">obj</span>
 </span><span id="line-84">
-</span><span id="line-85">
-</span><span id="line-86"><span class="k">def</span><span class="w"> </span><span class="nf">register_selector</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
-</span><span id="line-87">    <span class="k">def</span><span class="w"> </span><span class="nf">deco</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
-</span><span id="line-88">        <span class="n">selectors</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span><span id="line-89">        <span class="k">return</span> <span class="n">obj</span>
-</span><span id="line-90">
-</span><span id="line-91">    <span class="k">return</span> <span class="n">deco</span>
+</span><span id="line-85">    <span class="k">return</span> <span class="n">deco</span></div>
+
+</span><span id="line-86">
+</span><span id="line-87">
+<div class="viewcode-block" id="register_selector">
+<a class="viewcode-back" href="../../_autosummary/lookbook.registry.html#lookbook.registry.register_selector">[docs]</a>
+</span><span id="line-88"><span class="k">def</span><span class="w"> </span><span class="nf">register_selector</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
+</span><span id="line-89"><span class="w">    </span><span class="sd">"""Decorator: register a selector under ``name``."""</span>
+</span><span id="line-90">    <span class="k">def</span><span class="w"> </span><span class="nf">deco</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+</span><span id="line-91">        <span class="n">selectors</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="line-92">        <span class="k">return</span> <span class="n">obj</span>
+</span><span id="line-93">
+</span><span id="line-94">    <span class="k">return</span> <span class="n">deco</span></div>
+
 </span></code></pre></div>
     </div></div>
           </main>
@@ -286,7 +298,7 @@
 </footer>
     </div>
     
-    <script src="../../_static/documentation_options.js?v=3bbcec59"></script>
+    <script src="../../_static/documentation_options.js?v=9fc46840"></script>
     <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>

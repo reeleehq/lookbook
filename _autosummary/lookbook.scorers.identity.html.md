@@ -124,6 +124,13 @@ Compare one candidate ref against the reference; typed result.
 * **Return type:**
   [`SimilarityResult`](#lookbook.scorers.identity.SimilarityResult)
 
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
+
 #### score(ref, manifest)
 
 Scorer-protocol entry point — returns the JSON-able result dict.

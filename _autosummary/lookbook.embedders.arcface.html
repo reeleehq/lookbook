@@ -165,6 +165,26 @@ L2-normalized; we just pick the largest face’s embedding.</p>
 <code class="code docutils literal notranslate"><span class="pre">face_box</span></code> if available; otherwise the largest by area.</p>
 <dl class="field-list simple">
 </dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="lookbook.embedders.arcface.InsightFaceArcFace.config_hash">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">config_hash</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" rel="nofollow noopener" title="(in Python v3.15)"><span class="pre">str</span><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></span><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.embedders.arcface.InsightFaceArcFace.config_hash" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.embedders.arcface.InsightFaceArcFace.config_hash'">¶</a></dt>
+<dd><p>changes whenever a setting that affects its output changes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Cache key for this component</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="lookbook.embedders.arcface.InsightFaceArcFace.embed">
+<span class="sig-name descname"><span class="pre">embed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/embedders/arcface.html#InsightFaceArcFace.embed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.embedders.arcface.InsightFaceArcFace.embed" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.embedders.arcface.InsightFaceArcFace.embed'">¶</a></dt>
+<dd><p>Embed <code class="docutils literal notranslate"><span class="pre">ref</span></code> into this embedder’s vector space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="lookbook.embedders.arcface.MockArcFaceEmbedder">
@@ -180,13 +200,41 @@ get unrelated vectors. Useful only for orchestration tests.</p></li>
 </ul>
 <dl class="field-list simple">
 </dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="lookbook.embedders.arcface.MockArcFaceEmbedder.config_hash">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">config_hash</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" rel="nofollow noopener" title="(in Python v3.15)"><span class="pre">str</span><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></span><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.embedders.arcface.MockArcFaceEmbedder.config_hash" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.embedders.arcface.MockArcFaceEmbedder.config_hash'">¶</a></dt>
+<dd><p>changes whenever a setting that affects its output changes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Cache key for this component</p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="lookbook.embedders.arcface.MockArcFaceEmbedder.embed">
+<span class="sig-name descname"><span class="pre">embed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/embedders/arcface.html#MockArcFaceEmbedder.embed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.embedders.arcface.MockArcFaceEmbedder.embed" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.embedders.arcface.MockArcFaceEmbedder.embed'">¶</a></dt>
+<dd><p>Embed <code class="docutils literal notranslate"><span class="pre">ref</span></code> into this embedder’s vector space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
 </dd></dl>
 </section>
 </div></div><aside class="hidden text-sm xl:block" id="right-sidebar">
 <div class="sticky top-16 -mt-10 max-h-[calc(100vh-5rem)] h-full overflow-y-auto pt-6 space-y-2"><p class="font-medium">On this page</p>
 <ul>
-<li><a :data-current="activeSection === '#lookbook.embedders.arcface.InsightFaceArcFace'" class="reference internal" href="#lookbook.embedders.arcface.InsightFaceArcFace"><code class="docutils literal notranslate"><span class="pre">InsightFaceArcFace</span></code></a></li>
-<li><a :data-current="activeSection === '#lookbook.embedders.arcface.MockArcFaceEmbedder'" class="reference internal" href="#lookbook.embedders.arcface.MockArcFaceEmbedder"><code class="docutils literal notranslate"><span class="pre">MockArcFaceEmbedder</span></code></a></li>
+<li><a :data-current="activeSection === '#lookbook.embedders.arcface.InsightFaceArcFace'" class="reference internal" href="#lookbook.embedders.arcface.InsightFaceArcFace"><code class="docutils literal notranslate"><span class="pre">InsightFaceArcFace</span></code></a><ul>
+<li><a :data-current="activeSection === '#lookbook.embedders.arcface.InsightFaceArcFace.config_hash'" class="reference internal" href="#lookbook.embedders.arcface.InsightFaceArcFace.config_hash"><code class="docutils literal notranslate"><span class="pre">InsightFaceArcFace.config_hash</span></code></a></li>
+<li><a :data-current="activeSection === '#lookbook.embedders.arcface.InsightFaceArcFace.embed'" class="reference internal" href="#lookbook.embedders.arcface.InsightFaceArcFace.embed"><code class="docutils literal notranslate"><span class="pre">InsightFaceArcFace.embed()</span></code></a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#lookbook.embedders.arcface.MockArcFaceEmbedder'" class="reference internal" href="#lookbook.embedders.arcface.MockArcFaceEmbedder"><code class="docutils literal notranslate"><span class="pre">MockArcFaceEmbedder</span></code></a><ul>
+<li><a :data-current="activeSection === '#lookbook.embedders.arcface.MockArcFaceEmbedder.config_hash'" class="reference internal" href="#lookbook.embedders.arcface.MockArcFaceEmbedder.config_hash"><code class="docutils literal notranslate"><span class="pre">MockArcFaceEmbedder.config_hash</span></code></a></li>
+<li><a :data-current="activeSection === '#lookbook.embedders.arcface.MockArcFaceEmbedder.embed'" class="reference internal" href="#lookbook.embedders.arcface.MockArcFaceEmbedder.embed"><code class="docutils literal notranslate"><span class="pre">MockArcFaceEmbedder.embed()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </div>
 </aside>
@@ -200,7 +248,7 @@ get unrelated vectors. Useful only for orchestration tests.</p></li>
 </div>
 </footer>
 </div>
-<script src="../_static/documentation_options.js?v=3bbcec59"></script>
+<script src="../_static/documentation_options.js?v=9fc46840"></script>
 <script src="../_static/doctools.js?v=fd6eb6e6"></script>
 <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
 <script src="../_static/clipboard.min.js?v=a7894cd8"></script>

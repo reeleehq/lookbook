@@ -41,3 +41,10 @@ annotation `quality_metric_id` for `x`, defaulting to 0 when absent.
 
 `weight_quality=0` gives a pure-diversity selection. `weight_quality`
 in 0.1–0.5 typically works well for “diverse but high-quality.”
+
+#### select(candidates, manifest, k, constraints=None)
+
+Choose the images to keep from the scored candidates.
+
+* **Return type:**
+  [`list`](https://docs.python.org/3/builtins/stdtypes.html#list)[[`ImageRef`](lookbook.base.html.md#lookbook.base.ImageRef)]

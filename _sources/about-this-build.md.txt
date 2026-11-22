@@ -5,19 +5,17 @@ orphan: true
 
 # About this build
 
-This documentation was built on **2026-11-21 18:44 UTC** from commit <a href="https://github.com/reeleehq/lookbook/commit/9e641ad87d4ffed6d7ad8cbf6724807537b15cd8"><code>9e641ad</code></a> on branch <code>main</code>, for **lookbook 0.0.12** (from <code>pyproject.toml</code>).
+This documentation was built on **2026-11-22 22:32 UTC** from commit <a href="https://github.com/reeleehq/lookbook/commit/478c6e43c73ee31273556b1673c7cd31283bcfc5"><code>478c6e4</code></a> on branch <code>main</code>, for **lookbook 0.0.13** (from <code>pyproject.toml</code>).
 
-:::{warning}
-The documentation and the package may be misaligned:
-
-- The documented version (0.0.12) is behind the latest release on PyPI (0.0.13): `pip install lookbook` gives newer code than these docs describe.
+:::{note}
+Nothing suggests a mismatch: the tree was clean at the commit above, and the documented version is the one on PyPI.
 :::
 
 ## Source
 
 | | |
 |---|---|
-| Commit | <a href="https://github.com/reeleehq/lookbook/commit/9e641ad87d4ffed6d7ad8cbf6724807537b15cd8"><code>9e641ad87d4ffed6d7ad8cbf6724807537b15cd8</code></a> |
+| Commit | <a href="https://github.com/reeleehq/lookbook/commit/478c6e43c73ee31273556b1673c7cd31283bcfc5"><code>478c6e43c73ee31273556b1673c7cd31283bcfc5</code></a> |
 | Branch | <code>main</code> |
 | Tags at this commit | none |
 | Working tree | clean |
@@ -28,9 +26,9 @@ The documentation and the package may be misaligned:
 | | |
 |---|---|
 | Repository | <code>reeleehq/lookbook</code> |
-| Run | <a href="https://github.com/reeleehq/lookbook/actions/runs/44937026970">44937026970</a> |
+| Run | <a href="https://github.com/reeleehq/lookbook/actions/runs/45078149587">45078149587</a> |
 | Ref | <code>refs/heads/main</code> |
-| Event commit | <code>9e641ad87d4ffed6d7ad8cbf6724807537b15cd8</code> (in the history of the built commit) |
+| Event commit | <code>478c6e43c73ee31273556b1673c7cd31283bcfc5</code> (in the history of the built commit) |
 
 ## Tools
 
@@ -55,13 +53,13 @@ The documentation and the package may be misaligned:
 
 ## Package on PyPI
 
-Latest release: <a href="https://pypi.org/project/lookbook/0.0.13/">0.0.13</a>, newer than the documented version (0.0.12).
+Latest release: <a href="https://pypi.org/project/lookbook/0.0.13/">0.0.13</a>, the same as the documented version.
 
 ## Reproduce
 
 ```bash
 git clone https://github.com/reeleehq/lookbook && cd lookbook
-git checkout 9e641ad87d4ffed6d7ad8cbf6724807537b15cd8
+git checkout 478c6e43c73ee31273556b1673c7cd31283bcfc5
 pip install "epythet==0.2.23"
 epythet quickstart . --ignore tests/ scrap/ examples/
 ```

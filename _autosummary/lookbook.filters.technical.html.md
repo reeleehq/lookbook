@@ -31,11 +31,25 @@ Drop images that are mostly black or mostly white.
 
 Defaults: drop if more than 50% of pixels are below 16 or above 240.
 
+#### keep(ref, manifest)
+
+Return whether `ref` passes this filter.
+
+* **Return type:**
+  [`bool`](https://docs.python.org/3/builtins/functions.html#bool)
+
 ### *class* lookbook.filters.technical.MinBlur(threshold=100.0, name='min_blur')
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
 Drop images whose Laplacian variance is below `threshold` (blurry).
+
+#### keep(ref, manifest)
+
+Return whether `ref` passes this filter.
+
+* **Return type:**
+  [`bool`](https://docs.python.org/3/builtins/functions.html#bool)
 
 ### *class* lookbook.filters.technical.MinResolution(min_long_side=1024, name='min_resolution')
 
@@ -46,6 +60,13 @@ Drop images whose long side is below `min_long_side` pixels.
 Reads the `resolution` annotation. If absent, the filter keeps the image
 (under the principle that filters never drop on missing evidence).
 
+#### keep(ref, manifest)
+
+Return whether `ref` passes this filter.
+
+* **Return type:**
+  [`bool`](https://docs.python.org/3/builtins/functions.html#bool)
+
 ### *class* lookbook.filters.technical.NoExactDuplicate(name='no_exact_duplicate', \_seen=set())
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
@@ -54,6 +75,13 @@ Keep at most one image per `file_hash`.
 
 The first image in iteration order to claim a hash wins; later images
 with the same hash are dropped.
+
+#### keep(ref, manifest)
+
+Return whether `ref` passes this filter.
+
+* **Return type:**
+  [`bool`](https://docs.python.org/3/builtins/functions.html#bool)
 
 ### *class* lookbook.filters.technical.NoNearDuplicate(max_distance=5, name='no_near_duplicate', \_seen_hashes=list())
 
@@ -64,6 +92,13 @@ Keep at most one image per near-duplicate cluster.
 Clusters are formed greedily: the first image to be visited is the
 cluster representative, and any later image whose `phash` is within
 `max_distance` Hamming bits is dropped.
+
+#### keep(ref, manifest)
+
+Return whether `ref` passes this filter.
+
+* **Return type:**
+  [`bool`](https://docs.python.org/3/builtins/functions.html#bool)
 
 ### lookbook.filters.technical.fresh_filter(filter_id, \*\*overrides)
 

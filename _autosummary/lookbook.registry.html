@@ -141,20 +141,40 @@ never <em>subclassed</em>.</p>
 <p class="rubric">Functions</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_embedder</span></code>(name, **kwargs)</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#lookbook.registry.register_embedder" title="lookbook.registry.register_embedder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_embedder</span></code></a>(name, **kwargs)</p></td>
+<td><p>Decorator: register an embedder under <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_filter</span></code>(name, **kwargs)</p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#lookbook.registry.register_filter" title="lookbook.registry.register_filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_filter</span></code></a>(name, **kwargs)</p></td>
+<td><p>Decorator: register a filter under <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#lookbook.registry.register_scorer" title="lookbook.registry.register_scorer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_scorer</span></code></a>(name, **kwargs)</p></td>
 <td><p>Decorator form: <code class="code docutils literal notranslate"><span class="pre">@register_scorer("blur")</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_selector</span></code>(name, **kwargs)</p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#lookbook.registry.register_selector" title="lookbook.registry.register_selector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_selector</span></code></a>(name, **kwargs)</p></td>
+<td><p>Decorator: register a selector under <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
+<dl class="py function">
+<dt class="sig sig-object py" id="lookbook.registry.register_embedder">
+<span class="sig-prename descclassname"><span class="pre">lookbook.registry.</span></span><span class="sig-name descname"><span class="pre">register_embedder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/registry.html#register_embedder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.registry.register_embedder" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.registry.register_embedder'">¶</a></dt>
+<dd><p>Decorator: register an embedder under <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" rel="nofollow noopener" title="(in Python v3.15)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="lookbook.registry.register_filter">
+<span class="sig-prename descclassname"><span class="pre">lookbook.registry.</span></span><span class="sig-name descname"><span class="pre">register_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/registry.html#register_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.registry.register_filter" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.registry.register_filter'">¶</a></dt>
+<dd><p>Decorator: register a filter under <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" rel="nofollow noopener" title="(in Python v3.15)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></span></p>
+</dd>
+</dl>
+</dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="lookbook.registry.register_scorer">
 <span class="sig-prename descclassname"><span class="pre">lookbook.registry.</span></span><span class="sig-name descname"><span class="pre">register_scorer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/registry.html#register_scorer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.registry.register_scorer" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.registry.register_scorer'">¶</a></dt>
@@ -165,11 +185,24 @@ never <em>subclassed</em>.</p>
 </dd>
 </dl>
 </dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="lookbook.registry.register_selector">
+<span class="sig-prename descclassname"><span class="pre">lookbook.registry.</span></span><span class="sig-name descname"><span class="pre">register_selector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/lookbook/registry.html#register_selector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook.registry.register_selector" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#lookbook.registry.register_selector'">¶</a></dt>
+<dd><p>Decorator: register a selector under <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" rel="nofollow noopener" title="(in Python v3.15)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code><svg fill="currentColor" height="1em" stroke="none" viewbox="0 96 960 960" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"></path></svg></a></span></p>
+</dd>
+</dl>
+</dd></dl>
 </section>
 </div></div><aside class="hidden text-sm xl:block" id="right-sidebar">
 <div class="sticky top-16 -mt-10 max-h-[calc(100vh-5rem)] h-full overflow-y-auto pt-6 space-y-2"><p class="font-medium">On this page</p>
 <ul>
+<li><a :data-current="activeSection === '#lookbook.registry.register_embedder'" class="reference internal" href="#lookbook.registry.register_embedder"><code class="docutils literal notranslate"><span class="pre">register_embedder()</span></code></a></li>
+<li><a :data-current="activeSection === '#lookbook.registry.register_filter'" class="reference internal" href="#lookbook.registry.register_filter"><code class="docutils literal notranslate"><span class="pre">register_filter()</span></code></a></li>
 <li><a :data-current="activeSection === '#lookbook.registry.register_scorer'" class="reference internal" href="#lookbook.registry.register_scorer"><code class="docutils literal notranslate"><span class="pre">register_scorer()</span></code></a></li>
+<li><a :data-current="activeSection === '#lookbook.registry.register_selector'" class="reference internal" href="#lookbook.registry.register_selector"><code class="docutils literal notranslate"><span class="pre">register_selector()</span></code></a></li>
 </ul>
 </div>
 </aside>
@@ -183,7 +216,7 @@ never <em>subclassed</em>.</p>
 </div>
 </footer>
 </div>
-<script src="../_static/documentation_options.js?v=3bbcec59"></script>
+<script src="../_static/documentation_options.js?v=9fc46840"></script>
 <script src="../_static/doctools.js?v=fd6eb6e6"></script>
 <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
 <script src="../_static/clipboard.min.js?v=a7894cd8"></script>

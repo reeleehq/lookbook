@@ -268,110 +268,134 @@
 </span><span id="line-82">            <span class="c1"># separate (more expensive) scorer.</span>
 </span><span id="line-83">            <span class="bp">self</span><span class="o">.</span><span class="n">image_id</span> <span class="o">=</span> <span class="n">_hash_id</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">))</span>
 </span><span id="line-84">
+<div class="viewcode-block" id="PathImageRef.open">
+<a class="viewcode-back" href="../../_autosummary/lookbook.refs.html#lookbook.PathImageRef.open">[docs]</a>
 </span><span id="line-85">    <span class="k">def</span><span class="w"> </span><span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="line-86">        <span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>  <span class="c1"># lazy</span>
-</span><span id="line-87">
-</span><span id="line-88">        <span class="k">return</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
-</span><span id="line-89">
-</span><span id="line-90">    <span class="k">def</span><span class="w"> </span><span class="nf">bytes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
-</span><span id="line-91">        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="s2">"rb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-</span><span id="line-92">            <span class="k">return</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-</span><span id="line-93">
+</span><span id="line-86"><span class="w">        </span><span class="sd">"""Open the image (a PIL image)."""</span>
+</span><span id="line-87">        <span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>  <span class="c1"># lazy</span>
+</span><span id="line-88">
+</span><span id="line-89">        <span class="k">return</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">)</span></div>
+
+</span><span id="line-90">
+<div class="viewcode-block" id="PathImageRef.bytes">
+<a class="viewcode-back" href="../../_autosummary/lookbook.refs.html#lookbook.PathImageRef.bytes">[docs]</a>
+</span><span id="line-91">    <span class="k">def</span><span class="w"> </span><span class="nf">bytes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span id="line-92"><span class="w">        </span><span class="sd">"""Return the raw image bytes."""</span>
+</span><span id="line-93">        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="s2">"rb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span><span id="line-94">            <span class="k">return</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span></div>
+
+</span><span id="line-95">
 <div class="viewcode-block" id="PathImageRef.local_path">
 <a class="viewcode-back" href="../../_autosummary/lookbook.refs.html#lookbook.PathImageRef.local_path">[docs]</a>
-</span><span id="line-94">    <span class="k">def</span><span class="w"> </span><span class="nf">local_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">cache_dir</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="line-95"><span class="w">        </span><span class="sd">"""Return the existing on-disk path. ``cache_dir`` is ignored."""</span>
-</span><span id="line-96">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span></div>
+</span><span id="line-96">    <span class="k">def</span><span class="w"> </span><span class="nf">local_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">cache_dir</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="line-97"><span class="w">        </span><span class="sd">"""Return the existing on-disk path. ``cache_dir`` is ignored."""</span>
+</span><span id="line-98">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span></div>
 </div>
 
-</span><span id="line-97">
-</span><span id="line-98">
+</span><span id="line-99">
+</span><span id="line-100">
 <div class="viewcode-block" id="BytesImageRef">
 <a class="viewcode-back" href="../../_autosummary/lookbook.refs.html#lookbook.BytesImageRef">[docs]</a>
-</span><span id="line-99"><span class="nd">@dataclass</span>
-</span><span id="line-100"><span class="k">class</span><span class="w"> </span><span class="nc">BytesImageRef</span><span class="p">:</span>
-</span><span id="line-101"><span class="w">    </span><span class="sd">"""An image stored as raw bytes in memory."""</span>
-</span><span id="line-102">
-</span><span id="line-103">    <span class="n">payload</span><span class="p">:</span> <span class="nb">bytes</span>
-</span><span id="line-104">    <span class="n">image_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span>
-</span><span id="line-105">    <span class="n">metadata</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span>
-</span><span id="line-106">
-</span><span id="line-107">    <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="line-108">        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_id</span><span class="p">:</span>
-</span><span id="line-109">            <span class="bp">self</span><span class="o">.</span><span class="n">image_id</span> <span class="o">=</span> <span class="n">_hash_id</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">payload</span><span class="p">)</span>
-</span><span id="line-110">
-</span><span id="line-111">    <span class="k">def</span><span class="w"> </span><span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="line-112">        <span class="kn">import</span><span class="w"> </span><span class="nn">io</span>
-</span><span id="line-113">        <span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>  <span class="c1"># lazy</span>
-</span><span id="line-114">
-</span><span id="line-115">        <span class="k">return</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">payload</span><span class="p">))</span>
-</span><span id="line-116">
-</span><span id="line-117">    <span class="k">def</span><span class="w"> </span><span class="nf">bytes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
-</span><span id="line-118">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">payload</span>
+</span><span id="line-101"><span class="nd">@dataclass</span>
+</span><span id="line-102"><span class="k">class</span><span class="w"> </span><span class="nc">BytesImageRef</span><span class="p">:</span>
+</span><span id="line-103"><span class="w">    </span><span class="sd">"""An image stored as raw bytes in memory."""</span>
+</span><span id="line-104">
+</span><span id="line-105">    <span class="n">payload</span><span class="p">:</span> <span class="nb">bytes</span>
+</span><span id="line-106">    <span class="n">image_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span>
+</span><span id="line-107">    <span class="n">metadata</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span>
+</span><span id="line-108">
+</span><span id="line-109">    <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="line-110">        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_id</span><span class="p">:</span>
+</span><span id="line-111">            <span class="bp">self</span><span class="o">.</span><span class="n">image_id</span> <span class="o">=</span> <span class="n">_hash_id</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">payload</span><span class="p">)</span>
+</span><span id="line-112">
+<div class="viewcode-block" id="BytesImageRef.open">
+<a class="viewcode-back" href="../../_autosummary/lookbook.refs.html#lookbook.BytesImageRef.open">[docs]</a>
+</span><span id="line-113">    <span class="k">def</span><span class="w"> </span><span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="line-114"><span class="w">        </span><span class="sd">"""Open the image (a PIL image)."""</span>
+</span><span id="line-115">        <span class="kn">import</span><span class="w"> </span><span class="nn">io</span>
+</span><span id="line-116">        <span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>  <span class="c1"># lazy</span>
+</span><span id="line-117">
+</span><span id="line-118">        <span class="k">return</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">payload</span><span class="p">))</span></div>
+
 </span><span id="line-119">
+<div class="viewcode-block" id="BytesImageRef.bytes">
+<a class="viewcode-back" href="../../_autosummary/lookbook.refs.html#lookbook.BytesImageRef.bytes">[docs]</a>
+</span><span id="line-120">    <span class="k">def</span><span class="w"> </span><span class="nf">bytes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span id="line-121"><span class="w">        </span><span class="sd">"""Return the raw image bytes."""</span>
+</span><span id="line-122">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">payload</span></div>
+
+</span><span id="line-123">
 <div class="viewcode-block" id="BytesImageRef.local_path">
 <a class="viewcode-back" href="../../_autosummary/lookbook.refs.html#lookbook.BytesImageRef.local_path">[docs]</a>
-</span><span id="line-120">    <span class="k">def</span><span class="w"> </span><span class="nf">local_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">cache_dir</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="line-121"><span class="w">        </span><span class="sd">"""Materialize the bytes into a file (cached by image_id)."""</span>
-</span><span id="line-122">        <span class="n">d</span> <span class="o">=</span> <span class="n">_materialized_cache_dir</span><span class="p">(</span><span class="n">cache_dir</span><span class="p">)</span>
-</span><span id="line-123">        <span class="n">ext</span> <span class="o">=</span> <span class="n">_ext_from_payload</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">payload</span><span class="p">)</span>
-</span><span id="line-124">        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">image_id</span><span class="si">}{</span><span class="n">ext</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-</span><span id="line-125">        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
-</span><span id="line-126">            <span class="n">tmp</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="s2">".tmp"</span>
-</span><span id="line-127">            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="s2">"wb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-</span><span id="line-128">                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">payload</span><span class="p">)</span>
-</span><span id="line-129">            <span class="n">os</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
-</span><span id="line-130">        <span class="k">return</span> <span class="n">path</span></div>
+</span><span id="line-124">    <span class="k">def</span><span class="w"> </span><span class="nf">local_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">cache_dir</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="line-125"><span class="w">        </span><span class="sd">"""Materialize the bytes into a file (cached by image_id)."""</span>
+</span><span id="line-126">        <span class="n">d</span> <span class="o">=</span> <span class="n">_materialized_cache_dir</span><span class="p">(</span><span class="n">cache_dir</span><span class="p">)</span>
+</span><span id="line-127">        <span class="n">ext</span> <span class="o">=</span> <span class="n">_ext_from_payload</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">payload</span><span class="p">)</span>
+</span><span id="line-128">        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">image_id</span><span class="si">}{</span><span class="n">ext</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="line-129">        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+</span><span id="line-130">            <span class="n">tmp</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="s2">".tmp"</span>
+</span><span id="line-131">            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="s2">"wb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span><span id="line-132">                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">payload</span><span class="p">)</span>
+</span><span id="line-133">            <span class="n">os</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+</span><span id="line-134">        <span class="k">return</span> <span class="n">path</span></div>
 </div>
 
-</span><span id="line-131">
-</span><span id="line-132">
+</span><span id="line-135">
+</span><span id="line-136">
 <div class="viewcode-block" id="UrlImageRef">
 <a class="viewcode-back" href="../../_autosummary/lookbook.refs.html#lookbook.UrlImageRef">[docs]</a>
-</span><span id="line-133"><span class="nd">@dataclass</span>
-</span><span id="line-134"><span class="k">class</span><span class="w"> </span><span class="nc">UrlImageRef</span><span class="p">:</span>
-</span><span id="line-135"><span class="w">    </span><span class="sd">"""An image referenced by URL.</span>
-</span><span id="line-136">
-</span><span id="line-137"><span class="sd">    The bytes are fetched on first access and cached on the instance.</span>
-</span><span id="line-138"><span class="sd">    """</span>
-</span><span id="line-139">
-</span><span id="line-140">    <span class="n">url</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="line-141">    <span class="n">image_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span>
-</span><span id="line-142">    <span class="n">metadata</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span>
-</span><span id="line-143">    <span class="n">_cached</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bytes</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">repr</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</span><span id="line-144">
-</span><span id="line-145">    <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="line-146">        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_id</span><span class="p">:</span>
-</span><span id="line-147">            <span class="bp">self</span><span class="o">.</span><span class="n">image_id</span> <span class="o">=</span> <span class="n">_hash_id</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">))</span>
+</span><span id="line-137"><span class="nd">@dataclass</span>
+</span><span id="line-138"><span class="k">class</span><span class="w"> </span><span class="nc">UrlImageRef</span><span class="p">:</span>
+</span><span id="line-139"><span class="w">    </span><span class="sd">"""An image referenced by URL.</span>
+</span><span id="line-140">
+</span><span id="line-141"><span class="sd">    The bytes are fetched on first access and cached on the instance.</span>
+</span><span id="line-142"><span class="sd">    """</span>
+</span><span id="line-143">
+</span><span id="line-144">    <span class="n">url</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="line-145">    <span class="n">image_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span>
+</span><span id="line-146">    <span class="n">metadata</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span>
+</span><span id="line-147">    <span class="n">_cached</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bytes</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">repr</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </span><span id="line-148">
-</span><span id="line-149">    <span class="k">def</span><span class="w"> </span><span class="nf">bytes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
-</span><span id="line-150">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="line-151">            <span class="kn">from</span><span class="w"> </span><span class="nn">urllib.request</span><span class="w"> </span><span class="kn">import</span> <span class="n">urlopen</span>  <span class="c1"># lazy</span>
+</span><span id="line-149">    <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="line-150">        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_id</span><span class="p">:</span>
+</span><span id="line-151">            <span class="bp">self</span><span class="o">.</span><span class="n">image_id</span> <span class="o">=</span> <span class="n">_hash_id</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">))</span>
 </span><span id="line-152">
-</span><span id="line-153">            <span class="k">with</span> <span class="n">urlopen</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
-</span><span id="line-154">                <span class="bp">self</span><span class="o">.</span><span class="n">_cached</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-</span><span id="line-155">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached</span>
-</span><span id="line-156">
-</span><span id="line-157">    <span class="k">def</span><span class="w"> </span><span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="line-158">        <span class="kn">import</span><span class="w"> </span><span class="nn">io</span>
-</span><span id="line-159">        <span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>  <span class="c1"># lazy</span>
-</span><span id="line-160">
-</span><span id="line-161">        <span class="k">return</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bytes</span><span class="p">()))</span>
-</span><span id="line-162">
+<div class="viewcode-block" id="UrlImageRef.bytes">
+<a class="viewcode-back" href="../../_autosummary/lookbook.refs.html#lookbook.UrlImageRef.bytes">[docs]</a>
+</span><span id="line-153">    <span class="k">def</span><span class="w"> </span><span class="nf">bytes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span id="line-154"><span class="w">        </span><span class="sd">"""Return the raw image bytes."""</span>
+</span><span id="line-155">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="line-156">            <span class="kn">from</span><span class="w"> </span><span class="nn">urllib.request</span><span class="w"> </span><span class="kn">import</span> <span class="n">urlopen</span>  <span class="c1"># lazy</span>
+</span><span id="line-157">
+</span><span id="line-158">            <span class="k">with</span> <span class="n">urlopen</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
+</span><span id="line-159">                <span class="bp">self</span><span class="o">.</span><span class="n">_cached</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span><span id="line-160">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached</span></div>
+
+</span><span id="line-161">
+<div class="viewcode-block" id="UrlImageRef.open">
+<a class="viewcode-back" href="../../_autosummary/lookbook.refs.html#lookbook.UrlImageRef.open">[docs]</a>
+</span><span id="line-162">    <span class="k">def</span><span class="w"> </span><span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="line-163"><span class="w">        </span><span class="sd">"""Open the image (a PIL image)."""</span>
+</span><span id="line-164">        <span class="kn">import</span><span class="w"> </span><span class="nn">io</span>
+</span><span id="line-165">        <span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>  <span class="c1"># lazy</span>
+</span><span id="line-166">
+</span><span id="line-167">        <span class="k">return</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bytes</span><span class="p">()))</span></div>
+
+</span><span id="line-168">
 <div class="viewcode-block" id="UrlImageRef.local_path">
 <a class="viewcode-back" href="../../_autosummary/lookbook.refs.html#lookbook.UrlImageRef.local_path">[docs]</a>
-</span><span id="line-163">    <span class="k">def</span><span class="w"> </span><span class="nf">local_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">cache_dir</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="line-164"><span class="w">        </span><span class="sd">"""Download (once) and return the local path."""</span>
-</span><span id="line-165">        <span class="n">d</span> <span class="o">=</span> <span class="n">_materialized_cache_dir</span><span class="p">(</span><span class="n">cache_dir</span><span class="p">)</span>
-</span><span id="line-166">        <span class="n">payload</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bytes</span><span class="p">()</span>
-</span><span id="line-167">        <span class="n">ext</span> <span class="o">=</span> <span class="n">_ext_from_payload</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
-</span><span id="line-168">        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">image_id</span><span class="si">}{</span><span class="n">ext</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-</span><span id="line-169">        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
-</span><span id="line-170">            <span class="n">tmp</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="s2">".tmp"</span>
-</span><span id="line-171">            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="s2">"wb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-</span><span id="line-172">                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
-</span><span id="line-173">            <span class="n">os</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
-</span><span id="line-174">        <span class="k">return</span> <span class="n">path</span></div>
+</span><span id="line-169">    <span class="k">def</span><span class="w"> </span><span class="nf">local_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">cache_dir</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="line-170"><span class="w">        </span><span class="sd">"""Download (once) and return the local path."""</span>
+</span><span id="line-171">        <span class="n">d</span> <span class="o">=</span> <span class="n">_materialized_cache_dir</span><span class="p">(</span><span class="n">cache_dir</span><span class="p">)</span>
+</span><span id="line-172">        <span class="n">payload</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bytes</span><span class="p">()</span>
+</span><span id="line-173">        <span class="n">ext</span> <span class="o">=</span> <span class="n">_ext_from_payload</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+</span><span id="line-174">        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">image_id</span><span class="si">}{</span><span class="n">ext</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="line-175">        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+</span><span id="line-176">            <span class="n">tmp</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="s2">".tmp"</span>
+</span><span id="line-177">            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="s2">"wb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span><span id="line-178">                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+</span><span id="line-179">            <span class="n">os</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+</span><span id="line-180">        <span class="k">return</span> <span class="n">path</span></div>
 </div>
 
 </span></code></pre></div>
@@ -387,7 +411,7 @@
 </footer>
     </div>
     
-    <script src="../../_static/documentation_options.js?v=3bbcec59"></script>
+    <script src="../../_static/documentation_options.js?v=9fc46840"></script>
     <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>

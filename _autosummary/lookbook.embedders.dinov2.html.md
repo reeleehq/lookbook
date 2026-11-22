@@ -21,3 +21,17 @@ Facebook DINOv2 image embeddings via HuggingFace transformers.
 Defaults to ViT-B/14 (~350 MB). Use `facebook/dinov2-small` for
 smaller-but-weaker (~85 MB), `facebook/dinov2-large` for stronger
 (~1.2 GB).
+
+#### *property* config_hash *: [str](https://docs.python.org/3/builtins/stdtypes.html#str)*
+
+changes whenever a setting that affects its output changes.
+
+* **Type:**
+  Cache key for this component
+
+#### embed(ref)
+
+Embed `ref` into this embedder’s vector space.
+
+* **Return type:**
+  `ndarray`

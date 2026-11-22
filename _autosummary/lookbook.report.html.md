@@ -32,6 +32,13 @@ Render a short human-readable summary.
 * **Return type:**
   [`str`](https://docs.python.org/3/builtins/stdtypes.html#str)
 
+#### to_dict()
+
+Return the report as a plain dict.
+
+* **Return type:**
+  [`dict`](https://docs.python.org/3/builtins/stdtypes.html#dict)
+
 ### lookbook.report.attribute_drops(candidates, filters, manifest)
 
 Apply filters in order, attributing each drop to the first filter
