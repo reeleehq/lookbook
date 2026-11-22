@@ -66,9 +66,11 @@ class MockFaceDetect:
 
     @property
     def config_hash(self) -> str:
+        """Cache key for this component: changes whenever a setting that affects its output changes."""
         return _hash_config(backend="mock", simulate_no_face=self.simulate_no_face)
 
     def score(self, ref: ImageRef, manifest: Manifest):
+        """Score ``ref``; the result is stored in the manifest under this scorer's id."""
         if self.simulate_no_face:
             return None
         with ref.open() as img:
@@ -106,11 +108,13 @@ class InsightFaceDetect:
 
     @property
     def config_hash(self) -> str:
+        """Cache key for this component: changes whenever a setting that affects its output changes."""
         return _hash_config(
             backend="insightface", model=self.model_name, det=self.det_size
         )
 
     def score(self, ref: ImageRef, manifest: Manifest):
+        """Score ``ref``; the result is stored in the manifest under this scorer's id."""
         try:
             import insightface  # type: ignore
             from insightface.app import FaceAnalysis  # type: ignore
@@ -191,9 +195,11 @@ class FaceArea:
 
     @property
     def config_hash(self) -> str:
+        """Cache key for this component: changes whenever a setting that affects its output changes."""
         return "v1"
 
     def score(self, ref: ImageRef, manifest: Manifest) -> dict:
+        """Score ``ref``; the result is stored in the manifest under this scorer's id."""
         box = value_of(manifest, ref.image_id, "face_box")
         res = value_of(manifest, ref.image_id, "resolution") or {}
         if not box:
@@ -258,9 +264,11 @@ class MockHeadPose:
 
     @property
     def config_hash(self) -> str:
+        """Cache key for this component: changes whenever a setting that affects its output changes."""
         return "mock"
 
     def score(self, ref: ImageRef, manifest: Manifest):
+        """Score ``ref``; the result is stored in the manifest under this scorer's id."""
         box = value_of(manifest, ref.image_id, "face_box")
         if not box:
             return None
@@ -296,9 +304,11 @@ class SixDRepNetHeadPose:
 
     @property
     def config_hash(self) -> str:
+        """Cache key for this component: changes whenever a setting that affects its output changes."""
         return _hash_config(backend="6drepnet", v=self.config_version)
 
     def score(self, ref: ImageRef, manifest: Manifest):
+        """Score ``ref``; the result is stored in the manifest under this scorer's id."""
         try:
             from sixdrepnet import SixDRepNet  # type: ignore
             import cv2  # type: ignore
@@ -366,9 +376,11 @@ class FaceQualityProxy:
 
     @property
     def config_hash(self) -> str:
+        """Cache key for this component: changes whenever a setting that affects its output changes."""
         return _hash_config(blur_norm=self.blur_normalization)
 
     def score(self, ref: ImageRef, manifest: Manifest) -> float:
+        """Score ``ref``; the result is stored in the manifest under this scorer's id."""
         box = value_of(manifest, ref.image_id, "face_box")
         area = value_of(manifest, ref.image_id, "face_area") or {}
         if not box:

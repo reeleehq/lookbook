@@ -36,6 +36,7 @@ class MinResolution:
     name: str = "min_resolution"
 
     def keep(self, ref: ImageRef, manifest: Manifest) -> bool:
+        """Return whether ``ref`` passes this filter."""
         res = value_of(manifest, ref.image_id, "resolution")
         if not res:
             return True
@@ -53,6 +54,7 @@ class MinBlur:
     name: str = "min_blur"
 
     def keep(self, ref: ImageRef, manifest: Manifest) -> bool:
+        """Return whether ``ref`` passes this filter."""
         v = value_of(manifest, ref.image_id, "blur")
         if v is None:
             return True
@@ -74,6 +76,7 @@ class ExposureRange:
     name: str = "exposure_range"
 
     def keep(self, ref: ImageRef, manifest: Manifest) -> bool:
+        """Return whether ``ref`` passes this filter."""
         e = value_of(manifest, ref.image_id, "exposure")
         if not e:
             return True
@@ -103,6 +106,7 @@ class NoExactDuplicate:
     _seen: set = field(default_factory=set, repr=False)
 
     def keep(self, ref: ImageRef, manifest: Manifest) -> bool:
+        """Return whether ``ref`` passes this filter."""
         h = value_of(manifest, ref.image_id, "file_hash")
         if not h:
             return True
@@ -129,6 +133,7 @@ class NoNearDuplicate:
     _seen_hashes: list = field(default_factory=list, repr=False)
 
     def keep(self, ref: ImageRef, manifest: Manifest) -> bool:
+        """Return whether ``ref`` passes this filter."""
         h = value_of(manifest, ref.image_id, "phash")
         if not h:
             return True

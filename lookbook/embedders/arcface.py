@@ -42,9 +42,11 @@ class MockArcFaceEmbedder:
 
     @property
     def config_hash(self) -> str:
+        """Cache key for this component: changes whenever a setting that affects its output changes."""
         return f"mock_arcface:{self.dim}:{self.seed}"
 
     def embed(self, ref: ImageRef) -> np.ndarray:
+        """Embed ``ref`` into this embedder's vector space."""
         h = hashlib.sha1(f"{self.seed}:{ref.image_id}".encode("utf-8")).digest()
         rng = np.random.default_rng(int.from_bytes(h, "big") % (2**63))
         v = rng.standard_normal(self.dim).astype(np.float32)
@@ -75,9 +77,11 @@ class InsightFaceArcFace:
 
     @property
     def config_hash(self) -> str:
+        """Cache key for this component: changes whenever a setting that affects its output changes."""
         return f"arcface:{self.model_name}:{self.det_size}"
 
     def embed(self, ref: ImageRef) -> np.ndarray:
+        """Embed ``ref`` into this embedder's vector space."""
         try:
             from insightface.app import FaceAnalysis  # type: ignore
         except ImportError as e:

@@ -83,11 +83,13 @@ class PathImageRef:
             self.image_id = _hash_id(os.path.abspath(self.path).encode("utf-8"))
 
     def open(self):
+        """Open the image (a PIL image)."""
         from PIL import Image  # lazy
 
         return Image.open(self.path)
 
     def bytes(self) -> bytes:
+        """Return the raw image bytes."""
         with open(self.path, "rb") as f:
             return f.read()
 
@@ -109,12 +111,14 @@ class BytesImageRef:
             self.image_id = _hash_id(self.payload)
 
     def open(self):
+        """Open the image (a PIL image)."""
         import io
         from PIL import Image  # lazy
 
         return Image.open(io.BytesIO(self.payload))
 
     def bytes(self) -> bytes:
+        """Return the raw image bytes."""
         return self.payload
 
     def local_path(self, *, cache_dir: Optional[str] = None) -> str:
@@ -147,6 +151,7 @@ class UrlImageRef:
             self.image_id = _hash_id(self.url.encode("utf-8"))
 
     def bytes(self) -> bytes:
+        """Return the raw image bytes."""
         if self._cached is None:
             from urllib.request import urlopen  # lazy
 
@@ -155,6 +160,7 @@ class UrlImageRef:
         return self._cached
 
     def open(self):
+        """Open the image (a PIL image)."""
         import io
         from PIL import Image  # lazy
 

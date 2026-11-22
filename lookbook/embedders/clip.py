@@ -33,9 +33,11 @@ class CLIPEmbedder:
 
     @property
     def config_hash(self) -> str:
+        """Cache key for this component: changes whenever a setting that affects its output changes."""
         return f"clip:{self.model_name}"
 
     def embed(self, ref: ImageRef) -> np.ndarray:
+        """Embed ``ref`` into this embedder's vector space."""
         try:
             import torch  # type: ignore
             from transformers import CLIPModel, CLIPProcessor  # type: ignore

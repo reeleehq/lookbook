@@ -31,6 +31,7 @@ class Report:
     notes: dict = field(default_factory=dict)
 
     def to_dict(self) -> dict:
+        """Return the report as a plain dict."""
         return {
             "n_candidates": self.n_candidates,
             "n_survivors": self.n_survivors,

@@ -75,6 +75,7 @@ class QuotaSelector:
         k: int,
         constraints: Mapping[str, Any] = None,  # type: ignore[assignment]
     ) -> list[ImageRef]:
+        """Choose the images to keep from the scored candidates."""
         candidates = list(candidates)
         if k <= 0 or not candidates:
             return []

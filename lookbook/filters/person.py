@@ -22,6 +22,7 @@ class HasFace:
     name: str = "has_face"
 
     def keep(self, ref: ImageRef, manifest: Manifest) -> bool:
+        """Return whether ``ref`` passes this filter."""
         box = value_of(manifest, ref.image_id, "face_box")
         # When the detector hasn't run yet, keep — filters are non-destructive.
         if not manifest.get((ref.image_id, "face_box")):
@@ -44,6 +45,7 @@ class SingleFaceOnly:
     name: str = "single_face_only"
 
     def keep(self, ref: ImageRef, manifest: Manifest) -> bool:
+        """Return whether ``ref`` passes this filter."""
         box = value_of(manifest, ref.image_id, "face_box")
         if not box:
             # No face at all is a separate concern; HasFace filter handles it.
@@ -62,6 +64,7 @@ class MinFaceArea:
     name: str = "min_face_area"
 
     def keep(self, ref: ImageRef, manifest: Manifest) -> bool:
+        """Return whether ``ref`` passes this filter."""
         area = value_of(manifest, ref.image_id, "face_area")
         if not area:
             return True
@@ -79,6 +82,7 @@ class MinFaceConfidence:
     name: str = "min_face_confidence"
 
     def keep(self, ref: ImageRef, manifest: Manifest) -> bool:
+        """Return whether ``ref`` passes this filter."""
         box = value_of(manifest, ref.image_id, "face_box")
         if not box:
             return True
