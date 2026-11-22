@@ -42,6 +42,7 @@ class Annotation:
 
     @property
     def key(self) -> ManifestKey:
+        """The image's manifest key."""
         return (self.image_id, self.metric_id)
 
 
@@ -56,9 +57,12 @@ class ImageRef(Protocol):
     metadata: Mapping[str, Any]
 
     def open(self) -> Any:  # returns PIL.Image.Image when Pillow is loaded
+        """Open the image (a PIL image)."""
         ...
 
-    def bytes(self) -> bytes: ...
+    def bytes(self) -> bytes:
+        """Return the raw image bytes."""
+        ...
 
 
 @runtime_checkable
@@ -70,14 +74,18 @@ class Scorer(Protocol):
     requires: Tuple[MetricId, ...]
     config_hash: str
 
-    def score(self, ref: ImageRef, manifest: Manifest) -> Any: ...
+    def score(self, ref: ImageRef, manifest: Manifest) -> Any:
+        """Score ``ref``; the result is stored in the manifest under this scorer's id."""
+        ...
 
 
 @runtime_checkable
 class Filter(Protocol):
     """Predicate over annotations that decides whether to keep an image."""
 
-    def keep(self, ref: ImageRef, manifest: Manifest) -> bool: ...
+    def keep(self, ref: ImageRef, manifest: Manifest) -> bool:
+        """Return whether ``ref`` passes this filter."""
+        ...
 
 
 @runtime_checkable
@@ -87,7 +95,9 @@ class Embedder(Protocol):
     space_id: str
     cost_tier: int
 
-    def embed(self, ref: ImageRef) -> Any: ...  # np.ndarray
+    def embed(self, ref: ImageRef) -> Any:
+        """Embed ``ref`` into this embedder's vector space."""
+        ...  # np.ndarray
 
 
 @runtime_checkable
@@ -100,4 +110,6 @@ class Selector(Protocol):
         manifest: Manifest,
         k: int,
         constraints: Mapping[str, Any] = None,  # type: ignore[assignment]
-    ) -> list[ImageRef]: ...
+    ) -> list[ImageRef]:
+        """Choose the images to keep from the scored candidates."""
+        ...

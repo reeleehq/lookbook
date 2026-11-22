@@ -32,9 +32,11 @@ class MockEmbedder:
 
     @property
     def config_hash(self) -> str:
+        """Cache key for this component: changes whenever a setting that affects its output changes."""
         return f"mock:{self.dim}:{self.seed}"
 
     def embed(self, ref: ImageRef) -> np.ndarray:
+        """Embed ``ref`` into this embedder's vector space."""
         h = hashlib.sha1(f"{self.seed}:{ref.image_id}".encode("utf-8")).digest()
         # Expand the 20-byte digest deterministically to `dim` floats.
         rng = np.random.default_rng(int.from_bytes(h, "big") % (2**63))

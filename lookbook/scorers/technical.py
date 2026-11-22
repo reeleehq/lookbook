@@ -74,9 +74,11 @@ class RandomScore:
 
     @property
     def config_hash(self) -> str:
+        """Cache key for this component: changes whenever a setting that affects its output changes."""
         return _hash_config(seed=self.seed)
 
     def score(self, ref: ImageRef, manifest: Manifest) -> float:
+        """Score ``ref``; the result is stored in the manifest under this scorer's id."""
         h = hashlib.sha1(f"{self.seed}:{ref.image_id}".encode("utf-8")).digest()
         return int.from_bytes(h[:8], "big") / 2**64
 
@@ -100,9 +102,11 @@ class Resolution:
 
     @property
     def config_hash(self) -> str:
+        """Cache key for this component: changes whenever a setting that affects its output changes."""
         return "v1"
 
     def score(self, ref: ImageRef, manifest: Manifest) -> dict:
+        """Score ``ref``; the result is stored in the manifest under this scorer's id."""
         # `Image.open` is lazy — does not decode pixels.
         with ref.open() as img:
             w, h = img.size
@@ -131,9 +135,11 @@ class FileHash:
 
     @property
     def config_hash(self) -> str:
+        """Cache key for this component: changes whenever a setting that affects its output changes."""
         return "sha1"
 
     def score(self, ref: ImageRef, manifest: Manifest) -> str:
+        """Score ``ref``; the result is stored in the manifest under this scorer's id."""
         return hashlib.sha1(ref.bytes()).hexdigest()
 
 
@@ -158,9 +164,11 @@ class PerceptualHash:
 
     @property
     def config_hash(self) -> str:
+        """Cache key for this component: changes whenever a setting that affects its output changes."""
         return _hash_config(algorithm=self.algorithm)
 
     def score(self, ref: ImageRef, manifest: Manifest):
+        """Score ``ref``; the result is stored in the manifest under this scorer's id."""
         try:
             import imagehash  # type: ignore
         except ImportError as e:
@@ -203,9 +211,11 @@ class Blur:
 
     @property
     def config_hash(self) -> str:
+        """Cache key for this component: changes whenever a setting that affects its output changes."""
         return _hash_config(max_side=self.max_side, kernel="laplacian3x3")
 
     def score(self, ref: ImageRef, manifest: Manifest) -> float:
+        """Score ``ref``; the result is stored in the manifest under this scorer's id."""
         gray = _to_grayscale_array(ref, max_side=self.max_side)
         try:
             import cv2  # type: ignore
@@ -241,9 +251,11 @@ class Exposure:
 
     @property
     def config_hash(self) -> str:
+        """Cache key for this component: changes whenever a setting that affects its output changes."""
         return _hash_config(max_side=self.max_side)
 
     def score(self, ref: ImageRef, manifest: Manifest) -> dict:
+        """Score ``ref``; the result is stored in the manifest under this scorer's id."""
         gray = _to_grayscale_array(ref, max_side=self.max_side)
         flat = gray.ravel()
         return {
@@ -294,6 +306,7 @@ class TechnicalQuality:
 
     @property
     def config_hash(self) -> str:
+        """Cache key for this component: changes whenever a setting that affects its output changes."""
         return _hash_config(
             blur_norm=self.blur_normalization,
             target=self.target_long_side,
@@ -301,6 +314,7 @@ class TechnicalQuality:
         )
 
     def score(self, ref: ImageRef, manifest: Manifest) -> float:
+        """Score ``ref``; the result is stored in the manifest under this scorer's id."""
         blur = value_of(manifest, ref.image_id, "blur")
         exposure = value_of(manifest, ref.image_id, "exposure") or {}
         res = value_of(manifest, ref.image_id, "resolution") or {}

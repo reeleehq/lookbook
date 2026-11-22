@@ -62,6 +62,7 @@ class RunResult:
     report: dict = field(default_factory=dict)
 
     def to_record(self) -> dict:
+        """Return the run as a JSON-serialisable dict."""
         return {
             "run_id": self.run_id,
             "kept": [r.image_id for r in self.kept],

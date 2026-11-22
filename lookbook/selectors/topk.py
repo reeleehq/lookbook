@@ -26,6 +26,7 @@ class TopK:
         k: int,
         constraints: Mapping[str, Any] = None,  # type: ignore[assignment]
     ) -> list[ImageRef]:
+        """Choose the images to keep from the scored candidates."""
         cands = list(candidates)
         ranked = sorted(
             cands,

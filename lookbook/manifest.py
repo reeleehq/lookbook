@@ -21,6 +21,7 @@ def get_annotation(
 
 
 def has_annotation(manifest: Manifest, image_id: ImageId, metric_id: MetricId) -> bool:
+    """Return whether the manifest holds an annotation for ``(image_id, metric_id)``."""
     return (image_id, metric_id) in manifest
 
 

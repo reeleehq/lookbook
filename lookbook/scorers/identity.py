@@ -364,6 +364,7 @@ class IdentitySimilarity:
 
     @property
     def config_hash(self) -> str:
+        """Cache key for this component: changes whenever a setting that affects its output changes."""
         # Cache key must change if the reference, threshold, or any knob
         # changes — otherwise a stale candidate score would be reused.
         ref_digest = hashlib.sha1(
