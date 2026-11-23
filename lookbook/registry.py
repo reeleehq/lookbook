@@ -69,6 +69,7 @@ def register_scorer(name: str, **kwargs) -> Callable:
 
 def register_filter(name: str, **kwargs) -> Callable:
     """Decorator: register a filter under ``name``."""
+
     def deco(obj):
         filters.register(name, obj, **kwargs)
         return obj
@@ -78,6 +79,7 @@ def register_filter(name: str, **kwargs) -> Callable:
 
 def register_embedder(name: str, **kwargs) -> Callable:
     """Decorator: register an embedder under ``name``."""
+
     def deco(obj):
         embedders.register(name, obj, **kwargs)
         return obj
@@ -87,6 +89,7 @@ def register_embedder(name: str, **kwargs) -> Callable:
 
 def register_selector(name: str, **kwargs) -> Callable:
     """Decorator: register a selector under ``name``."""
+
     def deco(obj):
         selectors.register(name, obj, **kwargs)
         return obj
