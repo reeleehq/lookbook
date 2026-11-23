@@ -2,7 +2,7 @@
 
 # About this build
 
-This documentation was built on **2026-11-22 22:32 UTC** from commit <a href="https://github.com/reeleehq/lookbook/commit/478c6e43c73ee31273556b1673c7cd31283bcfc5"><code>478c6e4</code></a> on branch <code>main</code>, for **lookbook 0.0.13** (from <code>pyproject.toml</code>).
+This documentation was built on **2026-11-23 06:40 UTC** from commit <a href="https://github.com/reeleehq/lookbook/commit/6f856e706b7a3f092fb5a07f9777b883c4bea4ce"><code>6f856e7</code></a> on branch <code>main</code>, for **lookbook 0.0.13** (from <code>pyproject.toml</code>).
 
 #### NOTE
 Nothing suggests a mismatch: the tree was clean at the commit above, and the documented version is the one on PyPI.
@@ -11,7 +11,7 @@ Nothing suggests a mismatch: the tree was clean at the commit above, and the doc
 
 |                     |                                                                                                                                                          |
 |---------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Commit              | <a href="https://github.com/reeleehq/lookbook/commit/478c6e43c73ee31273556b1673c7cd31283bcfc5"><code>478c6e43c73ee31273556b1673c7cd31283bcfc5</code></a> |
+| Commit              | <a href="https://github.com/reeleehq/lookbook/commit/6f856e706b7a3f092fb5a07f9777b883c4bea4ce"><code>6f856e706b7a3f092fb5a07f9777b883c4bea4ce</code></a> |
 | Branch              | <code>main</code>                                                                                                                                        |
 | Tags at this commit | none                                                                                                                                                     |
 | Working tree        | clean                                                                                                                                                    |
@@ -22,9 +22,9 @@ Nothing suggests a mismatch: the tree was clean at the commit above, and the doc
 |              |                                                                                            |
 |--------------|--------------------------------------------------------------------------------------------|
 | Repository   | <code>reeleehq/lookbook</code>                                                             |
-| Run          | <a href="https://github.com/reeleehq/lookbook/actions/runs/45078149587">45078149587</a>    |
+| Run          | <a href="https://github.com/reeleehq/lookbook/actions/runs/45125487229">45125487229</a>    |
 | Ref          | <code>refs/heads/main</code>                                                               |
-| Event commit | <code>478c6e43c73ee31273556b1673c7cd31283bcfc5</code> (in the history of the built commit) |
+| Event commit | <code>6f856e706b7a3f092fb5a07f9777b883c4bea4ce</code> (in the history of the built commit) |
 
 ## Tools
 
@@ -55,7 +55,7 @@ Latest release: <a href="https://pypi.org/project/lookbook/0.0.13/">0.0.13</a>, 
 
 ```bash
 git clone https://github.com/reeleehq/lookbook && cd lookbook
-git checkout 478c6e43c73ee31273556b1673c7cd31283bcfc5
+git checkout 6f856e706b7a3f092fb5a07f9777b883c4bea4ce
 pip install "epythet==0.2.23"
 epythet quickstart . --ignore tests/ scrap/ examples/
 ```

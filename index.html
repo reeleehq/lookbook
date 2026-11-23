@@ -122,33 +122,7 @@
 
 <section id="lookbook">
 <h1>lookbook<a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#lookbook">¶</a></h1>
-<p>Distill raw image pools into optimized, high-diversity reference sets for
-training personalized models (character LoRAs, product LoRAs, style LoRAs).</p>
-<blockquote>
-<div><p><strong>Status:</strong> All five v1 phases are shipped. The package can: clean a
-photo dump (200→20 in &lt;30s, no GPU); run the full embeddings +
-facility-location workflow with CLIP or DINOv2; curate a person /
-character LoRA with face detection, ArcFace identity diversity, and
-pose-bin quotas; serve every verb over HTTP (FastAPI via <code class="docutils literal notranslate"><span class="pre">qh</span></code>); and
-expose every verb over MCP (via <code class="docutils literal notranslate"><span class="pre">fastmcp</span></code>) so an LLM agent can drive
-curation directly. Since then it has also gained one-call character /
-environment reference picks, a human-in-the-loop <code class="docutils literal notranslate"><span class="pre">curate_interactive</span></code>,
-and <code class="docutils literal notranslate"><span class="pre">compare_to_reference</span></code> — “is this generation still the same
-subject?” as a number. See
-<a class="reference internal" href="#misc/docs/lookbook_development_plan.md"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">misc/docs/lookbook_development_plan.md</span></code></span></a>
-for the full roadmap and <a class="reference internal" href="#misc/docs/lookbook_design_report.md"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">misc/docs/lookbook_design_report.md</span></code></span></a>
-for the design rationale.</p>
-</div></blockquote>
-<section id="why">
-<h2>Why<a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#why" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#why'">¶</a></h2>
-<p>Training a personalized image model needs ~15–30 carefully chosen reference
-images, where each adds new context — pose, lighting, expression, distance.
-“Top-K by score” collapses to near-duplicates; this is fundamentally a
-<em>set-selection</em> problem with diversity as a constraint, not a tiebreaker.</p>
-<p><code class="docutils literal notranslate"><span class="pre">lookbook</span></code> separates <strong>per-image scoring</strong> (is this image individually good?)
-from <strong>set-level selection</strong> (does this collection cover the concept?), and
-makes both extensible.</p>
-</section>
+<p>Distill raw image pools into optimized, high-diversity reference sets for training personalized models (character LoRAs, product LoRAs, style LoRAs).</p>
 <section id="install">
 <h2>Install<a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#install" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#install'">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">pip<span class="w"> </span>install<span class="w"> </span>lookbook<span class="w">                  </span><span class="c1"># core: Pillow, numpy, dol, meshed, config2py</span>
@@ -159,8 +133,7 @@ makes both extensible.</p>
 </span><span id="line-6">pip<span class="w"> </span>install<span class="w"> </span>lookbook<span class="o">[</span>mcp<span class="o">]</span><span class="w">             </span><span class="c1"># + fastmcp (Anthropic MCP server)</span>
 </span></code></pre></div>
 </div>
-<p>The base install has no ML dependencies — Phase 1 (cheap funnel) works on a
-plain laptop. <code class="docutils literal notranslate"><span class="pre">[embed]</span></code> and beyond pull torch.</p>
+<p>The base install has no ML dependencies — Phase 1 (cheap funnel) works on a plain laptop. <code class="docutils literal notranslate"><span class="pre">[embed]</span></code> and beyond pull torch.</p>
 </section>
 <section id="quickstart">
 <h2>Quickstart<a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#quickstart" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#quickstart'">¶</a></h2>
@@ -221,8 +194,7 @@ plain laptop. <code class="docutils literal notranslate"><span class="pre">[embe
 </div>
 <section id="one-call-presets-character-and-environment-references">
 <h3>One-call presets: character and environment references<a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#one-call-presets-character-and-environment-references" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#one-call-presets-character-and-environment-references'">¶</a></h3>
-<p>Two opinionated facades over <code class="docutils literal notranslate"><span class="pre">curate</span></code> for the “pick the best reference
-image(s) from this pool” job:</p>
+<p>Two opinionated facades over <code class="docutils literal notranslate"><span class="pre">curate</span></code> for the “pick the best reference image(s) from this pool” job:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="kn">from</span><span class="w"> </span><span class="nn">lookbook</span><span class="w"> </span><span class="kn">import</span> <span class="n">curate_for_character</span><span class="p">,</span> <span class="n">curate_for_environment</span>
 </span><span id="line-2">
 </span><span id="line-3"><span class="c1"># Known character: scores resolution / sharpness / exposure / face quality,</span>
@@ -238,6 +210,7 @@ image(s) from this pool” job:</p>
 </section>
 <section id="identity-check-does-this-generation-still-match-the-reference">
 <h3>Identity check: does this generation still match the reference?<a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#identity-check-does-this-generation-still-match-the-reference" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#identity-check-does-this-generation-still-match-the-reference'">¶</a></h3>
+
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="kn">from</span><span class="w"> </span><span class="nn">lookbook</span><span class="w"> </span><span class="kn">import</span> <span class="n">compare_to_reference</span>
 </span><span id="line-2">
 </span><span id="line-3"><span class="n">result</span> <span class="o">=</span> <span class="n">compare_to_reference</span><span class="p">(</span><span class="n">reference</span><span class="p">,</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">embedder</span><span class="o">=</span><span class="s2">"arcface"</span><span class="p">)</span>
@@ -246,16 +219,11 @@ image(s) from this pool” job:</p>
 </span><span id="line-6"><span class="n">result</span><span class="o">.</span><span class="n">per_reference</span>  <span class="c1"># per-view breakdown when the reference is a pool</span>
 </span></code></pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">reference</span></code> is one image ref or a list of them (folded by <code class="docutils literal notranslate"><span class="pre">aggregation</span></code>,
-<code class="docutils literal notranslate"><span class="pre">"max"</span></code> by default). Use <code class="docutils literal notranslate"><span class="pre">"clip"</span></code> / <code class="docutils literal notranslate"><span class="pre">"dinov2"</span></code> as the embedder for scenes,
-props and architecture. Also exposed as <code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/compare_to_reference</span></code> and as
-the <code class="docutils literal notranslate"><span class="pre">compare_to_reference</span></code> MCP tool.</p>
+<p><code class="docutils literal notranslate"><span class="pre">reference</span></code> is one image ref or a list of them (folded by <code class="docutils literal notranslate"><span class="pre">aggregation</span></code>, <code class="docutils literal notranslate"><span class="pre">"max"</span></code> by default). Use <code class="docutils literal notranslate"><span class="pre">"clip"</span></code> / <code class="docutils literal notranslate"><span class="pre">"dinov2"</span></code> as the embedder for scenes, props and architecture. Also exposed as <code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/compare_to_reference</span></code> and as the <code class="docutils literal notranslate"><span class="pre">compare_to_reference</span></code> MCP tool.</p>
 </section>
 <section id="interactive-curate-keep-the-human-in-the-loop">
 <h3>Interactive curate (keep the human in the loop)<a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#interactive-curate-keep-the-human-in-the-loop" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#interactive-curate-keep-the-human-in-the-loop'">¶</a></h3>
-<p>Pipeline-only top-k can rank “boring but sharp” above “stylistically
-perfect but slightly blurry”. <code class="docutils literal notranslate"><span class="pre">curate_interactive</span></code> invites the caller
-into the loop, one round at a time:</p>
+<p>Pipeline-only top-k can rank “boring but sharp” above “stylistically perfect but slightly blurry”. <code class="docutils literal notranslate"><span class="pre">curate_interactive</span></code> invites the caller into the loop, one round at a time:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="kn">from</span><span class="w"> </span><span class="nn">lookbook</span><span class="w"> </span><span class="kn">import</span> <span class="n">curate_interactive</span><span class="p">,</span> <span class="n">InteractiveDecision</span>
 </span><span id="line-2">
 </span><span id="line-3">
@@ -273,24 +241,25 @@ into the loop, one round at a time:</p>
 </span><span id="line-15"><span class="p">)</span>
 </span></code></pre></div>
 </div>
-<p>Pre-recorded decisions (a list of <code class="docutils literal notranslate"><span class="pre">InteractiveDecision</span></code>) are accepted in
-place of the callable — handy for tests, headless replays, and
-agent-scripted flows.</p>
+<p>Pre-recorded decisions (a list of <code class="docutils literal notranslate"><span class="pre">InteractiveDecision</span></code>) are accepted in place of the callable — handy for tests, headless replays, and agent-scripted flows.</p>
 </section>
 <section id="local-path-on-every-imageref">
 <span id="local_path-on-every-imageref"></span><h3><code class="docutils literal notranslate"><span class="pre">local_path()</span></code> on every ImageRef<a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#local-path-on-every-imageref" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#local-path-on-every-imageref'">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">PathImageRef</span></code>, <code class="docutils literal notranslate"><span class="pre">BytesImageRef</span></code>, and <code class="docutils literal notranslate"><span class="pre">UrlImageRef</span></code> all expose
-<code class="docutils literal notranslate"><span class="pre">local_path(cache_dir=None)</span> <span class="pre">-&gt;</span> <span class="pre">str</span></code>. Path refs return their existing
-path; bytes/url refs materialize once into a content-addressed cache
-(honors <code class="docutils literal notranslate"><span class="pre">$LOOKBOOK_REFS_CACHE_DIR</span></code>). The free function
-<code class="docutils literal notranslate"><span class="pre">lookbook.to_local_path(ref)</span></code> dispatches across all subtypes — useful
-when downstream tools (ffmpeg, fal upload) need a real file.</p>
+<p><code class="docutils literal notranslate"><span class="pre">PathImageRef</span></code>, <code class="docutils literal notranslate"><span class="pre">BytesImageRef</span></code>, and <code class="docutils literal notranslate"><span class="pre">UrlImageRef</span></code> all expose <code class="docutils literal notranslate"><span class="pre">local_path(cache_dir=None)</span> <span class="pre">-&gt;</span> <span class="pre">str</span></code>. Path refs return their existing path; bytes/url refs materialize once into a content-addressed cache (honors <code class="docutils literal notranslate"><span class="pre">$LOOKBOOK_REFS_CACHE_DIR</span></code>). The free function <code class="docutils literal notranslate"><span class="pre">lookbook.to_local_path(ref)</span></code> dispatches across all subtypes — useful when downstream tools (ffmpeg, fal upload) need a real file.</p>
 </section>
+</section>
+<section id="why">
+<h2>Why<a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#why" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#why'">¶</a></h2>
+<p>Training a personalized image model needs ~15–30 carefully chosen reference images, where each adds new context — pose, lighting, expression, distance. “Top-K by score” collapses to near-duplicates; this is fundamentally a <em>set-selection</em> problem with diversity as a constraint, not a tiebreaker.</p>
+<p><code class="docutils literal notranslate"><span class="pre">lookbook</span></code> separates <strong>per-image scoring</strong> (is this image individually good?) from <strong>set-level selection</strong> (does this collection cover the concept?), and makes both extensible.</p>
+</section>
+<section id="status">
+<h2>Status<a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#status" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#status'">¶</a></h2>
+<p>All five v1 phases are shipped. The package can: clean a photo dump (200→20 in &lt;30s, no GPU); run the full embeddings + facility-location workflow with CLIP or DINOv2; curate a person / character LoRA with face detection, ArcFace identity diversity, and pose-bin quotas; serve every verb over HTTP (FastAPI via <code class="docutils literal notranslate"><span class="pre">qh</span></code>); and expose every verb over MCP (via <code class="docutils literal notranslate"><span class="pre">fastmcp</span></code>) so an LLM agent can drive curation directly. Since then it has also gained one-call character / environment reference picks, a human-in-the-loop <code class="docutils literal notranslate"><span class="pre">curate_interactive</span></code>, and <code class="docutils literal notranslate"><span class="pre">compare_to_reference</span></code> — “is this generation still the same subject?” as a number. See <a class="reference internal" href="#misc/docs/lookbook_development_plan.md"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">misc/docs/lookbook_development_plan.md</span></code></span></a> for the full roadmap and <a class="reference internal" href="#misc/docs/lookbook_design_report.md"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">misc/docs/lookbook_design_report.md</span></code></span></a> for the design rationale.</p>
 </section>
 <section id="architecture">
 <h2>Architecture<a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#architecture" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#architecture'">¶</a></h2>
-<p>Five layers; the heavy ML libs live only at the bottom so the upper layers
-stay laptop-installable.</p>
+<p>Five layers; the heavy ML libs live only at the bottom so the upper layers stay laptop-installable.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">Interface       (CLI, HTTP via qh, MCP via fastmcp, Python lib)
 </span><span id="line-2">   ↓
 </span><span id="line-3">Recipe / facade (lookbook.curate, named recipes, profiles)
@@ -302,14 +271,8 @@ stay laptop-installable.</p>
 </span><span id="line-9">Backend        (CLIP, DINOv2, InsightFace, 6DRepNet — wrapped, lazy-imported)
 </span></code></pre></div>
 </div>
-<p>The <strong>manifest</strong> — <code class="docutils literal notranslate"><span class="pre">MutableMapping[(image_id,</span> <span class="pre">metric_id),</span> <span class="pre">Annotation]</span></code> — is
-the SSOT. Persistence is pluggable via <code class="docutils literal notranslate"><span class="pre">dol</span></code>: filesystem (default), SQLite,
-S3, Mongo, Redis. The default location is the user’s app data folder via
-<code class="docutils literal notranslate"><span class="pre">config2py</span></code>: <code class="docutils literal notranslate"><span class="pre">~/.local/share/lookbook</span></code> on Linux <em>and</em> macOS (it follows the XDG
-convention, not <code class="docutils literal notranslate"><span class="pre">~/Library/Application</span> <span class="pre">Support</span></code>), <code class="docutils literal notranslate"><span class="pre">%LOCALAPPDATA%</span></code> on Windows.</p>
-<p>New scorers/selectors/filters are <em>registered</em>, never subclassed. See the
-<code class="docutils literal notranslate"><span class="pre">.claude/skills/</span></code> directory for developer skills (<code class="docutils literal notranslate"><span class="pre">lookbook-dev</span></code>,
-<code class="docutils literal notranslate"><span class="pre">lookbook-add-scorer</span></code>, <code class="docutils literal notranslate"><span class="pre">lookbook-add-selector</span></code>, <code class="docutils literal notranslate"><span class="pre">lookbook-storage</span></code>).</p>
+<p>The <strong>manifest</strong> — <code class="docutils literal notranslate"><span class="pre">MutableMapping[(image_id,</span> <span class="pre">metric_id),</span> <span class="pre">Annotation]</span></code> — is the SSOT. Persistence is pluggable via <code class="docutils literal notranslate"><span class="pre">dol</span></code>: filesystem (default), SQLite, S3, Mongo, Redis. The default location is the user’s app data folder via <code class="docutils literal notranslate"><span class="pre">config2py</span></code>: <code class="docutils literal notranslate"><span class="pre">~/.local/share/lookbook</span></code> on Linux <em>and</em> macOS (it follows the XDG convention, not <code class="docutils literal notranslate"><span class="pre">~/Library/Application</span> <span class="pre">Support</span></code>), <code class="docutils literal notranslate"><span class="pre">%LOCALAPPDATA%</span></code> on Windows.</p>
+<p>New scorers/selectors/filters are <em>registered</em>, never subclassed. See the <code class="docutils literal notranslate"><span class="pre">.claude/skills/</span></code> directory for developer skills (<code class="docutils literal notranslate"><span class="pre">lookbook-dev</span></code>, <code class="docutils literal notranslate"><span class="pre">lookbook-add-scorer</span></code>, <code class="docutils literal notranslate"><span class="pre">lookbook-add-selector</span></code>, <code class="docutils literal notranslate"><span class="pre">lookbook-storage</span></code>).</p>
 </section>
 <section id="project-layout">
 <h2>Project layout<a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#project-layout" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#project-layout'">¶</a></h2>
@@ -347,8 +310,7 @@ convention, not <code class="docutils literal notranslate"><span class="pre">~/L
 </section>
 <section id="claude-code-skills">
 <h2>Claude Code skills<a @click.prevent="window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() =&gt; $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)" aria-label="Copy link to this element" class="headerlink" data-tooltip="Copy link to this element" href="#claude-code-skills" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#claude-code-skills'">¶</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">.claude/skills/</span></code> directory ships nine skills covering both ends of
-the workflow:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">.claude/skills/</span></code> directory ships nine skills covering both ends of the workflow:</p>
 <p><strong>Dev skills</strong> (used while building / extending lookbook):</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">lookbook-dev</span></code> — overall architecture, cross-references between modules</p></li>
@@ -368,11 +330,10 @@ the workflow:</p>
 
 </section>
 </section>
-<p class="epythet-provenance" style="font-size:.8em;opacity:.65;margin-top:2.5em;text-align:right">built 2026-11-22 22:32 UTC from <a href="https://github.com/reeleehq/lookbook/commit/478c6e43c73ee31273556b1673c7cd31283bcfc5">478c6e4</a> (main) · lookbook 0.0.13 · <a href="about-this-build.html">about this build</a></p>
+<p class="epythet-provenance" style="font-size:.8em;opacity:.65;margin-top:2.5em;text-align:right">built 2026-11-23 06:40 UTC from <a href="https://github.com/reeleehq/lookbook/commit/6f856e706b7a3f092fb5a07f9777b883c4bea4ce">6f856e7</a> (main) · lookbook 0.0.13 · <a href="about-this-build.html">about this build</a></p>
 </div></div><aside class="hidden text-sm xl:block" id="right-sidebar">
 <div class="sticky top-16 -mt-10 max-h-[calc(100vh-5rem)] h-full overflow-y-auto pt-6 space-y-2"><p class="font-medium">On this page</p>
 <ul>
-<li><a :data-current="activeSection === '#why'" class="reference internal" href="#why">Why</a></li>
 <li><a :data-current="activeSection === '#install'" class="reference internal" href="#install">Install</a></li>
 <li><a :data-current="activeSection === '#quickstart'" class="reference internal" href="#quickstart">Quickstart</a><ul>
 <li><a :data-current="activeSection === '#one-call-presets-character-and-environment-references'" class="reference internal" href="#one-call-presets-character-and-environment-references">One-call presets: character and environment references</a></li>
@@ -381,6 +342,8 @@ the workflow:</p>
 <li><a :data-current="activeSection === '#local-path-on-every-imageref'" class="reference internal" href="#local-path-on-every-imageref"><code class="docutils literal notranslate"><span class="pre">local_path()</span></code> on every ImageRef</a></li>
 </ul>
 </li>
+<li><a :data-current="activeSection === '#why'" class="reference internal" href="#why">Why</a></li>
+<li><a :data-current="activeSection === '#status'" class="reference internal" href="#status">Status</a></li>
 <li><a :data-current="activeSection === '#architecture'" class="reference internal" href="#architecture">Architecture</a></li>
 <li><a :data-current="activeSection === '#project-layout'" class="reference internal" href="#project-layout">Project layout</a></li>
 <li><a :data-current="activeSection === '#claude-code-skills'" class="reference internal" href="#claude-code-skills">Claude Code skills</a></li>

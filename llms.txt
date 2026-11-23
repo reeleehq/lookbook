@@ -5,7 +5,7 @@
 
 ## Pages
 
-- [lookbook](index.html.md): Distill raw image pools into optimized, high-diversity reference sets for
+- [lookbook](index.html.md): Distill raw image pools into optimized, high-diversity reference sets for training personalized mode...
 - [API reference](api.html.md): | &#96;lookbook&#96;   | lookbook — distill image pools into reference sets for personalized model training....
 - [lookbook](_autosummary/lookbook.html.md): lookbook — distill image pools into reference sets for personalized model training.
 - [lookbook.registry](_autosummary/lookbook.registry.html.md): Plugin registry for scorers, filters, embedders, selectors.
@@ -40,7 +40,7 @@
 - [lookbook.selectors.topk](_autosummary/lookbook.selectors.topk.html.md): Top-K selector: pick the K highest-scoring images by a single metric.
 - [lookbook.store](_autosummary/lookbook.store.html.md): Repository pattern for lookbook persistence.
 - [For AI agents](ai-agents.html.md): &#96;lookbook&#96; ships artifacts for coding agents alongside its code. This page lists
-- [About this build](about-this-build.html.md): This documentation was built on &#42;&#42;2026-11-22 22:32 UTC&#42;&#42; from commit &lt;a href="https://github.com/ree...
+- [About this build](about-this-build.html.md): This documentation was built on &#42;&#42;2026-11-23 06:40 UTC&#42;&#42; from commit &lt;a href="https://github.com/ree...
 
 ## Optional
 
