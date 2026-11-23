@@ -1,32 +1,6 @@
 # lookbook
 
-Distill raw image pools into optimized, high-diversity reference sets for
-training personalized models (character LoRAs, product LoRAs, style LoRAs).
-
-> **Status:** All five v1 phases are shipped. The package can: clean a
-> photo dump (200→20 in <30s, no GPU); run the full embeddings +
-> facility-location workflow with CLIP or DINOv2; curate a person /
-> character LoRA with face detection, ArcFace identity diversity, and
-> pose-bin quotas; serve every verb over HTTP (FastAPI via `qh`); and
-> expose every verb over MCP (via `fastmcp`) so an LLM agent can drive
-> curation directly. Since then it has also gained one-call character /
-> environment reference picks, a human-in-the-loop `curate_interactive`,
-> and `compare_to_reference` — "is this generation still the same
-> subject?" as a number. See
-> [`misc/docs/lookbook_development_plan.md`](misc/docs/lookbook_development_plan.md)
-> for the full roadmap and [`misc/docs/lookbook_design_report.md`](misc/docs/lookbook_design_report.md)
-> for the design rationale.
-
-## Why
-
-Training a personalized image model needs ~15–30 carefully chosen reference
-images, where each adds new context — pose, lighting, expression, distance.
-"Top-K by score" collapses to near-duplicates; this is fundamentally a
-*set-selection* problem with diversity as a constraint, not a tiebreaker.
-
-`lookbook` separates **per-image scoring** (is this image individually good?)
-from **set-level selection** (does this collection cover the concept?), and
-makes both extensible.
+Distill raw image pools into optimized, high-diversity reference sets for training personalized models (character LoRAs, product LoRAs, style LoRAs).
 
 ## Install
 
@@ -39,8 +13,7 @@ pip install lookbook[http]            # + FastAPI / qh server
 pip install lookbook[mcp]             # + fastmcp (Anthropic MCP server)
 ```
 
-The base install has no ML dependencies — Phase 1 (cheap funnel) works on a
-plain laptop. `[embed]` and beyond pull torch.
+The base install has no ML dependencies — Phase 1 (cheap funnel) works on a plain laptop. `[embed]` and beyond pull torch.
 
 ## Quickstart
 
@@ -105,8 +78,7 @@ print([r.image_id for r in result.kept])
 
 ### One-call presets: character and environment references
 
-Two opinionated facades over `curate` for the "pick the best reference
-image(s) from this pool" job:
+Two opinionated facades over `curate` for the "pick the best reference image(s) from this pool" job:
 
 ```python
 from lookbook import curate_for_character, curate_for_environment
@@ -123,6 +95,7 @@ best = curate_for_environment("./plates", k=3)
 
 ### Identity check: does this generation still match the reference?
 
+<!-- wads-docs: skip needs a reference image from the reader -->
 ```python
 from lookbook import compare_to_reference
 
@@ -132,16 +105,11 @@ result.passed  # score >= threshold (0.85 default) — advisory
 result.per_reference  # per-view breakdown when the reference is a pool
 ```
 
-`reference` is one image ref or a list of them (folded by `aggregation`,
-`"max"` by default). Use `"clip"` / `"dinov2"` as the embedder for scenes,
-props and architecture. Also exposed as `POST /compare_to_reference` and as
-the `compare_to_reference` MCP tool.
+`reference` is one image ref or a list of them (folded by `aggregation`, `"max"` by default). Use `"clip"` / `"dinov2"` as the embedder for scenes, props and architecture. Also exposed as `POST /compare_to_reference` and as the `compare_to_reference` MCP tool.
 
 ### Interactive curate (keep the human in the loop)
 
-Pipeline-only top-k can rank "boring but sharp" above "stylistically
-perfect but slightly blurry". `curate_interactive` invites the caller
-into the loop, one round at a time:
+Pipeline-only top-k can rank "boring but sharp" above "stylistically perfect but slightly blurry". `curate_interactive` invites the caller into the loop, one round at a time:
 
 ```python
 from lookbook import curate_interactive, InteractiveDecision
@@ -161,23 +129,25 @@ result = curate_interactive(
 )
 ```
 
-Pre-recorded decisions (a list of `InteractiveDecision`) are accepted in
-place of the callable — handy for tests, headless replays, and
-agent-scripted flows.
+Pre-recorded decisions (a list of `InteractiveDecision`) are accepted in place of the callable — handy for tests, headless replays, and agent-scripted flows.
 
 ### `local_path()` on every ImageRef
 
-`PathImageRef`, `BytesImageRef`, and `UrlImageRef` all expose
-`local_path(cache_dir=None) -> str`. Path refs return their existing
-path; bytes/url refs materialize once into a content-addressed cache
-(honors `$LOOKBOOK_REFS_CACHE_DIR`). The free function
-`lookbook.to_local_path(ref)` dispatches across all subtypes — useful
-when downstream tools (ffmpeg, fal upload) need a real file.
+`PathImageRef`, `BytesImageRef`, and `UrlImageRef` all expose `local_path(cache_dir=None) -> str`. Path refs return their existing path; bytes/url refs materialize once into a content-addressed cache (honors `$LOOKBOOK_REFS_CACHE_DIR`). The free function `lookbook.to_local_path(ref)` dispatches across all subtypes — useful when downstream tools (ffmpeg, fal upload) need a real file.
+
+## Why
+
+Training a personalized image model needs ~15–30 carefully chosen reference images, where each adds new context — pose, lighting, expression, distance. "Top-K by score" collapses to near-duplicates; this is fundamentally a *set-selection* problem with diversity as a constraint, not a tiebreaker.
+
+`lookbook` separates **per-image scoring** (is this image individually good?) from **set-level selection** (does this collection cover the concept?), and makes both extensible.
+
+## Status
+
+All five v1 phases are shipped. The package can: clean a photo dump (200→20 in <30s, no GPU); run the full embeddings + facility-location workflow with CLIP or DINOv2; curate a person / character LoRA with face detection, ArcFace identity diversity, and pose-bin quotas; serve every verb over HTTP (FastAPI via `qh`); and expose every verb over MCP (via `fastmcp`) so an LLM agent can drive curation directly. Since then it has also gained one-call character / environment reference picks, a human-in-the-loop `curate_interactive`, and `compare_to_reference` — "is this generation still the same subject?" as a number. See [`misc/docs/lookbook_development_plan.md`](misc/docs/lookbook_development_plan.md) for the full roadmap and [`misc/docs/lookbook_design_report.md`](misc/docs/lookbook_design_report.md) for the design rationale.
 
 ## Architecture
 
-Five layers; the heavy ML libs live only at the bottom so the upper layers
-stay laptop-installable.
+Five layers; the heavy ML libs live only at the bottom so the upper layers stay laptop-installable.
 
 ```
 Interface       (CLI, HTTP via qh, MCP via fastmcp, Python lib)
@@ -191,15 +161,9 @@ Plugin layer   (Scorer | Filter | Embedder | Selector — Protocols)
 Backend        (CLIP, DINOv2, InsightFace, 6DRepNet — wrapped, lazy-imported)
 ```
 
-The **manifest** — `MutableMapping[(image_id, metric_id), Annotation]` — is
-the SSOT. Persistence is pluggable via `dol`: filesystem (default), SQLite,
-S3, Mongo, Redis. The default location is the user's app data folder via
-`config2py`: `~/.local/share/lookbook` on Linux *and* macOS (it follows the XDG
-convention, not `~/Library/Application Support`), `%LOCALAPPDATA%` on Windows.
+The **manifest** — `MutableMapping[(image_id, metric_id), Annotation]` — is the SSOT. Persistence is pluggable via `dol`: filesystem (default), SQLite, S3, Mongo, Redis. The default location is the user's app data folder via `config2py`: `~/.local/share/lookbook` on Linux *and* macOS (it follows the XDG convention, not `~/Library/Application Support`), `%LOCALAPPDATA%` on Windows.
 
-New scorers/selectors/filters are *registered*, never subclassed. See the
-`.claude/skills/` directory for developer skills (`lookbook-dev`,
-`lookbook-add-scorer`, `lookbook-add-selector`, `lookbook-storage`).
+New scorers/selectors/filters are *registered*, never subclassed. See the `.claude/skills/` directory for developer skills (`lookbook-dev`, `lookbook-add-scorer`, `lookbook-add-selector`, `lookbook-storage`).
 
 ## Project layout
 
@@ -237,8 +201,7 @@ tests/                  pytest, hermetic
 
 ## Claude Code skills
 
-The `.claude/skills/` directory ships nine skills covering both ends of
-the workflow:
+The `.claude/skills/` directory ships nine skills covering both ends of the workflow:
 
 **Dev skills** (used while building / extending lookbook):
 - `lookbook-dev` — overall architecture, cross-references between modules
